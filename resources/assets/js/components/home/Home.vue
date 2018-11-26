@@ -1,146 +1,68 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="col-md-12 px-0">
-                <div class="card flex-row mb-3">
-                    <div class="card-body mt-2">
-                        <div class="title">
-                            <span class="text-success text-bold m-r-5">|</span>
-                            <span class="vertical-middle">工作汇总(测试数据)</span>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4 col-12 mg-home-top">
-                                <div class="row text-center" style="white-space:nowrap;">
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">待审批数</h5>
-                                        <p class="card-text text-secondary red" style="white-space:nowrap;">
-                                            12{{mgCharts.albumsCount}}</p>
-                                    </div>
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已审批数</h5>
-                                        <p class="card-text text-secondary" style="white-space:nowrap;">
-                                            203{{mgCharts.dynamicsCount}}</p>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="home">
+        <div style="padding: 14px 0;">
+            <div class="title">
+                <img src="/images/city.png" class="icon">
+                <vgl-rollup text="全市双招双创项目情况"></vgl-rollup>
+            </div>
+            <el-row :gutter="12">
+                <el-col :span="6">
+                    <el-card shadow="hover">
+                        项目个数 <span class="items-num">50</span>个
+                    </el-card>
+                </el-col>
+                <el-col :span="6">
+                    <el-card shadow="hover">
+                        十强产业到位资金 <span class="item-fee">100</span>亿元
+                    </el-card>
+                </el-col>
+                <el-col :span="6">
+                    <el-card shadow="hover">
+                        开工项目数 <span class="start-num">45</span>个
+                        <el-progress type="circle" :percentage="70" color="#f85e13" width="70"></el-progress>
 
-                            <div class="col-sm-4 col-12 mg-home-top">
-                                <div class="row text-center" style="border-right:1px solid #eaeaea;border-left:1px solid #eaeaea">
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">接待中</h5>
-                                        <p class="card-text text-secondary red" style="white-space:nowrap;">
-                                           53{{mgCharts.albumsCount}}</p>
-                                    </div>
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">完成接待</h5>
-                                        <p class="card-text text-secondary" style="white-space:nowrap;">
-                                            123{{mgCharts.dynamicsCount}}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-12 mg-home-top">
-                                <div class="row text-center" style="white-space:nowrap;">
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">礼品库存</h5>
-                                        <p class="red card-text text-secondary" style="white-space:nowrap;">
-                                            100{{mgCharts.albumsCount}}</p>
-                                    </div>
-                                    <div class="col pt-2">
-                                        <h5 class="card-title text-muted pt-2 mb-0" style="white-space:nowrap;">已发放礼品</h5>
-                                        <p class="card-text text-secondary" style="white-space:nowrap;">
-                                            123{{mgCharts.dynamicsCount}}</p>
-                                    </div>
-                                </div>
-                            </div>
+                    </el-card>
+                </el-col>
+                <el-col :span="6">
+                    <el-card shadow="hover">
+                        竣工项目数 <span class="end-num">15</span>个
+                        <el-progress type="circle" :percentage="25" color="#28a42f" width="70"></el-progress>
+                    </el-card>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="title">
+            <img src="/images/district.png" class="icon">
+            <vgl-rollup text="各区双招双创项目情况"></vgl-rollup>
+        </div>
+        <el-row :gutter="12">
+            <el-col :span="3" v-for="(o, index) in 14" :key="o">
+                <el-card :body-style="{ padding: '0px'}" shadow="hover">
+                    <div class="items" style="padding: 14px;">
+                        <img src="https://images.veg.kim/avatars/2160MG5b494bd03a9eb.png!mp.v100" class="image">
+                        <span>好吃的汉堡</span>
+                    </div>
+                    <div style="padding: 14px;">
+                        <div class="bottom clearfix">
+                            <time class="time">{{ currentDate }}</time>
+                            <el-button type="text" class="button">操作按钮</el-button>
                         </div>
                     </div>
-                </div>
-            </div>
+                </el-card>
+            </el-col>
+        </el-row>
+        <div class="title">
+            <img src="/images/charts.png" class="icon">
+            <vgl-rollup text="双招双创图表对比"></vgl-rollup>
         </div>
-        <div class="row">
-            <div class="col-md-12 px-0">
-                <div class="card flex-md-row mb-3">
-                    <div class="card-body mt-2">
-                        <div class="mg-business">
-                            <div class="mb-3">
-                                <span class="text-success text-bold m-r-5">|</span>
-                                <span class="vertical-middle">热门场馆</span>
-                            </div>
-                            <div class="col-12 text-center">
-                               暂停开发
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 px-0">
-                <div class="card flex-md-row mb-3">
-                    <div class="card-body mt-2">
-                        <div class="mg-business">
-                            <div class="mb-3">
-                                <span class="text-success text-bold m-r-5">|</span>
-                                <span class="vertical-middle">热门酒店</span>
-                            </div>
-                            <div class="col-12 text-center">
-                                暂停开发
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--<div class="row">-->
-            <!--<div class="col-md-12 px-0">-->
-                <!--<div class="card flex-md-row mb-3">-->
-                    <!--<div class="card-body mt-2">-->
-                        <!--<div class="mg-hello p-2">-->
-                            <!--<h5>老乡，您好!</h5>-->
-                            <!--<p class="mb-0 mt-3">-->
-                                <!--习主席说过：要让居民望得见山、看得见水、记得住乡愁。-->
-                            <!--</p>-->
-                            <!--<hr class="my-2">-->
-                            <!--<p>-->
-                                <!--每个人都有一份乡愁！而我们终于有机会来到家乡，编织梦想。战略家马云说过"梦想一定要有，万一实现了呢"，还有一句关于农业的"只有农村富，中国才会富，只有乡村强，中国才会强，只有乡村振兴，中国才会振兴"。-->
-                                <!--我们有一个梦想，就是要-->
-                                <!--<mark class="alert-success alert-link font-weight-bold">-->
-                                    <!--用科技创新农业，用智慧振兴中国，用智能改变世界。-->
-                                <!--</mark>-->
-                            <!--<p>在这个平台上您会得到所需的一切服务，只要您有创新的想法，我们就能在平台上为您实现。请多多帮助小<a-->
-                                    <!--href="https://veg.kim" target="_blank"-->
-                                    <!--class="alert-success alert-link">-->
-                                <!--苗果-->
-                            <!--</a>，我们会在您的呵护下生根发芽、茁壮成长，谢谢。-->
-                            <!--</p>-->
-                            <!--<p>-->
-                                <!--欢迎使用专业的种苗交易平台，目前我们上线了微信小程序，请通过微信搜索"<a href="https://veg.kim" target="_blank"-->
-                                                                      <!--class="alert-success alert-link">苗果</a>"，或者扫码找到我们。-->
-                            <!--</p>-->
-                            <!--</p>-->
-                            <!--<p>-->
-                                <!--~~好了，就从苗开始，-->
-                            <!--</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <div class="panel text-center panel-default mb-5 px-0 mg-footer">
-            <hr class="my-4">
-            <a href="https://veg.kim" target="_blank">苗果科技 https://veg.kim</a>
-        </div>
-
-
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
+
     export default {
-        created(){
+        created() {
             this.$store.dispatch('setAuthUser')
         },
         computed: {
@@ -148,58 +70,108 @@
                 user: state => state.AuthUser,
             })
         },
-        mounted() {
-//            axios.get('/api/v1/shops').then(response => {
-//                this.shops = response.data.data
-//            })
-        },
+
         data() {
             return {
-                shops: [],
-                mgCharts: {"albumsCount": '', "dynamicsCount": '', "ordersCount": ''},
-                messageContent: ''
+                currentDate: new Date(),
+                tags: [
+                    {name: '标签一', type: ''},
+                    {name: '标签二', type: 'success'},
+                    {name: '标签三', type: 'info'},
+                    {name: '标签四', type: 'warning'},
+                    {name: '标签五', type: 'danger'}
+                ]
             }
-        },
-        methods: {
-//            sendMessage(){
-//                let formData = {
-//                    messageContent: this.messageContent,
-//                }
-//                this.$store.dispatch('sendMessageRequest', formData).then(response => {
-//                    this.$router.push({name: 'profile.Home'})
-//                    this.messageContent = ''
-//                }).catch(error => {
-//
-//                })
-//            }
-        }
-    }
 
+        },
+        mounted() {
+//            axios.get('/api/v1/areas').then(response => {
+//                this.areas = response.data.data
+//            })
+        },
+        methods: {}
+    }
 </script>
 <style>
-    .shop-title{
-        width: 80px;
-        height: 28px;
-        line-height: 28px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .home .title {
+        font-size: 18px;
+        font-weight: 700;
+        padding: 5px 0 20px 0;
     }
-    .contributor-pics img{
-        -webkit-transition: 0.4s;
-        -webkit-transition: -webkit-transform 0.4s ease-out;
-        transition: transform 0.4s ease-out;
-        -moz-transition: -moz-transform 0.4s ease-out;
+
+    .home .title .icon {
+        width: 20px;
+        height: 20px;
     }
-    .contributor-pics img:hover{
-        transform: rotateZ(360deg);
-        -webkit-transform: rotateZ(360deg);
-        -moz-transform: rotateZ(360deg);
+
+    .home .time {
+        font-size: 13px;
+        color: #999;
     }
-    .red{
-        color:#d71342 !important;
+
+    .home .bottom {
+        margin-top: 13px;
+        line-height: 12px;
     }
-    .card {
-        border: 1px solid #f5f5f5 !important;
+
+    .home .button {
+        padding: 0;
+        float: right;
     }
-</style>
+
+    .home .image {
+        width: 100%;
+        height: 60px;
+        display: block;
+    }
+
+    .home .el-progress {
+        float: right;
+    }
+
+    .home .clearfix:before,
+    .home .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .home .clearfix:after {
+        clear: both
+    }
+
+    .home .el-col {
+        margin-bottom: 10px;
+    }
+
+    .home .items .image {
+        float: left;
+        width: 30px;
+        height: 30px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    .el-card__body {
+        font-size: 16px;
+    }
+
+    .items-num {
+        font-size: 40px;
+        font-weight: 700;
+        color: #f85e13;
+    }
+
+    .item-fee {
+        font-size: 40px;
+        font-weight: 700;
+        color: #f85e13;
+    }
+
+    .start-num, .end-num {
+        font-size: 40px;
+        font-weight: 700;
+        color: #f85e13;
+    }
+
+</style>s

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <div class="text-center">
+                <div class="text-center login">
                     <login-form></login-form>
                 </div>
             </div>
@@ -11,7 +11,6 @@
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
                 <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-                <p class="mb-5 text-muted">备案号：鲁ICP备18010028号-1</p>
             </div>
         </div>
     </div>
@@ -29,6 +28,10 @@
 </script>
 <style>
 
+    .login{
+        margin-top: 40%;
+    }
+
 
     .form-signin {
         width: 100%;
@@ -45,6 +48,7 @@
         height: auto;
         padding: 10px;
         font-size: 16px;
+        margin: 10px 0;
     }
     .form-signin .form-control:focus {
         z-index: 2;

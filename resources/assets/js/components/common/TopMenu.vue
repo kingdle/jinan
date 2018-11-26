@@ -3,7 +3,7 @@
         <div class="container-fluid px-0">
             <div class="navbar-header">
                 <router-link to="/" class="navbar-brand" exact>
-                    <img src="/images/logo-sm.png" alt="仓储物流管理系统" width="260" height="50">
+                    <vgl-wave text="济宁市宏观数据信息平台"></vgl-wave>
                 </router-link>
                 <div v-if="user.authenticated" class="d-block d-sm-none d-none d-sm-block d-md-none float-right pt-2">
                     <button class="navbar-toggler btn btn-outline-secondary btn-sm pt-2 px-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,14 +16,10 @@
             <div class="" id="app-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <router-link v-if="!user.authenticated" to="/login" tag="li">
-                        <button type="button" class="btn btn-success btn-sm user-top-phone" data-placement="bottom" title="控制台">
-                            <span>登录</span>
-                        </button>
+                        <el-button round size="small">登录</el-button>
                     </router-link>
                     <router-link v-if="!user.authenticated" to="/register" tag="li">
-                        <button type="button" class="btn btn-secondary btn-sm user-top-phone" data-placement="bottom" title="控制台">
-                            <span>注册</span>
-                        </button>
+                        <el-button type="primary" round size="small">注册</el-button>
                     </router-link>
                     <router-link v-if="user.authenticated" :to="{name: 'profile.Home'}" tag="li">
                         <el-badge :value="200" :max="99" class="message">
@@ -85,12 +81,27 @@
     }
 </script>
 <style>
+    .navbar-brand{
+        font-size: 22px;
+        font-weight: 400;
+        color:#ffffff;
+    }
+    .navbar-brand:hover{
+        font-weight: 700;
+        color:#ffffff;
+    }
     .navbar {
-        background-color: #ffffff;
-        /*border-bottom: 1px solid #f1f1f1;*/
-        /*box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);*/
+        height: 70px;
+        background-color: #283645;
+        border-bottom: 2px solid #269f2c;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
     }
     .message {
         margin-right: 40px;
+    }
+    .el-button--primary {
+        color: #fff;
+        background-color: #28a42f;
+        border-color: #28a42f;
     }
 </style>

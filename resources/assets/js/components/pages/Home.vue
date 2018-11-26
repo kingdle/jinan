@@ -4,16 +4,18 @@
             <div class="col-12 w-100per m-b-100 overflow-auto">
                 <div class="w-1200 py-5 m-auto">
                     <h2 class="header text-center">
-                        智能服务，承诺您的每一份嘱托</h2>
-                    <!--<p class="header-ad text-sm text-center letter-10  m-b-45">-->
-                        <!--驻外事务手机办理，掌心里的驻外服务平台</p>-->
+                        <vgl-slidein text="双招双引投资项目监测平台"></vgl-slidein>
+                       </h2>
+                    <h5 class="header-ad text-center letter-10  m-b-45">
+                        监测济宁十四个区县项目个数、到位资金、开工项目、竣工项目情况
+                    </h5>
                     <div class="my-0">
                         <div class="fl flex-4 text-center">
                             <a class="inline-block m-auto shop" href="#"><img
                                     class="hoverImg" style="width:288px;"
                                     src="/images/storehouse.png">
                             </a>
-                            <h6 class="text-secondary pt-2 mb-0">打开微信扫一扫</h6>
+                            <h6 class="text-secondary pt-2 mb-0">可通过微信采集</h6>
                         </div>
                     </div>
                 </div>
@@ -21,10 +23,7 @@
         </div>
         <div class="row">
             <div class="link col-12 text-center">
-                <a href="http://www.hlqgroup.com">青岛乾通源物流有限公司</a><br>
-                <span class="mt-5 mb-3 text-muted">技术支持：苗果科技</span>
                 <p class="mt-5 mb-3 text-muted">© 1996-2018</p>
-                <p class="mb-5 text-muted">备案号：鲁ICP备14021000号-1</p>
             </div>
         </div>
 
@@ -58,10 +57,11 @@
     .header{
         color: #505050;
         font-size:45px;
-        margin-bottom: 40px;
+        margin: 40px 0 20px 0;
     }
     .header-ad{
         color: #6a6866;
+        margin-bottom: 40px;
     }
     .link{
         padding: 0 10%;

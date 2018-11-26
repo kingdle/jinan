@@ -2,13 +2,13 @@
     <div class="sidebar-mg">
         <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                  :collapse="isCollapse"
-                 background-color="#545c64"
+                 background-color="#25323f"
                  text-color="#fff"
                  active-text-color="#409EFF">
             <el-switch
                     v-model="isCollapse"
                     active-color="#909399"
-                    inactive-color="rgb(64, 158, 255)"
+                    inactive-color="#28a42f"
                     :width="30">
             </el-switch>
             <el-submenu index="1">
@@ -142,13 +142,13 @@
     }
 
     .sidebar-mg {
-        background-color: #545c64;
+        background-color: #25323f;
         color: #fff;
         text-align: left;
     }
 
     .sidebar-mg, .el-main {
-        overflow: auto;
+        /*overflow: auto;*/
         -webkit-box-sizing: border-box;
     }
 
@@ -165,7 +165,7 @@
     export default {
         data() {
             return {
-                isCollapse: false,
+                isCollapse: true,
             };
         },
         methods: {

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center register">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">注册</div>
@@ -21,3 +21,8 @@
         }
     }
 </script>
+<style>
+    .register{
+        margin-top: 20px;
+    }
+</style>

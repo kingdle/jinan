@@ -48,12 +48,7 @@ let routes = [
                 component: (resolve)=>require(['./components/buyers/Index'],resolve),
                 meta: {requiresAuth: true}
             },
-            {
-                path: '/edit-profile',
-                name: 'profile.editProfile',
-                component: (resolve)=>require(['./components/user/EditProfile'],resolve),
-                meta: {requiresAuth: true}
-            },
+
             {
                 path: '/edit-password',
                 name: 'profile.editPassword',

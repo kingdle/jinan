@@ -17,6 +17,9 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import VueGoodLinks from 'vue-good-links';
+
+import 'vue-good-links/dist/vue-good-links.css';
 
 
 
@@ -36,7 +39,11 @@ const config = {
     errorBagName: 'errorBags', // change if property conflicts.
     fieldsBagName: 'fieldBags',
 };
+
 Validator.localize('zh_CN', zh_CN);
+
+Vue.use(VueGoodLinks);
+
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
 Vue.use(VueAxios, axios)
