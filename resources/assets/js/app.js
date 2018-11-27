@@ -43,7 +43,7 @@ Validator.localize('zh_CN', zh_CN);
 
 Vue.use(VueGoodLinks);
 Vue.use(VueRouter);
-Vue.use(VeeValidate);
+Vue.use(VeeValidate,config);
 Vue.use(VueAxios, axios)
 Vue.use(ElementUI);
 Vue.use(VueQuillEditor, /* { default global options } */)

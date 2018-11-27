@@ -24,7 +24,7 @@ class CreateAreasTable extends Migration
             $table->string('latitude')->nullable()->comment('管区所在纬度');
             $table->string('longitude')->nullable()->comment('管区所在经度');
             $table->string('items_num')->nullable()->comment('项目个数');
-            $table->string('fee')->nullable()->comment('到位资金');
+            $table->decimal('fee')->nullable()->comment('到位资金');
             $table->string('start_num')->nullable()->comment('开工项目');
             $table->string('end_num')->nullable()->comment('竣工项目');
             $table->timestamps();

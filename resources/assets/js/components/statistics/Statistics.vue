@@ -1,178 +1,151 @@
 <template>
     <div class="mg-news">
-        <el-dialog title="新建计划" :visible.sync="dialogFormVisible">
-            <el-form :inline="true" ref="addForm" :model="addForm" label-width="150px" size="medium">
+        <el-dialog title="新建项目" fullscreen :visible.sync="projectFormVisible">
+            <el-form :inline="true" ref="addProjectForm" :model="addProjectForm" label-width="150px" size="medium">
                 <div>
-                    <el-form-item label="客户名称">
-                        <el-input class="textarea-width" type="input" v-model="addForm.customer"
+                    <el-form-item label="单位名">
+                        <el-input class="textarea-width" type="input" v-model="addProjectForm.name"
                                   clearable
-                                  placeholder="青岛乾通源物流有限公司"></el-input>
+                                  placeholder="济宁**有限公司"></el-input>
                     </el-form-item>
                 </div>
-                <el-form-item label="品名">
-                    <el-input v-model="addForm.goods_name"
+                <el-form-item label="营业执照号">
+                    <el-input class="text-code" v-model="addProjectForm.id_license"
                               clearable
-                              placeholder="STR20-泰国混合橡胶">
+                              placeholder="如：91370211MA3M6YNP9G"></el-input>
+                </el-form-item>
+                <el-form-item label="组织机构代码证">
+                    <el-input v-model="addProjectForm.id_code"
+                              clearable
+                              placeholder="三证合一可不填">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="包装">
-                    <el-input v-model="addForm.packing"
+                <el-form-item label="注册类型">
+                    <el-input v-model="addProjectForm.register_type"
                               clearable
-                              placeholder="托盘10*20"></el-input>
-                </el-form-item>
-                <el-form-item label="清单号">
-                    <el-input v-model="addForm.number_id"
-                              clearable
-                              placeholder="421020181000019180">
+                              placeholder="填写企业性质">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="提单号">
-                    <el-input v-model="addForm.extract_id"
-                              clearable
-                              placeholder="COAU7120923550"></el-input>
-                </el-form-item>
-
-                <el-form-item label="箱量净重(千克)">
-                    <el-input-number v-model="addForm.weight_box"
-                                     @input="weightBoxChange($event)"
-                                     clearable
-                                     placeholder="201600"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="append">kg</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="数量(吨)">
-                    <el-input-number v-model="addForm.quantity"
-                                     @input="quantityChange($event)"
-                                     clearable
-                                     placeholder="201.60"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="append">t</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="协议包干单价(元)">
-                    <el-input-number v-model="addForm.price_income_package"
-                                     @input="incomePackageChange($event)"
-                                     clearable
-                                     placeholder="110.00"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="prepend">￥</template>
-                    </el-input-number>
-                </el-form-item>
-                <el-form-item label="实际包干单价(元)">
-                    <el-input-number v-model="addForm.price_cost_package"
-                                     @input="costPackageChange($event)"
-                                     clearable
-                                     placeholder="12.08"
-                                     size="mini"
-                                     :precision="2">
-                        <template slot="prepend">￥</template>
-                    </el-input-number>
-                </el-form-item>
-
-                <div class="group-input">
-                    <el-form-item label="包干费收入-小计(元)">
-                        <el-input-number v-model="addForm.fee_bale_receivable"
-                                         @input="baleReceivableChange($event)"
-                                         placeholder="0.00"
-                                         :precision="2"
-                                         clearable
-                                         :disabled="true">
-                            <template slot="prepend">￥</template>
-                        </el-input-number>
+                <div>
+                    <el-form-item label="项目名称">
+                        <el-input class="textarea-width" v-model="addProjectForm.item_name"
+                                  clearable
+                                  placeholder="填写项目名称"></el-input>
                     </el-form-item>
-                    <el-form-item label="备注">
-                        <el-input v-model="addForm.remarks"
-                                  class="textarea-width"
-                                  type="textarea"
-                                  :rows="3"
-                                  placeholder="特殊情况说明"></el-input>
+                    <el-form-item label="项目代码">
+                        <el-input v-model="addProjectForm.item_code"
+                                  clearable
+                                  placeholder="37020181000019180">
+                        </el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="项目所在区">
+                    <el-autocomplete
+                            v-model="areaName"
+                            :fetch-suggestions="querySearchAsync"
+                            placeholder="所属区市"
+                            @select="districtSelect"
+                            prefix-icon="el-icon-search"
+                    ></el-autocomplete>
+                </el-form-item>
+                <el-form-item label="联系电话">
+                    <el-input v-model="addProjectForm.phone"
+                              clearable
+                              placeholder="18600001111">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="行业编码">
+                    <el-input v-model="addProjectForm.industry_code"
+                              clearable
+                              placeholder="如：121211"></el-input>
+                </el-form-item>
+                <el-form-item label="控股情况">
+                    <el-input v-model="addProjectForm.holding"
+                              clearable
+                              placeholder="1国有2集体3私人4港澳台商5外商9其他">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="隶属关系">
+                    <el-input v-model="addProjectForm.subjection"
+                              clearable
+                              placeholder="10中央20省40市80县及以下90其他">
+                    </el-input>
+                </el-form-item>
+
+                <el-form-item label="建设性质">
+                    <el-input v-model="addProjectForm.item_nature"
+                              clearable
+                              placeholder="1新建2扩建3改建和技术改造4单纯建造生活设施5迁建6恢复7单纯购置">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="项目类别">
+                    <el-input v-model="addProjectForm.item_type"
+                              clearable
+                              placeholder="1工业企业技术改造2棚户区改造3涉农">
+                    </el-input>
+                </el-form-item>
+
+                <el-form-item label="建设状态">
+                    <el-input v-model="addProjectForm.item_state"
+                              clearable
+                              placeholder="1在建2全部投产3全部停缓建">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="总投资(亿)">
+                    <el-input v-model="addProjectForm.fee"
+                              clearable
+                              placeholder="30">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="累计投资(亿)">
+                    <el-input v-model="addProjectForm.fee_count"
+                              clearable
+                              placeholder="20">
+                    </el-input>
+                </el-form-item>
+                <div>
+                    <el-form-item label="开工时间">
+                        <el-date-picker
+                                v-model="addProjectForm.start_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="投产时间">
+                        <el-date-picker
+                                v-model="addProjectForm.produce_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="竣工时间">
+                        <el-date-picker
+                                v-model="addProjectForm.end_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
                     </el-form-item>
                 </div>
             </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="addBroad">确 定</el-button>
+            <div class="form-group news-img">
+                <label for="fileArray" class="col-form-label">项目附件:（最多同时上传9个）</label>
+                <el-upload
+                        ref="upload"
+                        class="mg-upload-image"
+                        :action="uploadAction"
+                        list-type="fileList"
+                        multiple
+                        :limit="9"
+                        :on-exceed="handleExceed"
+                        :on-success="handleSuccess"
+                        :on-remove="handleRemove"
+                        :headers="header_project">
+                    <el-button size="small" type="primary"><i class="el-icon-plus"></i>点击上传</el-button>
+                </el-upload>
             </div>
-        </el-dialog>
-        <el-dialog title="新增费用" :visible.sync="addFeeFormVisible">
-
-            <el-row>
-                <el-row>
-                    <el-col :span="8"><div class="grid-content bg-purple">
-                        应收：{{receivablesForm.fee_receivable}}
-                    </div></el-col>
-                    <el-col :span="8"><div class="grid-content bg-purple-light">
-                        应付：{{receivablesForm.fee_payable}}
-                    </div></el-col>
-                    <el-col :span="8"><div class="grid-content bg-purple">
-                        实际收入：{{receivablesForm.fee_payable}}
-                    </div></el-col>
-                </el-row>
-            </el-row>
-            <el-form class="fee-add" :inline="true" ref="addFeeForm" :model="addFeeForm" label-width="120px" size="medium">
-                <el-form-item label="费用类别">
-                    <el-select v-model="addFeeForm.fee_id" filterable placeholder="请选择">
-                        <el-option
-                                v-for="item in fees"
-                                :key="item.id"
-                                :label="item.fee_name_scale"
-                                :value="item.id">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="收费金额">
-                    <el-input v-model="addFeeForm.fee_sum"
-                              clearable
-                              placeholder="10.00">
-                    </el-input>
-                </el-form-item>
-                <el-button class="fee-button" type="primary" @click="addReceivable" size="mini">添加</el-button>
-            </el-form>
-            <el-table
-                    :data="receivables"
-                    style="width: 100%; margin-bottom: 20px;">
-                <el-table-column
-                        prop="fee_name"
-                        label="费用名称"
-                        width="180">
-                </el-table-column>
-                <el-table-column
-                        prop="fee_sum"
-                        label="金额"
-                        width="180">
-                </el-table-column>
-                <el-table-column
-                        prop="fee_scale"
-                        label="收费标准">
-                </el-table-column>
-                <el-table-column
-                        prop="fee_state"
-                        label="是否支出项"
-                        width="130"
-                        :filters="[{ text: '未支出', value: '0' }, { text: '已支出', value: '1' }]"
-                        :filter-method="filterTag"
-                        filter-placement="bottom-end">
-                    <template slot-scope="scope">
-                        <el-tooltip content="标记是否支出项" placement="left">
-                            <el-switch
-                                    v-model="scope.row.fee_state"
-                                    active-color="#B1AFAD"
-                                    inactive-color="#87CC82"
-                                    active-value="1"
-                                    inactive-value="0"
-                                    @click.native.prevent="updateState(scope.$index, scope.row)"
-                            >
-                            </el-switch>
-                        </el-tooltip>
-                    </template>
-                </el-table-column>
-            </el-table>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="addFeeFormVisible = false">关闭窗口</el-button>
+                <el-button @click="projectFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="addProject">确 定</el-button>
             </div>
         </el-dialog>
         <el-container>
@@ -182,22 +155,15 @@
                     <el-col :span="4">
                             <span class="broad-title">
                                 <span class="text-success text-bold m-r-5">|</span>
-                                统计报表
+                                项目列表
                             </span>
                     </el-col>
-                    <el-col :span="15">
+                    <el-col :span="17">
                         <div class="block">
                             <el-autocomplete
-                                    v-model="stateName"
+                                    v-model="areaName"
                                     :fetch-suggestions="querySearchAsync"
-                                    placeholder="提单号"
-                                    @select="handleSelect"
-                                    prefix-icon="el-icon-search"
-                            ></el-autocomplete>
-                            <el-autocomplete
-                                    v-model="stateName"
-                                    :fetch-suggestions="querySearchAsync"
-                                    placeholder="客户名"
+                                    placeholder="区市"
                                     @select="handleSelect"
                                     prefix-icon="el-icon-search"
                             ></el-autocomplete>
@@ -206,82 +172,102 @@
                                     type="daterange"
                                     align="right"
                                     unlink-panels
-                                    range-separator="至"
+                                    range-separator="-"
                                     start-placeholder="开始日期"
                                     end-placeholder="结束日期">
                             </el-date-picker>
                         </div>
                     </el-col>
-                    <el-col :span="5">
+                    <el-col :span="3">
                         <el-button style="margin-right:10px;" type="primary"
-                                   icon="el-icon-search"
-                                   @click="dialogFormVisible = true">预览
-                        </el-button>
-                        <el-button type="success"
-                                   icon="el-icon-upload"
-                                   @click="dialogFormVisible = true">导出
+                                   icon="el-icon-plus"
+                                   @click="projectFormVisible = true">新建项目
                         </el-button>
                     </el-col>
                 </el-row>
             </el-header>
             <el-table
                     :row-class-name="tableRowClassName"
-                    :data="payments"
+                    :data="projects"
                     align="left"
                     style="width: 100%"
                     stripe
             >
                 <el-table-column
-                        prop="extract_id"
-                        label="提单号"
+                        prop="id"
+                        label="ID"
                         sortable
-                        width="180"
+                        width="60"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="customer"
-                        label="客户名称"
+                        prop="name"
+                        label="单位名称"
                         sortable
-                        width="180"
+                        width="220"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="goods_name"
-                        label="品名"
+                        prop="item_name"
+                        label="项目名称"
                         sortable
                         width="160"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="quantity"
-                        label="数量(吨)"
+                        prop="fee"
+                        label="投资(亿)"
+                        width="120"
+                >
+                </el-table-column>
+                <el-table-column
+                        prop="fee_count"
+                        label="累计投资(亿)"
+                        width="120"
+                >
+                </el-table-column>
+                <el-table-column
+                        prop="district"
+                        label="所在区"
                         sortable
-                        width="120"
+                        width="100"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_income_package"
-                        label="协议包干单价"
-                        width="130"
+                        prop="phone"
+                        label="联系电话"
+                        width="110"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_cost_package"
-                        label="实际包干单价"
-                        width="130"
+                        prop="start_at"
+                        label="开工时间"
+                        width="100"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_income_package"
-                        label="应收(元)"
-                        width="120"
+                        prop="produce_at"
+                        label="投产时间"
+                        width="100"
                 >
                 </el-table-column>
                 <el-table-column
-                        prop="price_cost_package"
-                        label="应付(元)"
-                        width="120"
+                        prop="end_at"
+                        label="竣工时间"
+                        width="100"
                 >
+                </el-table-column>
+                <el-table-column
+                        label="附件"
+                >
+                    <template slot-scope="scope">
+                        <b v-for="(item,index) in scope.row.filesArray">
+                            <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
+                                <i class="el-icon-document"></i>
+                                {{key}}
+                            </a></br>
+                        </b>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         fixed="right"
@@ -299,12 +285,11 @@
                                     size="mini" circle>
                             </el-button>
                         </el-tooltip>
-                        <el-tooltip class="item" effect="dark"
-                                    content="打印"
+                        <el-tooltip class="item" effect="dark" content="删除"
                                     placement="right">
                             <el-button
                                     @click.native.prevent="handleDelete(scope.$index, scope.row)"
-                                    icon="el-icon-printer"
+                                    type="info" icon="el-icon-delete"
                                     size="mini" circle>
                             </el-button>
                         </el-tooltip>
@@ -330,7 +315,7 @@
     export default {
         data() {
             return {
-                payments: [],
+                projects: [],
                 pagination: {
                     total: 0,
                     per_page: 0,
@@ -341,66 +326,43 @@
                 currentPage: 1,
                 offset: 9,
                 pagerCount: 5,
-                addForm: {
-                    weight_box: '0.00',
-                    quantity: '0.00',
-                    price_income_package: '0.00',
-                    price_cost_package: '0.00',
-                    fee_bale_receivable: '0.00',
+
+                addProjectForm: {
+
                 },
-                editForm: {},
-                addFeeForm: {},
-                receivables:[],
-                receivablesForm:{},
-                stateName:'',
-                fees: [],
-                copyForm: {},
+                district:'',
+                area_id:'',
                 dialogTableVisible: false,
-                dialogFormVisible: false,
+                projectFormVisible: false,
                 addFeeFormVisible: false,
-                dates:[]
+                fileArray:[],
+                uploadAction: '/api/v1/project/upFile',
+                header_project: {
+                    Authorization: 'Bearer ' + window.localStorage.getItem('jwt_token')
+                },
+                headers:'',
+                areaName:'',
+                areaList:[],
+                timeout:null,
+                dates:''
             }
         },
         mounted() {
-            axios.get('/api/v1/payments').then(response => {
-                this.payments = response.data.data
-                this.pagination = response.data.meta
+            let that=this
+            axios.get('/api/v1/projects').then(response => {
+                that.projects = response.data.data
+                that.pagination = response.data.meta
+            })
+            axios.get('/api/v1/area/queryArea').then(response => {
+                that.areaList = response.data
             })
 
-            this.loadFeeList()
-//            this.queryDepartment = this.loadDepartments()
         },
         methods: {
-            filterTag(value, row) {
-                return row.state === value;
-            },
-            weightBoxChange(e) {
-                this.addForm.quantity = e * 0.001
-                if (this.addForm.price_income_package !== undefined) {
-                    this.addForm.fee_bale_receivable = this.addForm.quantity * this.addForm.price_income_package
-                }
-            },
-            quantityChange(e) {
-                this.addForm.weight_box = e * 1000
-                if (this.addForm.price_income_package !== undefined) {
-                    this.addForm.fee_bale_receivable = this.addForm.quantity * this.addForm.price_income_package
-                }
-            },
-            incomePackageChange(e) {
-                if (this.addForm.weight_box !== undefined) {
-                    this.addForm.fee_bale_receivable = this.addForm.quantity * this.addForm.price_income_package
-                }
-            },
-            tableRowClassName({row, rowIndex}) {
-                if (row.batch_number === '' || row.batch_number === null) {
-                    return 'warning-row';
-                }
-                return '';
-            },
             changePage: function (page) {
                 this.pagination.current_page = page;
-                axios.get('/api/v1/payments?page=' + page).then(response => {
-                    this.payments = response.data.data
+                axios.get('/api/v1/projects?page=' + page).then(response => {
+                    this.projects = response.data.data
                 })
             },
             handleSizeChange(pageSize) {
@@ -409,40 +371,27 @@
                     pagination: pageSize,
                 }
                 axios.post('/api/v1/payment/listSize', formData).then(response => {
-                    this.payments = response.data.data
+                    this.projects = response.data.data
                 })
             },
             handleCurrentChange(page) {
                 this.pagination.current_page = page;
-                axios.get('/api/v1/payments?page=' + page).then(response => {
-                    this.payments = response.data.data
+                axios.get('/api/v1/projects?page=' + page).then(response => {
+                    this.projects = response.data.data
                 })
             },
-            Refresh(page) {
-                axios.get('/api/v1/payments').then(response => {
-                    this.payments = response.data.data
-                    this.pagination = response.data.meta
-                    this.stateName = ''
-                    this.stateDepartment = ''
-                })
-            },
-            placeToDays: function (row, column) {
-                if (row.days == null || row.days == '') {
-                    var todays = ''
-                } else {
-                    todays = '(' + row.days + '天' + ')'
+            tableRowClassName({row, rowIndex}) {
+                if (row.batch_number === '' || row.batch_number === null) {
+                    return 'warning-row';
                 }
-                return row.place_to + todays;
-            },
-            timesToEnd: function (row, column) {
-                return row.times_at_md + '至' + row.times_end_md;
+                return '';
             },
             batchNumber: function (row, column) {
                 return row.batch_number
             },
             handleSuccess(response){
-                this.filesUrl = response.photo
-                this.imageUrl.push(this.filesUrl)
+                this.filesUrl = response.files
+                this.fileArray.push(this.filesUrl)
             },
             editSuccess(response){
                 if (this.editImageUrl == null) {
@@ -455,7 +404,8 @@
                 return this.files.length === 9 ? false : true // 只让它上传一张
             },
             handleRemove(file, fileList) {
-                console.log(fileList);
+                console.log(file.response.photo)
+                console.log(this.fileArray)
             },
             picRemove(image) {
                 const formData = {
@@ -463,7 +413,6 @@
                     pic: image,
                 }
                 axios.post('/api/v1/payment/destroyImage', formData).then(response => {
-                    console.log(response.data)
                     this.editImageUrl = response.data
                 })
             },
@@ -474,47 +423,42 @@
             handleExceed(files, fileList) {
                 this.$message.warning(`当前限制选择 9 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
             },
-            addBroad() {
+            addProject() {
+                let self=this
                 const formData = {
-                    customer: this.addForm.customer,
-                    goods_name: this.addForm.goods_name,
-                    packing: this.addForm.packing,
-                    number_id: this.addForm.number_id,
-                    extract_id: this.addForm.extract_id,
-                    weight_box: this.addForm.weight_box,
-                    quantity: this.addForm.quantity,
-                    price_income_package: this.addForm.price_income_package,
-                    price_cost_package: this.addForm.price_cost_package,
-                    fee_receivable: this.addForm.fee_receivable,
-                    fee_bale_receivable: this.addForm.fee_bale_receivable,
-                    fee_before_receivable: this.addForm.fee_before_receivable,
-                    fee_emergency_receivable: this.addForm.fee_emergency_receivable,
-                    fee_storage_receivable: this.addForm.fee_storage_receivable,
-                    fee_cleaning_box_receivable: this.addForm.fee_cleaning_box_receivable,
-                    fee_adjusting_box_receivable: this.addForm.fee_adjusting_box_receivable,
-                    fee_repair_box_receivable: this.addForm.fee_repair_box_receivable,
-                    fee_payable: this.addForm.fee_payable,
-                    fee_bale_payable: this.addForm.fee_bale_payable,
-                    fee_before_payable: this.addForm.fee_before_payable,
-                    fee_exchange_payable: this.addForm.fee_exchange_payable,
-                    fee_harbor_payable: this.addForm.fee_harbor_payable,
-                    fee_customs_payable: this.addForm.fee_customs_payable,
-                    fee_inspection_agent_payable: this.addForm.fee_inspection_agent_payable,
-                    fee_inspection_goods_payable: this.addForm.fee_inspection_goods_payable,
-                    fee_inspection_payable: this.addForm.fee_inspection_payable,
-                    fee_inspection_quarantine_payable: this.addForm.fee_inspection_quarantine_payable,
-                    fee_dig_box_payable: this.addForm.fee_dig_box_payable,
-                    fee_transport_short_payable: this.addForm.fee_transport_short_payable,
-                    fee_emergency_payable: this.addForm.fee_emergency_payable,
-                    fee_storage_payable: this.addForm.fee_storage_payable,
-                    fee_cleaning_box_payable: this.addForm.fee_cleaning_box_payable,
-                    fee_adjusting_box_payable: this.addForm.fee_adjusting_box_payable,
-                    fee_repair_box_payable: this.addForm.fee_repair_box_payable,
-                    remark: this.addForm.remark,
+                    name: self.addProjectForm.name,
+                    id_code: self.addProjectForm.id_code,
+                    id_license: self.addProjectForm.id_license,
+                    item_code: self.addProjectForm.item_code,
+                    item_name: self.addProjectForm.item_name,
+                    register_type: self.addProjectForm.register_type,
+                    district: self.district,
+                    area_id: self.area_id,
+                    phone: self.addProjectForm.phone,
+                    industry_code: self.addProjectForm.industry_code,
+                    holding: self.addProjectForm.holding,
+                    subjection: self.addProjectForm.subjection,
+                    item_nature: self.addProjectForm.item_nature,
+                    item_type: self.addProjectForm.item_type,
+                    start_at: self.addProjectForm.start_at,
+                    end_at: self.addProjectForm.end_at,
+                    produce_at: self.addProjectForm.produce_at,
+                    item_state: self.addProjectForm.item_state,
+                    fee: self.addProjectForm.fee,
+                    fee_count: self.addProjectForm.fee_count,
+                    filesArray: self.fileArray,
+                    is_hidden: 'F',
                 }
-                axios.post('/api/v1/payments', formData).then(response => {
-                    this.payments = response.data.payments
-                    this.dialogFormVisible = false
+
+                axios.post('/api/v1/project/add', formData).then(response => {
+                    self.projects = response.data.projects
+                    self.projectFormVisible = false
+                    self.addProjectForm={}
+                    self.$refs.upload.clearFiles()
+                    self.fileArray=[]
+                    self.areaName=''
+                    self.district=''
+                    self.area_id='0'
                 })
             },
             addReceivable(){
@@ -564,8 +508,8 @@
                     reasons_visit: this.abroadCopyForm.reasons_visit,
                     pic: this.editImageUrl
                 }
-                axios.post('/api/v1/payments', formData).then(response => {
-                    this.payments = response.data.payments
+                axios.post('/api/v1/projects', formData).then(response => {
+                    this.projects = response.data.projects
                     this.copyAbroadModalCenter = false
                     this.imageUrl = []
                     this.fileList = []
@@ -631,8 +575,8 @@
                     pic: this.editImageUrl
                 }
                 axios.post('/api/v1/payment/update', formData).then(response => {
-                    axios.get('/api/v1/payments?page=' + this.pagination.current_page).then(response => {
-                        this.payments = response.data.data
+                    axios.get('/api/v1/projects?page=' + this.pagination.current_page).then(response => {
+                        this.projects = response.data.data
                     })
                     this.editAbroadModalCenter = false
                     this.imageEditUrl = []
@@ -641,36 +585,19 @@
                 })
             },
             handleDelete(index, row) {
-                axios.delete('/api/v1/payments/' + row.id).then(response => {
-                    axios.get('/api/v1/payments?page=' + this.pagination.current_page).then(response => {
-                        this.payments = response.data.data
+                axios.delete('/api/v1/projects/' + row.id).then(response => {
+                    axios.get('/api/v1/projects?page=' + this.pagination.current_page).then(response => {
+                        this.projects = response.data.data
                     })
                 })
             },
-            loadFeeList() {
-                axios.get('/api/v1/feeList').then(response => {
-                    this.fees = response.data.data
-                })
-            },
-            loadDepartments() {
-                return [
-                    axios.get('/api/v1/payment/queryDepartmentList').then(response => {
-                        this.queryDepartment = response.data
-                    })
-                ]
-            },
-            querySearchAsync(queryString, cb) {
-                var queryName = this.queryName;
-                var results = queryString ? queryName.filter(this.createStateFilter(queryString)) : queryName;
 
-                clearTimeout(this.timeout);
-                this.timeout = setTimeout(() => {
-                    cb(results);
-                }, 1000 * Math.random());
-            },
-            querySearchDepartment(queryString, cb) {
-                var queryDepartment = this.queryDepartment;
-                var results = queryString ? queryDepartment.filter(this.createStateFilter(queryString)) : queryDepartment;
+
+            querySearchAsync(queryString, cb) {
+                console.log(this.areaList)
+
+                var areaList = this.areaList;
+                var results = queryString ? areaList.filter(this.createStateFilter(queryString)) : areaList;
 
                 clearTimeout(this.timeout);
                 this.timeout = setTimeout(() => {
@@ -682,23 +609,26 @@
                     return (state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
                 };
             },
+
             handleSelect(item) {
-                const formData = {
-                    name: item.value,
-                }
-                axios.post('/api/v1/payment/queryResult', formData).then(response => {
-                    console.log(response.data)
-                    this.payments = response.data.data
-                    this.pagination = response.data.meta
-                })
+                // const formData = {
+                //     name: item.value,
+                // }
+                // axios.post('/api/v1/project/queryResult', formData).then(response => {
+                //     this.projects = response.data.data
+                //     this.pagination = response.data.meta
+                // })
+            },
+            districtSelect(item) {
+                this.district=item.value
+                this.area_id=item.id
             },
             DepartmentSelect(item) {
                 const formData = {
                     department: item.value,
                 }
                 axios.post('/api/v1/payment/queryResult', formData).then(response => {
-                    console.log(response.data)
-                    this.payments = response.data.data
+                    this.projects = response.data.data
                     this.pagination = response.data.meta
                 })
             },
@@ -1043,7 +973,9 @@
     .textarea-width {
         width: 550px !important;
     }
-
+    .text-code {
+        width: 300px !important;
+    }
     .el-table .warning-row {
         background: oldlace;
     }
@@ -1120,5 +1052,17 @@
         font-size: 28px;
         font-weight: 700;
         color: #f85e13;
+    }
+    .file-url {
+        width: 110px;
+        height: 28px;
+        line-height: 28px;
+        color: #368ec9;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .el-dialog__wrapper{
+        min-width: 780px;
     }
 </style>

@@ -24,6 +24,12 @@ Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
 
     Route::resource('/areas', 'AreasController');
     Route::get('/area/ranking/{id}', 'AreasController@ranking');
+    Route::get('/area/queryArea', 'AreasController@queryArea');
+
+    Route::resource('/projects', 'ProjectsController');
+    Route::post('/project/add', 'ProjectsController@addProject')->middleware('auth:api');
+    Route::post('/project/upFile', 'ProjectsController@upFile')->middleware('auth:api');
+    Route::post('/project/query/{id}', 'ProjectsController@query')->middleware('auth:api');
 
 
 

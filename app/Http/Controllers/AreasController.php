@@ -16,4 +16,15 @@ class AreasController extends Controller
     public function show($id){
         return Girl::with('user')->where("user_id",$id)->first();
     }
+    public function queryArea()
+    {
+        $areas = Area::distinct()->orderby("fee","desc")->get(['id','district']);
+        $multiplied = $areas->map(function ($item, $key) {
+            return [
+                'value'=>$item->district,
+                'id'=>$item->id,
+            ];
+        })->all();
+        return $multiplied;
+    }
 }

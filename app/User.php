@@ -35,19 +35,8 @@ class User extends Authenticatable
 
         return self::where($credentials)->first();
     }
-    public function girl(){
-        return $this->hasOne('App\Girl','user_id','id');
+    public function project(){
+        return $this->hasOne('App\Project','user_id','id');
     }
-    public function abroad(){
-        return $this->hasOne('App\Abroad','user_id','id');
-    }
-    public function reception(){
-        return $this->hasOne('App\Reception','user_id','id');
-    }
-    public function payment(){
-        return $this->hasOne('App\Payment','user_id','id');
-    }
-    public function payment_fee_item(){
-        return $this->hasOne('App\Payment_fee_item','user_id','id');
-    }
+
 }
