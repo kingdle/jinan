@@ -21,6 +21,12 @@ Route::post('/user/profile/update', 'UsersController@update')->middleware('auth:
 
 //passport部分
 Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
+
+    Route::resource('/areas', 'AreasController');
+    Route::get('/area/ranking/{id}', 'AreasController@ranking');
+
+
+
     Route::resource('/payments', 'PaymentsController')->middleware('auth:api');
     Route::post('/payment/update', 'PaymentsController@update')->middleware('auth:api');
     Route::post('/payment/listSize', 'PaymentsController@listSize')->middleware('auth:api');

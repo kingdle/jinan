@@ -15,7 +15,8 @@
                                     class="hoverImg" style="width:288px;"
                                     src="/images/storehouse.png">
                             </a>
-                            <h6 class="text-secondary pt-2 mb-0">可通过微信采集</h6>
+                            <h6 class="text-secondary pt-2 mb-0">可通过微信、支付宝采集数据</h6>
+                            <h6 class="text-secondary pt-2 mb-0">山东数研科技-实例展示平台</h6>
                         </div>
                     </div>
                 </div>

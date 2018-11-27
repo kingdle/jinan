@@ -20,8 +20,10 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "apexcharts": "^2.2.3",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-polyfill": "^6.26.0",
+        "chart.js": "^2.7.3",
         "element-ui": "^2.4.7",
         "js-cookie": "^2.2.0",
         "moment": "^2.22.2",

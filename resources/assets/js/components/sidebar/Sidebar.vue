@@ -14,10 +14,9 @@
             <el-submenu index="1">
                 <template slot="title">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">业务管理</span>
+                    <span slot="title">概览</span>
                 </template>
                 <el-submenu index="1-1">
-
                     <span slot="title"><i class="el-icon-circle-plus-outline"></i>入库</span>
                     <router-link :to="{name: 'profile.Inletplan'}" exact>
                         <el-menu-item index="1-1-1">入库计划</el-menu-item>

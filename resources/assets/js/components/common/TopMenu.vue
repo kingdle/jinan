@@ -84,15 +84,15 @@
     .navbar-brand{
         font-size: 22px;
         font-weight: 400;
-        color:#ffffff;
+        color:#222;
     }
     .navbar-brand:hover{
         font-weight: 700;
-        color:#ffffff;
+        color:#222;
     }
     .navbar {
         height: 70px;
-        background-color: #283645;
+        background-color: #fff;
         border-bottom: 2px solid #269f2c;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
     }
