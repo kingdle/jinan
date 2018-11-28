@@ -7,7 +7,7 @@
             </div>
             <el-row :gutter="10">
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">项目个数</p>
                                 <span class="items-num">580</span>个
@@ -18,7 +18,7 @@
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">十强产业到位资金</p>
                                 <span class="item-fee">100</span>亿元
@@ -30,7 +30,7 @@
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">开工项目数</p>
                                 <span class="item-fee">45</span>个
@@ -42,7 +42,7 @@
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="10">
                             <el-col :span="16"><p class="fee-num">竣工项目数</p>
                                 <span class="item-fee">15</span>个
@@ -69,11 +69,11 @@
             <el-row :gutter="10">
                 <el-col :xs="24" :sm="24" :md="12" :lg="4" :xl="3" v-for="(area,index) in areas" :key="index">
                     <router-link :to="{name: 'profile.Area-projects',params: { id: area.id}}" exact>
-                        <el-card :body-style="{ padding: '0px'}" shadow="hover">
+                        <el-card :body-style="{ padding: '0px'}" shadow="always">
                             <el-row :gutter="0">
                                 <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
                                     <div class="items" style="padding: 8px;">
-                                        <img :src="area.pic +'!mp.v200'" class="image-district">
+                                        <img :src="area.pic +'!mp.v200'" class="image-district" >
                                         <div class="district">
                                             <p class="district-name">{{area.district}}</p>
                                             <p>￥<span class="items-district-num">{{area.fee}}</span>亿元</p>
@@ -382,6 +382,7 @@
     }
 
     .home .el-card {
+        border-left: 1px solid #9bdefb;
         margin-bottom: 10px;
         min-width: 200px;
     }

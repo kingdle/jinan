@@ -62,23 +62,11 @@
 </head>
 <body>
 <div id="appLoading">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid px-0">
-            <div class="navbar-header">
-                <a href="/" class="navbar-brand" exact>
 
-                </a>
-
-            </div>
-            <div class="float-right">
-                <span><img src="https://images.veg.kim/pc/Spinner-1s-200px.gif" alt="loading" width="42" height="42"></span>
-                <span style="color:#8a8e91">服务加载中...</span>
-            </div>
-        </div>
-    </nav>
     <div class="col-12 w-100per m-b-100 overflow-auto">
         <div class="w-1200 py-5 m-auto">
-            
+            <span><img src="https://images.veg.kim/pc/Spinner-1s-200px.gif" alt="loading" width="42" height="42"></span>
+            <span style="color:#8a8e91">服务加载中...</span>
         </div>
     </div>
 
