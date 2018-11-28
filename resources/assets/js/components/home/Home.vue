@@ -382,7 +382,7 @@
     }
 
     .home .el-card {
-        border-left: 1px solid #9bdefb;
+        border-left: 1px solid #6eb98e;
         margin-bottom: 10px;
         min-width: 200px;
     }
