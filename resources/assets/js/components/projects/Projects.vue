@@ -7,10 +7,10 @@
             </div>
             <el-row :gutter="10">
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">项目个数</p>
-                                <span class="items-num">{{area.items_num}}</span>个
+                                <span class="items-num">{{items_num}}</span>个
                             </el-col>
                             <el-col :span="8">
                             </el-col>
@@ -18,40 +18,37 @@
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">十强产业到位资金</p>
-                                <span class="item-fee">{{area.fee}}</span>亿元
+                                <span class="item-fee">{{fee}}</span>亿元
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage=area.fee color="#f85e13"
-                                             :width="70"></el-progress>
+                                <el-progress type="circle" :percentage="fee" color="#f85e13" :width="70"></el-progress>
                             </el-col>
                         </el-row>
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">开工项目数</p>
-                                <span class="item-fee">{{area.start_num}}</span>个
+                                <span class="item-fee">{{start_num}}</span>个
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage=area.start_num color="#16A1C0"
-                                             :width="70"></el-progress>
+                                <el-progress type="circle" :percentage="start_num" color="#16A1C0" :width="70"></el-progress>
                             </el-col>
                         </el-row>
                     </el-card>
                 </el-col>
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="hover">
+                    <el-card shadow="always">
                         <el-row :gutter="10">
                             <el-col :span="16"><p class="fee-num">竣工项目数</p>
-                                <span class="item-fee">{{area.end_num}}</span>个
+                                <span class="item-fee">{{end_num}}</span>个
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage=area.end_num color="#28a42f"
-                                             :width="70"></el-progress>
+                                <el-progress type="circle" :percentage="end_num+0" color="#28a42f" :width="70"></el-progress>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -59,369 +56,244 @@
             </el-row>
         </div>
 
-        <div class="tables">
-            <el-container>
-                <el-header
-                        style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
-                    <el-row>
-                        <el-col :span="4">
+            <el-row :gutter="0">
+                <el-col :span="11">
+                    <div class="tables">
+                        <el-header
+                                style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
+                            <el-row>
+                                <el-col :span="8">
                             <span class="broad-title">
                                 <img src="/images/items-big.png" class="icon">
                                 "十强"产业
                             </span>
-                        </el-col>
-                    </el-row>
-                </el-header>
-                <el-table
-                        :row-class-name="tableRowClassName"
-                        :data="projects"
-                        align="left"
-                        style="width: 100%"
-                        stripe
-                >
-                    <el-table-column
-                            prop="id"
-                            label="ID"
-                            sortable
-                            width="60"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="name"
-                            label="单位名称"
-                            sortable
-                            width="220"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="item_name"
-                            label="项目名称"
-                            sortable
-                            width="160"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee"
-                            label="投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee_count"
-                            label="累计投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="phone"
-                            label="联系电话"
-                            width="110"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="start_at"
-                            label="开工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="produce_at"
-                            label="投产时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="end_at"
-                            label="竣工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            label="附件"
-                    >
-                        <template slot-scope="scope">
-                            <b v-for="(item,index) in scope.row.filesArray">
-                                <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
-                                    <i class="el-icon-document"></i>
-                                    {{key}}
-                                </a></br>
-                            </b>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            fixed="right"
-                            label="操作"
-                            width="120"
-                    >
-                        <template slot-scope="scope">
-                            <el-tooltip class="item" effect="dark"
-                                        content="查看"
-                                        placement="left">
-                                <el-button
-                                        @click="addFeeFormVisible = true"
-                                        @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
-                                        icon="el-icon-view"
-                                        size="mini" circle>
-                                </el-button>
-                            </el-tooltip>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-sizes="[9, 20, 100, 300]"
-                        :page-size="9"
-                        :pager-count="pagerCount"
-                        layout="total, sizes, prev, pager, next, jumper"
-                        :total="pagination.total">
-                </el-pagination>
-            </el-container>
-        </div>
-        <div class="tables">
-            <el-container>
-                <el-header
-                        style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
-                    <el-row>
-                        <el-col :span="4">
+                                </el-col>
+                            </el-row>
+                        </el-header>
+                        <el-table
+                                :row-class-name="tableRowClassName"
+                                :data="projects"
+                                align="left"
+                                style="width: 100%"
+                                stripe
+                        >
+                            <el-table-column
+                                    prop="id"
+                                    label="ID"
+                                    sortable
+                                    width="60"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="name"
+                                    label="单位名称"
+                                    sortable
+                                    width="220"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="item_name"
+                                    label="项目名称"
+                                    sortable
+                                    width="160"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="fee"
+                                    label="投资(亿)"
+                                    width="120"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="fee_count"
+                                    label="累计投资(亿)"
+                                    width="120"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="phone"
+                                    label="联系电话"
+                                    width="110"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="start_at"
+                                    label="开工时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="produce_at"
+                                    label="投产时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="end_at"
+                                    label="竣工时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+
+                            <el-table-column
+                                    fixed="right"
+                                    label="操作"
+                                    width="60"
+                            >
+                                <template slot-scope="scope">
+                                    <el-tooltip class="item" effect="dark"
+                                                content="查看"
+                                                placement="left">
+                                        <el-button
+                                                @click="addFeeFormVisible = true"
+                                                @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
+                                                icon="el-icon-view"
+                                                type="success"
+                                                size="mini" circle>
+                                        </el-button>
+                                    </el-tooltip>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                        <el-pagination
+                                @size-change="handleSizeChange"
+                                @current-change="handleCurrentChange"
+                                :current-page="currentPage"
+                                :page-sizes="[9, 20, 100, 300]"
+                                :page-size="9"
+                                :pager-count="pagerCount"
+                                layout="total, sizes, prev, pager, next, jumper"
+                                :total="pagination.total">
+                        </el-pagination>
+                    </div>
+                </el-col>
+                <el-col :span="2">
+                    <div class="middle-line">1</div>
+                </el-col>
+                <el-col :span="11">
+                    <div class="tables">
+                        <el-header
+                                style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
+                            <el-row>
+                                <el-col :span="8">
                             <span class="broad-title">
                                 <img src="/images/road.png" class="icon">
                                 交通运输
                             </span>
-                        </el-col>
-                    </el-row>
-                </el-header>
-                <el-table
-                        :row-class-name="tableRowClassName"
-                        :data="projects"
-                        align="left"
-                        style="width: 100%"
-                        stripe
-                >
-                    <el-table-column
-                            prop="id"
-                            label="ID"
-                            sortable
-                            width="60"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="name"
-                            label="单位名称"
-                            sortable
-                            width="220"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="item_name"
-                            label="项目名称"
-                            sortable
-                            width="160"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee"
-                            label="投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee_count"
-                            label="累计投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="phone"
-                            label="联系电话"
-                            width="110"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="start_at"
-                            label="开工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="produce_at"
-                            label="投产时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="end_at"
-                            label="竣工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            label="附件"
-                    >
-                        <template slot-scope="scope">
-                            <b v-for="(item,index) in scope.row.filesArray">
-                                <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
-                                    <i class="el-icon-document"></i>
-                                    {{key}}
-                                </a></br>
-                            </b>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            fixed="right"
-                            label="操作"
-                            width="120"
-                    >
-                        <template slot-scope="scope">
-                            <el-tooltip class="item" effect="dark"
-                                        content="查看"
-                                        placement="left">
-                                <el-button
-                                        @click="addFeeFormVisible = true"
-                                        @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
-                                        icon="el-icon-view"
-                                        size="mini" circle>
-                                </el-button>
-                            </el-tooltip>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-sizes="[9, 20, 100, 300]"
-                        :page-size="9"
-                        :pager-count="pagerCount"
-                        layout="total, sizes, prev, pager, next, jumper"
-                        :total="pagination.total">
-                </el-pagination>
-            </el-container>
-        </div>
-        <div class="tables">
-            <el-container>
-                <el-header
-                        style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
-                    <el-row>
-                        <el-col :span="4">
-                            <span class="broad-title">
-                                <img src="/images/gather.png" class="icon">
-                                产业聚集
-                            </span>
-                        </el-col>
-                    </el-row>
-                </el-header>
-                <el-table
-                        :row-class-name="tableRowClassName"
-                        :data="projects"
-                        align="left"
-                        style="width: 100%"
-                        stripe
-                >
-                    <el-table-column
-                            prop="id"
-                            label="ID"
-                            sortable
-                            width="60"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="name"
-                            label="单位名称"
-                            sortable
-                            width="220"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="item_name"
-                            label="项目名称"
-                            sortable
-                            width="160"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee"
-                            label="投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="fee_count"
-                            label="累计投资(亿)"
-                            width="120"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="phone"
-                            label="联系电话"
-                            width="110"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="start_at"
-                            label="开工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="produce_at"
-                            label="投产时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="end_at"
-                            label="竣工时间"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            label="附件"
-                    >
-                        <template slot-scope="scope">
-                            <b v-for="(item,index) in scope.row.filesArray">
-                                <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
-                                    <i class="el-icon-document"></i>
-                                    {{key}}
-                                </a></br>
-                            </b>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            fixed="right"
-                            label="操作"
-                            width="120"
-                    >
-                        <template slot-scope="scope">
-                            <el-tooltip class="item" effect="dark"
-                                        content="查看"
-                                        placement="left">
-                                <el-button
-                                        @click="addFeeFormVisible = true"
-                                        @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
-                                        icon="el-icon-view"
-                                        size="mini" circle>
-                                </el-button>
-                            </el-tooltip>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <el-pagination
-                        @size-change="handleSizeChange"
-                        @current-change="handleCurrentChange"
-                        :current-page="currentPage"
-                        :page-sizes="[9, 20, 100, 300]"
-                        :page-size="9"
-                        :pager-count="pagerCount"
-                        layout="total, sizes, prev, pager, next, jumper"
-                        :total="pagination.total">
-                </el-pagination>
-            </el-container>
-        </div>
-        <div class="footer">
-            <text>山东数研科技提供技术支持</text>
-        </div>
+                                </el-col>
+                            </el-row>
+                        </el-header>
+                        <el-table
+                                :row-class-name="tableRowClassName"
+                                :data="tProjects"
+                                align="left"
+                                style="width: 100%"
+                                stripe
+                        >
+                            <el-table-column
+                                    prop="id"
+                                    label="ID"
+                                    sortable
+                                    width="60"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="name"
+                                    label="单位名称"
+                                    sortable
+                                    width="220"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="item_name"
+                                    label="项目名称"
+                                    sortable
+                                    width="160"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="fee"
+                                    label="投资(亿)"
+                                    width="120"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="fee_count"
+                                    label="累计投资(亿)"
+                                    width="120"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="phone"
+                                    label="联系电话"
+                                    width="110"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="start_at"
+                                    label="开工时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="produce_at"
+                                    label="投产时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="end_at"
+                                    label="竣工时间"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <!--<el-table-column-->
+                            <!--label="附件"-->
+                            <!--&gt;-->
+                            <!--<template slot-scope="scope">-->
+                            <!--<b v-for="(item,index) in scope.row.filesArray">-->
+                            <!--<a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">-->
+                            <!--<i class="el-icon-document"></i>-->
+                            <!--{{key}}-->
+                            <!--</a></br>-->
+                            <!--</b>-->
+                            <!--</template>-->
+                            <!--</el-table-column>-->
+                            <el-table-column
+                                    fixed="right"
+                                    label="操作"
+                                    width="60"
+                            >
+                                <template slot-scope="scope">
+                                    <el-tooltip class="item" effect="dark"
+                                                content="查看"
+                                                placement="left">
+                                        <el-button
+                                                @click="addFeeFormVisible = true"
+                                                @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
+                                                icon="el-icon-view"
+                                                size="mini" circle
+                                                type="success">
+                                        </el-button>
+                                    </el-tooltip>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                        <el-pagination
+                                @size-change="handleSizeChange"
+                                @current-change="tHandleCurrentChange"
+                                :current-page="tCurrentPage"
+                                :page-sizes="[9, 20, 100, 300]"
+                                :page-size="9"
+                                :pager-count="tPagerCount"
+                                layout="total, sizes, prev, pager, next, jumper"
+                                :total="tPagination.total">
+                        </el-pagination>
+                    </div>
+                </el-col>
+            </el-row>
+
+
     </div>
 </template>
 
@@ -440,7 +312,12 @@
 
         data() {
             return {
-                area: [],
+                areaId:'',
+                area:  {
+                    fee: "0",
+                    start_num: "0",
+                    end_num: "0",
+                },
                 projects: [],
                 pagination: {
                     total: 0,
@@ -452,24 +329,71 @@
                 currentPage: 1,
                 offset: 9,
                 pagerCount: 5,
+
+                tProjects:[],
+                tPagination: {
+                    total: 0,
+                    per_page: 0,
+                    from: 0,
+                    to: 0,
+                    current_page: 1
+                },
+                tCurrentPage:'1',
+                tOffset: 9,
+                tPagerCount: 5,
+
                 filesArray: [],
+                items_num:"0",
+                fee:"0",
+                start_num:"0",
+                end_num:"0"
             }
 
         },
         mounted() {
             let that = this
             let areaId = that.$route.params.id
+            that.areaId=areaId
             axios.get('/api/v1/areas/' + areaId).then(response => {
                 that.area = response.data
+                that.items_num=Number(response.data.items_num)
+                that.fee=Number(response.data.fee)
+                that.start_num=Number(response.data.start_num)
+                that.end_num=Number(response.data.end_num)
             })
-            axios.get('/api/v1/project/areaProject/' + areaId).then(response => {
-                if (response.data.status_code != 401) {
-                    that.projects = response.data.data
-                    that.pagination = response.data.meta
-                }
-            })
+            // axios.get('/api/v1/project/areaProject/' + areaId).then(response => {
+            //     if (response.data.status_code != 401) {
+            //         that.projects = response.data.data
+            //         that.pagination = response.data.meta
+            //     }
+            // })
+            that.tenProjects()
+            that.transportProjects()
         },
         methods: {
+            tenProjects:function(){
+                let that=this
+                const formData = {
+                    id: that.areaId,
+                    industry_code: '123',
+                }
+                axios.post('/api/v1/project/projectClassify', formData).then(response => {
+                    that.projects = response.data.data
+                    that.pagination = response.data.meta
+                    console.log(response.data)
+                })
+            },
+            transportProjects:function(){
+                let that=this
+                const formData = {
+                    id: that.areaId,
+                    industry_code: '121211',
+                }
+                axios.post('/api/v1/project/projectClassify', formData).then(response => {
+                    that.tProjects = response.data.data
+                    that.tPagination = response.data.meta
+                })
+            },
             rankingStart: function () {
                 axios.get('/api/v1/area/ranking/' + 'start_num').then(response => {
                     this.areas = response.data
@@ -509,9 +433,35 @@
                 })
             },
             handleCurrentChange(page) {
-                this.pagination.current_page = page;
-                axios.get('/api/v1/projects?page=' + page).then(response => {
-                    this.projects = response.data.data
+                // this.pagination.current_page = page;
+                // axios.get('/api/v1/projects?page=' + page).then(response => {
+                //     this.projects = response.data.data
+                // })
+                let that = this
+                const formData = {
+                    id: that.areaId,
+                    industry_code: '123',
+                }
+                that.pagination.current_page = page;
+                axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
+                    that.projects = response.data.data
+                    that.pagination = response.data.meta
+                })
+            },
+            tHandleCurrentChange(page) {
+                // this.pagination.current_page = page;
+                // axios.get('/api/v1/projects?page=' + page).then(response => {
+                //     this.projects = response.data.data
+                // })
+                let that=this
+                const formData = {
+                    id: that.areaId,
+                    industry_code: '121211',
+                }
+                that.tPagination.current_page = page;
+                axios.post('/api/v1/project/projectClassify?page='+page, formData).then(response => {
+                    that.tProjects = response.data.data
+                    that.tPagination = response.data.meta
                 })
             },
             tableRowClassName({row, rowIndex}) {
@@ -531,12 +481,6 @@
         padding: 5px 0 20px 0;
     }
 
-    .district-title {
-        color: #0986b2;
-        font-weight: 400;
-        font-size: 25px;
-    }
-
     .home .ranking {
         margin-bottom: 20px;
     }
@@ -545,7 +489,7 @@
         margin-bottom: 40px;
     }
 
-    .title .icon {
+    .home .title .icon {
         width: 20px;
         height: 20px;
     }
@@ -586,6 +530,7 @@
     }
 
     .home .el-card {
+        border-left: 3px solid #6eb98e;
         margin-bottom: 10px;
         min-width: 200px;
     }
@@ -1077,4 +1022,7 @@
     .el-dialog__wrapper {
         min-width: 780px;
     }
+.middle-line{
+    color: #fff;
+}
 </style>s

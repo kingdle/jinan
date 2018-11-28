@@ -382,11 +382,15 @@
     }
 
     .home .el-card {
-        border-left: 1px solid #6eb98e;
+        border-left: 3px solid #6eb98e;
         margin-bottom: 10px;
         min-width: 200px;
     }
-
+    .home .ranking .el-card {
+        border-left: 1px solid #ebeef5;
+        margin-bottom: 10px;
+        min-width: 200px;
+    }
     .home .items .image-district {
         float: left;
         width: 60px;
