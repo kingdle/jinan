@@ -15,6 +15,14 @@ class ProjectsController extends Controller
         $projects = Project::with('user')->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
         return new ProjectCollection($projects);
     }
+    public function areaProject($id)
+    {
+        $projects = Project::where('area_id',$id)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
+        if ($projects->count() == 0) {
+            return response()->json(['status' => false, 'status_code' => '401']);
+        }
+        return new ProjectCollection($projects);
+    }
     public function show($id)
     {
         $project = Project::find($id);

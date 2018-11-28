@@ -68,24 +68,26 @@
         <div class="ranking">
             <el-row :gutter="10">
                 <el-col :xs="24" :sm="24" :md="12" :lg="4" :xl="3" v-for="(area,index) in areas" :key="index">
-                    <el-card :body-style="{ padding: '0px'}" shadow="hover">
-                        <el-row :gutter="0">
-                            <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
-                                <div class="items" style="padding: 8px;">
-                                <img :src="area.pic +'!mp.v200'" class="image-district">
-                                <div class="district">
-                                    <p class="district-name">{{area.district}}</p>
-                                    <p>￥<span class="items-district-num">{{area.fee}}</span>亿元</p>
-                                </div>
-                            </div>
-                            </el-col>
-                            <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
-                                <div style="padding:8px 14px;font-size:12px; color:#6f7180;">
-                                    <p>项目：{{ area.items_num }}个 (开工{{area.start_num}}/竣工{{area.end_num}})</p>
-                                </div>
-                            </el-col>
-                        </el-row>
-                    </el-card>
+                    <router-link :to="{name: 'profile.Area-projects',params: { id: area.id}}" exact>
+                        <el-card :body-style="{ padding: '0px'}" shadow="hover">
+                            <el-row :gutter="0">
+                                <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
+                                    <div class="items" style="padding: 8px;">
+                                        <img :src="area.pic +'!mp.v200'" class="image-district">
+                                        <div class="district">
+                                            <p class="district-name">{{area.district}}</p>
+                                            <p>￥<span class="items-district-num">{{area.fee}}</span>亿元</p>
+                                        </div>
+                                    </div>
+                                </el-col>
+                                <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
+                                    <div style="padding:8px 14px;font-size:12px; color:#6f7180;">
+                                        <p>项目：{{ area.items_num }}个 (开工{{area.start_num}}/竣工{{area.end_num}})</p>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </el-card>
+                    </router-link>
                 </el-col>
             </el-row>
         </div>
@@ -326,8 +328,8 @@
 
 <style>
     .home .title {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 400;
         padding: 5px 0 20px 0;
     }
 
@@ -378,10 +380,12 @@
     .home .clearfix:after {
         clear: both
     }
-    .home .el-card{
+
+    .home .el-card {
         margin-bottom: 10px;
         min-width: 200px;
     }
+
     .home .items .image-district {
         float: left;
         width: 60px;
@@ -443,6 +447,7 @@
         font-size: 14px;
         color: #505050;
     }
+
     .blue {
         color: #368ec9;
     }
@@ -663,7 +668,7 @@
     }
 
     .broad-title {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     .el-radio-group {
@@ -783,51 +788,64 @@
     .el-pagination {
         margin: 20px 0;
     }
-    .fee-add{
+
+    .fee-add {
         background-color: #f5f8fa;
         border-radius: 10px;
-        border:1px solid #f5f8fa;
+        border: 1px solid #f5f8fa;
     }
+
     .fee-add .el-form-item {
         margin: 10px 0;
     }
+
     .fee-add .fee-button {
         margin: 13px 0;
     }
-    .fee-add label{
+
+    .fee-add label {
         margin-bottom: 0;
     }
+
     .el-row {
         margin-bottom: 5px;
     }
+
     .el-col {
         border-radius: 4px;
     }
+
     .bg-purple-dark {
         background: #99a9bf;
     }
+
     .bg-purple {
         background: #f9f2f0;
     }
+
     .bg-purple-light {
         background: #f4f5f9;
     }
+
     .grid-content {
         border-radius: 20px;
         min-height: 36px;
-        line-height:36px;
+        line-height: 36px;
         text-align: center;
     }
+
     .row-bg {
         padding: 10px 0;
         background-color: #f9fafc;
     }
-    .fees{
+
+    .fees {
         font-size: 16px;
         color: #505050;
         padding-right: 10px;
     }
-    .fees-price{
+
+    .fees-price {
         font-size: 28px;
         font-weight: 700;
         color: #f85e13;

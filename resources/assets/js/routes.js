@@ -211,6 +211,12 @@ let routes = [
                 component: (resolve)=>require(['./components/statistics/Statistics'],resolve),
                 meta: {requiresAuth: true}
             },
+            {
+                path: '/area-projects/:id',
+                name: 'profile.Area-projects',
+                component: (resolve)=>require(['./components/projects/Projects'],resolve),
+                meta: {requiresAuth: true}
+            },
         ],
         meta: {requiresAuth: true}
     }

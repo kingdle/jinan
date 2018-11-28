@@ -49,7 +49,7 @@ class Project extends Model
     public function area(){
         return $this->belongsTo('App\Area','area_id');
     }
-    public function product(){
-        return $this->belongsTo('App\Product','product_id');
-    }
+//    public function product(){
+//        return $this->belongsTo('App\Product','product_id');
+//    }
 }

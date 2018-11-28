@@ -14,7 +14,7 @@ class AreasController extends Controller
         return Area::orderby($id,"desc")->get();
     }
     public function show($id){
-        return Girl::with('user')->where("user_id",$id)->first();
+        return Area::find($id);
     }
     public function queryArea()
     {

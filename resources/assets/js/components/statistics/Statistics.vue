@@ -882,7 +882,8 @@
     }
 
     .broad-title {
-        font-size: 28px;
+        font-size: 20px;
+        font-weight: 400;
     }
 
     .el-radio-group {

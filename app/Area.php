@@ -11,7 +11,7 @@ class Area extends Model
         'items_num', 'fee','start_num','end_num'
     ];
 
-    public function product(){
-        return $this->belongsTo('App\Product','product_id');
+    public function project(){
+        return $this->hasOne('App\Project','area_id','id');
     }
 }

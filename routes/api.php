@@ -30,7 +30,7 @@ Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
     Route::post('/project/add', 'ProjectsController@addProject')->middleware('auth:api');
     Route::post('/project/upFile', 'ProjectsController@upFile')->middleware('auth:api');
     Route::post('/project/query/{id}', 'ProjectsController@query')->middleware('auth:api');
-
+    Route::get('/project/areaProject/{id}','ProjectsController@areaProject');
 
 
     Route::resource('/payments', 'PaymentsController')->middleware('auth:api');
