@@ -81,12 +81,10 @@
                             </el-col>
                             <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
                                 <div style="padding:8px 14px;font-size:12px; color:#6f7180;">
-                                    <p>项目: {{ area.items_num }}个,开工 {{area.start_num}}个，竣工 {{area.end_num}}个</p>
+                                    <p>项目：{{ area.items_num }}个 (开工{{area.start_num}}/竣工{{area.end_num}})</p>
                                 </div>
                             </el-col>
                         </el-row>
-
-
                     </el-card>
                 </el-col>
             </el-row>

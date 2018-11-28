@@ -18,7 +18,7 @@ class AreasController extends Controller
     }
     public function queryArea()
     {
-        $areas = Area::distinct()->orderby("fee","desc")->get(['id','district']);
+        $areas = Area::distinct()->orderby("fee","desc")->get(['id','district','fee']);
         $multiplied = $areas->map(function ($item, $key) {
             return [
                 'value'=>$item->district,
