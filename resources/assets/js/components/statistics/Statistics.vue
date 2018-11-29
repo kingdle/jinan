@@ -1,5 +1,144 @@
 <template>
     <div class="mg-news">
+        <el-dialog title="查看项目" :visible.sync="showProject" width="80%" top="5vh">
+            <el-form :inline="true" ref="showProjectForm" :model="showProjectForm" label-width="150px" size="medium">
+                <div>
+                    <el-form-item label="单位名">
+                        <el-input class="textarea-width" type="input" v-model="showProjectForm.name"
+                                  clearable
+                                  placeholder="济宁**有限公司"></el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="营业执照号">
+                    <el-input class="text-code" v-model="showProjectForm.id_license"
+                              clearable
+                              placeholder="如：91370211MA3M6YNP9G"></el-input>
+                </el-form-item>
+                <el-form-item label="组织机构代码证">
+                    <el-input v-model="showProjectForm.id_code"
+                              clearable
+                              placeholder="三证合一可不填">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="注册类型">
+                    <el-input v-model="showProjectForm.register_type"
+                              clearable
+                              placeholder="填写企业性质">
+                    </el-input>
+                </el-form-item>
+                <div>
+                    <el-form-item label="项目名称">
+                        <el-input class="textarea-width" v-model="showProjectForm.item_name"
+                                  clearable
+                                  placeholder="填写项目名称"></el-input>
+                    </el-form-item>
+                    <el-form-item label="项目代码">
+                        <el-input v-model="showProjectForm.item_code"
+                                  clearable
+                                  placeholder="37020181000019180">
+                        </el-input>
+                    </el-form-item>
+                </div>
+                <el-form-item label="项目所在区">
+                    <el-input v-model="showProjectForm.district"
+                              clearable
+                              placeholder="">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="联系电话">
+                    <el-input v-model="showProjectForm.phone"
+                              clearable
+                              placeholder="18600001111">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="行业编码">
+                    <el-input v-model="showProjectForm.industry_code"
+                              clearable
+                              placeholder="如：121211"></el-input>
+                </el-form-item>
+                <el-form-item label="控股情况">
+                    <el-input v-model="showProjectForm.holding"
+                              clearable
+                              placeholder="1国有2集体3私人4港澳台商5外商9其他">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="隶属关系">
+                    <el-input v-model="showProjectForm.subjection"
+                              clearable
+                              placeholder="10中央20省40市80县及以下90其他">
+                    </el-input>
+                </el-form-item>
+
+                <el-form-item label="建设性质">
+                    <el-input v-model="showProjectForm.item_nature"
+                              clearable
+                              placeholder="1新建2扩建3改建和技术改造4单纯建造生活设施5迁建6恢复7单纯购置">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="项目类别">
+                    <el-input v-model="showProjectForm.item_type"
+                              clearable
+                              placeholder="1工业企业技术改造2棚户区改造3涉农">
+                    </el-input>
+                </el-form-item>
+
+                <el-form-item label="建设状态">
+                    <el-input v-model="showProjectForm.item_state"
+                              clearable
+                              placeholder="1在建2全部投产3全部停缓建">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="总投资(亿)">
+                    <el-input v-model="showProjectForm.fee"
+                              clearable
+                              placeholder="30">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="累计投资(亿)">
+                    <el-input v-model="showProjectForm.fee_count"
+                              clearable
+                              placeholder="20">
+                    </el-input>
+                </el-form-item>
+                <div>
+                    <el-form-item label="开工时间">
+                        <el-date-picker
+                                v-model="showProjectForm.start_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="投产时间">
+                        <el-date-picker
+                                v-model="showProjectForm.produce_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                    <el-form-item label="竣工时间">
+                        <el-date-picker
+                                v-model="showProjectForm.end_at"
+                                type="date"
+                                placeholder="选择日期">
+                        </el-date-picker>
+                    </el-form-item>
+                </div>
+            </el-form>
+            <div class="form-group news-img">
+                <label class="col-form-label">项目附件:</label>
+                <p>
+                    <b v-for="(item,index) in showProjectForm.filesArray" @click="">
+                        <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
+                            <i class="el-icon-document"></i>
+                            {{key}}
+                        </a>
+                    </b>
+                </p>
+            </div>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="showProject = false">关 闭</el-button>
+            </div>
+        </el-dialog>
         <el-dialog title="新建项目" fullscreen :visible.sync="projectFormVisible">
             <el-form :inline="true" ref="addProjectForm" :model="addProjectForm" label-width="150px" size="medium">
                 <div>
@@ -279,8 +418,8 @@
                                     content="查看"
                                     placement="left">
                             <el-button
-                                    @click="addFeeFormVisible = true"
-                                    @click.native.prevent="addFeeEdit(scope.$index, scope.row)"
+                                    @click="showProject = true"
+                                    @click.native.prevent="handleShowProject(scope.$index, scope.row)"
                                     icon="el-icon-view"
                                     size="mini" circle>
                             </el-button>
@@ -344,7 +483,9 @@
                 areaName:'',
                 areaList:[],
                 timeout:null,
-                dates:''
+                dates:'',
+                showProject: false,
+                showProjectForm: {},
             }
         },
         mounted() {
@@ -361,7 +502,7 @@
         methods: {
             changePage: function (page) {
                 this.pagination.current_page = page;
-                axios.get('/api/v1/projects?page=' + page).then(response => {
+                axios.get(this.pagination.path +'/?page=' + page).then(response => {
                     this.projects = response.data.data
                 })
             },
@@ -460,6 +601,29 @@
                     self.district=''
                     self.area_id='0'
                 })
+            },
+            handleShowProject(index, row) {
+                let self=this
+                self.showProjectForm.name = row.name
+                self.showProjectForm.id_code = row.id_code
+                self.showProjectForm.id_license = row.id_license
+                self.showProjectForm.item_code = row.item_code
+                self.showProjectForm.item_name = row.item_name
+                self.showProjectForm.register_type = row.register_type
+                self.showProjectForm.district = row.district
+                self.showProjectForm.phone = row.phone
+                self.showProjectForm.industry_code = row.industry_code
+                self.showProjectForm.holding = row.holding
+                self.showProjectForm.subjection = row.subjection
+                self.showProjectForm.item_nature = row.item_nature
+                self.showProjectForm.item_type = row.item_type
+                self.showProjectForm.start_at = row.start_at
+                self.showProjectForm.end_at = row.end_at
+                self.showProjectForm.produce_at = row.produce_at
+                self.showProjectForm.item_state = row.item_state
+                self.showProjectForm.fee = row.fee
+                self.showProjectForm.fee_count = row.fee_count
+                self.showProjectForm.filesArray = row.filesArray
             },
             addReceivable(){
                 const formData = {
@@ -611,13 +775,10 @@
             },
 
             handleSelect(item) {
-                // const formData = {
-                //     name: item.value,
-                // }
-                // axios.post('/api/v1/project/queryResult', formData).then(response => {
-                //     this.projects = response.data.data
-                //     this.pagination = response.data.meta
-                // })
+                axios.get('/api/v1/project/areaProject/'+item.id).then(response => {
+                    this.projects = response.data.data
+                    this.pagination = response.data.meta
+                })
             },
             districtSelect(item) {
                 this.district=item.value

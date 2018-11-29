@@ -133,7 +133,8 @@
                 feeY: [],
                 itemsNum: [],
                 startNum: [],
-                endNum: []
+                endNum: [],
+                percentageNum:'0'
             }
 
         },
