@@ -65,7 +65,7 @@
                                 <el-col :span="8">
                             <span class="broad-title">
                                 <img src="/images/items-big.png" class="icon">
-                                "十强"产业
+                                "十强"产业 <span class="items-num">{{pagination.total}}</span>家
                             </span>
                                 </el-col>
                             </el-row>
@@ -178,7 +178,7 @@
                                 <el-col :span="8">
                             <span class="broad-title">
                                 <img src="/images/road.png" class="icon">
-                                交通运输
+                                交通运输 <span class="items-num">{{tPagination.total}}</span>家
                             </span>
                                 </el-col>
                             </el-row>
