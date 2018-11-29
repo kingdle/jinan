@@ -517,8 +517,9 @@
             },
             handleCurrentChange(page) {
                 this.pagination.current_page = page;
-                axios.get('/api/v1/projects?page=' + page).then(response => {
+                axios.get(this.pagination.path+'?page=' + page).then(response => {
                     this.projects = response.data.data
+                    this.pagination = response.data.meta
                 })
             },
             tableRowClassName({row, rowIndex}) {
@@ -778,6 +779,7 @@
                 axios.get('/api/v1/project/areaProject/'+item.id).then(response => {
                     this.projects = response.data.data
                     this.pagination = response.data.meta
+                    console.log(response.data)
                 })
             },
             districtSelect(item) {

@@ -25,7 +25,11 @@ class ProjectsController extends Controller
     }
     public function projectClassify(Request $request)
     {
-        $projects = Project::where('area_id',$request->id)->where('industry_code',$request->industry_code)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
+        if($request->industry_code){
+            $projects = Project::where('area_id',$request->id)->where('industry_code',$request->industry_code)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
+        }else{
+            $projects = Project::where('area_id',$request->id)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
+        }
         if ($projects->count() == 0) {
             return response()->json(['status' => false, 'status_code' => '401']);
         }

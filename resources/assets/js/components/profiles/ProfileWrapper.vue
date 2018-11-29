@@ -34,14 +34,17 @@
 <style>
     .el-container{
         min-height: 760px;
-        max-height: 960px;
+        /*max-height: 960px;*/
     }
     .el-header {
         background-color: #B3C0D1;
         color: #333;
         line-height: 60px;
     }
-
+    .el-main {
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+    }
     .el-aside {
         background-color: #545c64;
         color: #fff;
