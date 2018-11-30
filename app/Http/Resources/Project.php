@@ -49,7 +49,8 @@ class Project extends JsonResource
             'fee_id'=>$this->fee_id,
             'fee'=>$this->fee,
             'fee_count'=>$this->fee_count,
-            'is_hidden'=>$this->is_hidden,
+            'is_statistics'=>$this->is_statistics,
+            'no_statistics'=>$this->no_statistics,
             'created_at'=>$this->created_at,
             'updated_at'=>$this->updated_at,
         ];

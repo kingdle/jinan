@@ -142,6 +142,23 @@
                         </el-date-picker>
                     </el-form-item>
                 </div>
+                <div>
+                    <el-form-item label="是否纳统">
+                        <el-switch
+                                v-model="showProjectForm.is_statistics==='F'?false:true"
+                                active-text="是"
+                                inactive-text="否">
+                        </el-switch>
+                    </el-form-item>
+                    <el-form-item label="未纳统原因">
+                        <el-input
+                                class="textarea-width"
+                                v-model="showProjectForm.no_statistics"
+                                type="textarea"
+                                placeholder="未纳统原因">
+                        </el-input>
+                    </el-form-item>
+                </div>
             </el-form>
             <div class="form-group news-img">
                 <label class="col-form-label">项目附件:</label>
@@ -251,6 +268,14 @@
                                 sortable
                                 width="220"
                         >
+                        </el-table-column>
+                        <el-table-column
+                                label="是否纳统"
+                                width="100"
+                        >
+                            <template slot-scope="scope">
+                                {{scope.row.is_statistics=='F'?'否':'是'}}
+                            </template>
                         </el-table-column>
                         <el-table-column
                                 prop="item_name"
@@ -364,6 +389,14 @@
                                 sortable
                                 width="220"
                         >
+                        </el-table-column>
+                        <el-table-column
+                                label="是否纳统"
+                                width="100"
+                        >
+                            <template slot-scope="scope">
+                                {{scope.row.is_statistics=='F'?'否':'是'}}
+                            </template>
                         </el-table-column>
                         <el-table-column
                                 prop="item_name"
@@ -487,6 +520,14 @@
                                 sortable
                                 width="220"
                         >
+                        </el-table-column>
+                        <el-table-column
+                                label="是否纳统"
+                                width="100"
+                        >
+                            <template slot-scope="scope">
+                                {{scope.row.is_statistics=='F'?'否':'是'}}
+                            </template>
                         </el-table-column>
                         <el-table-column
                                 prop="item_name"
@@ -807,6 +848,8 @@
                     self.showProjectForm.item_state = row.item_state
                     self.showProjectForm.fee = row.fee
                     self.showProjectForm.fee_count = row.fee_count
+                self.showProjectForm.is_statistics = row.is_statistics
+                self.showProjectForm.no_statistics = row.no_statistics
                     self.showProjectForm.filesArray = row.filesArray
             },
             tableRowClassName({row, rowIndex}) {

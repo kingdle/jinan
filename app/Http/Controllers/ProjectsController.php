@@ -108,6 +108,8 @@ class ProjectsController extends Controller
             'fee_id'=>request('fee_id', ''),
             'fee'=>request('fee', '0'),
             'fee_count'=>request('fee_count', '0'),
+            'is_statistics'=>request('is_statistics', 'F'),
+            'no_statistics'=>request('no_statistics', ''),
             'is_hidden'=>request('is_hidden', 'F'),
         ]);
         if ($reception) {

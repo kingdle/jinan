@@ -41,6 +41,8 @@ class Project extends Model
         'fee_id',
         'fee',
         'fee_count',
+        'is_statistics',
+        'no_statistics',
         'is_hidden'
     ];
     public function user(){
