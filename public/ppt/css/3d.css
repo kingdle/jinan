@@ -3,5 +3,6 @@
   font-family: "Microsoft YaHei";
   margin: 0;
   width: 100%;
-  text-shadow: 0 1px 0 #b5a9a9, 0 2px 0 #a09494;
+  font-size: 32px;
+  text-shadow: 0 1px 0 #d6cccc, 0 2px 0 #afa7a7;
 }
