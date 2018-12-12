@@ -1,0 +1,79 @@
+.bar{
+  width:8px;
+  border-radius:8px;
+  height:50px;
+  background:#f06;
+  display:inline-block;
+  margin-left:45px;
+  animation:goUp 1.5s 1s ease infinite alternate;
+}
+
+.bar:nth-of-type(2){
+  animation-delay:2s;
+}
+
+.bar:nth-of-type(3){
+  animation-delay:1.8s;
+}
+
+.bar:nth-of-type(4){
+  animation-delay:.3s;
+}
+.bar:nth-of-type(5){
+  animation-delay:.4s;
+}
+.bar:nth-of-type(6){
+  animation-delay:1.2s;
+}
+
+.bar:nth-of-type(7){
+  animation-delay:1.8s;
+}
+
+.bar:nth-of-type(8){
+  animation-delay:.6s;
+}
+.bar:nth-of-type(9){
+  animation-delay:.9s;
+}.bar:nth-of-type(2){
+  animation-delay:3s;
+}
+
+.bar:nth-of-type(10){
+  animation-delay:1.2s;
+}
+
+.bar:nth-of-type(11){
+  animation-delay:1.5s;
+}
+.bar:nth-of-type(12){
+  animation-delay:.6s;
+}
+
+.cnt{
+  position:fixed;
+  /*bottom:0;*/
+  top: 190%;
+  width:100%;
+  text-align:center;
+  animation:goUpCnt 3s ease forwards;
+}
+
+
+@keyframes goUp{
+  0%{
+    transform:translateY(0em);    
+  }
+  100%{
+    transform:translateY(6em);
+  }
+}
+
+@keyframes goUpCnt{
+  0%{
+    transform:translateY(4em);    
+  }
+  100%{
+    transform:translateY(0em);
+  }
+}
