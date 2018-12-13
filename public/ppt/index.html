@@ -388,11 +388,19 @@
                     <div class="content-inside">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-2 align-center align-center-mobile">
+                                <div class="col-md-1 align-center align-center-mobile">
 
                                 </div>
+                                <div class="col-md-2 align-center align-center-mobile">
+                                    <div class="card-one">
+                                        <div class="card_Banner">
+                                            <div class="card_Avatar"></div>
+                                        </div>
+                                        <h5>化工产业</h5>
+                                    </div>
+                                </div>
 
-                                <div class="col-md-3 align-center hidden-xs hidden-sm">
+                                <div class="col-md-2 align-center hidden-xs hidden-sm">
                                     <div class="card-two">
                                         <div class="card_Banner">
                                             <div class="card_Avatar"></div>
@@ -400,7 +408,7 @@
                                         <h5>新旧动能转换</h5>
                                     </div>
                                 </div>
-                                <div class="col-md-3 align-center align-center-mobile">
+                                <div class="col-md-2 align-center align-center-mobile">
                                     <div class="card-three">
                                         <div class="card_Banner">
                                             <div class="card_Avatar"></div>
@@ -408,12 +416,20 @@
                                         <h5>双招双引</h5>
                                     </div>
                                 </div>
-                                <div class="col-md-3 align-center align-center-mobile">
+                                <div class="col-md-2 align-center align-center-mobile">
                                     <div class="card-four">
                                         <div class="card_Banner">
                                             <div class="card_Avatar"></div>
                                         </div>
                                         <h5>园区经济</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 align-center align-center-mobile">
+                                    <div class="card-five">
+                                        <div class="card_Banner">
+                                            <div class="card_Avatar"></div>
+                                        </div>
+                                        <h5>文化产业</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-1 align-center align-center-mobile">
@@ -569,7 +585,8 @@
                                 <div id="chartsBars"></div>
                             </div>
                             <div class="col-md-8 align-center align-center-mobile">
-                                <div id="chartpie"></div>
+                                <!--<div id="chartpie"></div>-->
+                                <div id="gaodemap"></div>
                             </div>
                         </div>
                     </div>
@@ -606,11 +623,36 @@
 <script type="text/javascript" src="js/amcharts4.js"></script>
 <script type="text/javascript" src="js/animated.js"></script>
 <script type="text/javascript" src="js/darkpie.js"></script>
-<script type="text/javascript" src="js/chartpie.js"></script>
-<script type="text/javascript" src="js/kelly.js"></script>
+<!--<script type="text/javascript" src="js/chartpie.js"></script>-->
+<!--<script type="text/javascript" src="js/kelly.js"></script>-->
 <script type="text/javascript" src="js/chartsBar.js"></script>
 <script type="text/javascript" src="js/chartUpdate.js"></script>
-
+<script src="https://webapi.amap.com/maps?v=1.4.11&key=6d135a62ae698f76e255de47a335884a"></script>
+<script>
+    var map = new AMap.Map('gaodemap',{
+        zoom: 10, //设置地图的缩放级别
+        center: [116.58614,35.3999],
+    });
+    var marker = new AMap.Marker({
+        map:map,
+        position:[116.614979,35.408855],
+        label: {
+            offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
+            content: "四经普大数据平台"
+        }
+    })
+    AMap.plugin([
+        'AMap.ToolBar',
+    ], function(){
+        // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
+        map.addControl(new AMap.ToolBar({
+            // 简易缩放模式，默认为 false
+            liteStyle: true
+        }));
+    });
+    
+    map.setMapStyle('amap://styles/2df25402d2126d87ab422f1a76acd450');
+</script>
 
 <!-- <script type="text/javascript" src="js/constellation/stopExecutionOnTimeout.js"></script>
 <script type="text/javascript" src="js/constellation/zepto.min.js"></script>

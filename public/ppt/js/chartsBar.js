@@ -12,6 +12,7 @@
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
+am4core.useTheme(am4themes_dark);
 // Themes end
 
 // Create chart instance
