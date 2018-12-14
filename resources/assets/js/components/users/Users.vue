@@ -245,15 +245,15 @@
                                     size="mini" circle>
                             </el-button>
                         </el-tooltip>
-                        <el-tooltip class="item" effect="dark"
-                                    content="删除"
-                                    placement="top">
-                            <el-button
-                                    @click.native.prevent="handleDelete(scope.$index, scope.row)"
-                                    type="info" icon="el-icon-delete"
-                                    size="mini" circle>
-                            </el-button>
-                        </el-tooltip>
+                        <!--<el-tooltip class="item" effect="dark"-->
+                                    <!--content="删除"-->
+                                    <!--placement="top">-->
+                            <!--<el-button-->
+                                    <!--@click.native.prevent="handleDelete(scope.$index, scope.row)"-->
+                                    <!--type="info" icon="el-icon-delete"-->
+                                    <!--size="mini" circle>-->
+                            <!--</el-button>-->
+                        <!--</el-tooltip>-->
                     </template>
                 </el-table-column>
             </el-table>

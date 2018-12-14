@@ -25,8 +25,8 @@ class ProjectsController extends Controller
     }
     public function projectClassify(Request $request)
     {
-        if($request->industry_code){
-            $projects = Project::where('area_id',$request->id)->where('industry_code',$request->industry_code)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
+        if($request->status){
+            $projects = Project::where('area_id',$request->id)->where('status',$request->status)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
         }else{
             $projects = Project::where('area_id',$request->id)->orderBy('id', 'desc')->where('is_hidden','F')->paginate(9);
         }

@@ -681,7 +681,7 @@
                 fee: "0",
                 start_num: "0",
                 end_num: "0",
-
+                total:'',
                 showProject: false,
                 showProjectForm: {},
                 showProjectFilesUrl: []
@@ -714,7 +714,7 @@
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    industry_code: '123',
+                    status: '0',
                 }
                 axios.post('/api/v1/project/projectClassify', formData).then(response => {
                     that.projects = response.data.data
@@ -725,7 +725,7 @@
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    industry_code: '121211',
+                    status: '1',
                 }
                 axios.post('/api/v1/project/projectClassify', formData).then(response => {
                     that.tProjects = response.data.data
@@ -788,7 +788,7 @@
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    industry_code: '123',
+                    status: '3',
                 }
                 that.pagination.current_page = page;
                 axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
@@ -804,7 +804,7 @@
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    industry_code: '121211',
+                    status: '0',
                 }
                 that.tPagination.current_page = page;
                 axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
