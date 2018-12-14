@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 class AreasController extends Controller
 {
     public function index(){
-        return Area::orderby("fee","desc")->get();
+        return Area::orderby("fee","desc")->where('is_hidden','F')->get();
     }
     public function ranking($id){
-        return Area::orderby($id,"desc")->get();
+        return Area::orderby($id,"desc")->where('is_hidden','F')->get();
     }
     public function show($id){
         return Area::find($id);
     }
     public function queryArea()
     {
-        $areas = Area::distinct()->orderby("fee","desc")->get(['id','district','fee']);
+        $areas = Area::distinct()->where('is_hidden','F')->orderby("fee","desc")->get(['id','district','fee']);
         $multiplied = $areas->map(function ($item, $key) {
             return [
                 'value'=>$item->district,

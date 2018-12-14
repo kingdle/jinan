@@ -9,8 +9,8 @@
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                     <el-card shadow="always">
                         <el-row :gutter="0">
-                            <el-col :span="16"><p class="fee-num">项目个数</p>
-                                <span class="items-num">580</span>个
+                            <el-col :span="16"><p class="fee-num">到位资金项目个数</p>
+                                <span class="items-num">203</span>个
                             </el-col>
                             <el-col :span="8">
                             </el-col>
@@ -21,7 +21,7 @@
                     <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">十强产业到位资金</p>
-                                <span class="item-fee">100</span>亿元
+                                <span class="item-fee">197.38</span>亿元
                             </el-col>
                             <el-col :span="8">
                                 <el-progress type="circle" :percentage="70" color="#f85e13" :width="70"></el-progress>
@@ -33,7 +33,7 @@
                     <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">开工项目数</p>
-                                <span class="item-fee">45</span>个
+                                <span class="item-fee">130</span>个
                             </el-col>
                             <el-col :span="8">
                                 <el-progress type="circle" :percentage="70" color="#16A1C0" :width="70"></el-progress>
@@ -45,7 +45,7 @@
                     <el-card shadow="always">
                         <el-row :gutter="10">
                             <el-col :span="16"><p class="fee-num">竣工项目数</p>
-                                <span class="item-fee">15</span>个
+                                <span class="item-fee">44</span>个
                             </el-col>
                             <el-col :span="8">
                                 <el-progress type="circle" :percentage="25" color="#28a42f" :width="70"></el-progress>
