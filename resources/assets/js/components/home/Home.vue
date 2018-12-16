@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home page-index">
         <el-row>
             <el-col :span="24">
                 <div style="padding: 14px 0;">
@@ -477,6 +477,9 @@
 </script>
 
 <style>
+    .page-index{
+        margin: 20px;
+    }
     .home .title {
         font-size: 20px;
         font-weight: 400;
@@ -1015,4 +1018,5 @@
         width: 100%;
         min-height: 500px;
     }
+
 </style>

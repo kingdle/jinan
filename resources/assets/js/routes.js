@@ -5,8 +5,10 @@ import jwtToken from './helpers/jwt'
 let routes = [
     {
         path: '/',
-        name: 'home',
-        component: (resolve)=>require(['./components/pages/Home'],resolve),
+        // name: 'home',
+        // component: (resolve)=>require(['./components/pages/Home'],resolve),
+        name: 'profile.Home',
+        component: (resolve)=>require(['./components/home/Home'],resolve),
         meta: {}
     },
     {
