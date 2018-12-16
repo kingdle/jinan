@@ -241,6 +241,28 @@
         </div>
 
         <el-row :gutter="0">
+            <el-col :span="24">
+                <el-row>
+                    <el-col :span="16">
+                        <div class="title">
+                            <img src="/images/charts.png" class="icon">
+                            {{year_at}}年十强产业占比
+                        </div>
+                        <div class="chart">
+                            <div id="industryChart"></div>
+                        </div>
+                    </el-col>
+                    <el-col :span="8">
+                        <div class="title">
+                            <img src="/images/charts.png" class="icon">
+                            {{year_at}}年内资项目来源分布
+                        </div>
+                        <div class="chart">
+                            <div id="cityChart" height="120"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <div class="tables">
                     <el-header
@@ -365,7 +387,9 @@
 
 <script>
     import {mapState} from 'vuex'
-
+    import * as am4core from "@amcharts/amcharts4/core";
+    import * as am4charts from "@amcharts/amcharts4/charts";
+    import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     export default {
         created() {
             this.$store.dispatch('setAuthUser')
@@ -445,7 +469,16 @@
             axios.post('/api/v1/project/queryArea', formData).then(response => {
                 this.areaTotal = response.data
             })
+            axios.post('/api/v1/home/areaIndustryChart/',formData).then(response => {
+                this.industryArray=response.data;
+                this.industryChart()
+            })
+            axios.post('/api/v1/home/areaCityChart/',formData).then(response => {
+                this.cityArray=response.data;
+                this.cityChart()
+            })
             this.tenProjects()
+
         },
         methods: {
             queryYearNow: function () {
@@ -457,6 +490,14 @@
                 axios.post('/api/v1/project/queryArea', formDataNow).then(response => {
                     this.areaTotal = response.data
                 })
+                axios.post('/api/v1/home/areaIndustryChart/',formDataNow).then(response => {
+                    this.industryArray=response.data;
+                    this.industryChart()
+                })
+                axios.post('/api/v1/home/areaCityChart/',formDataNow).then(response => {
+                    this.cityArray=response.data;
+                    this.cityChart()
+                })
                 this.tenProjects()
             },
             queryYearLast: function () {
@@ -467,6 +508,14 @@
                 }
                 axios.post('/api/v1/project/queryArea', formDataLast).then(response => {
                     this.areaTotal = response.data
+                })
+                axios.post('/api/v1/home/areaIndustryChart/',formDataLast).then(response => {
+                    this.industryArray=response.data;
+                    this.industryChart()
+                })
+                axios.post('/api/v1/home/areaCityChart/',formDataLast).then(response => {
+                    this.cityArray=response.data;
+                    this.cityChart()
                 })
                 this.tenProjects()
             },
@@ -531,6 +580,50 @@
                 }
                 return '';
             },
+            industryChart: function () {
+                am4core.useTheme(am4themes_animated);
+                let chart = am4core.create("industryChart", am4charts.PieChart3D);
+                chart.hiddenState.properties.opacity = 0;
+
+                chart.data = this.industryArray;
+                chart.radius = am4core.percent(70);
+                chart.innerRadius = am4core.percent(40);
+                chart.depth = 120;
+
+                chart.legend = new am4charts.Legend();
+                chart.legend.position = "bottom";
+
+                let series = chart.series.push(new am4charts.PieSeries());
+                series.dataFields.value = "industryNum";
+                series.dataFields.depthValue = "industryNum";
+                series.dataFields.category = "industryName";
+                series.slices.template.cornerRadius = 5;
+                series.colors.step = 3;
+            },
+            cityChart: function () {
+                am4core.useTheme(am4themes_animated);
+                let chart = am4core.create("cityChart", am4charts.XYChart);
+                chart.data = this.cityArray;
+                let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                categoryAxis.renderer.grid.template.location = 0;
+                categoryAxis.dataFields.category = "cityName";
+                categoryAxis.renderer.minGridDistance = 20;
+
+                let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+                let series = chart.series.push(new am4charts.ColumnSeries());
+                series.dataFields.categoryX = "cityName";
+                series.dataFields.valueY = "cityNum";
+                series.tooltipText = "{valueY.value}"
+                series.columns.template.strokeWidth = 0;
+                series.columns.template.tension = 0;
+
+                chart.cursor = new am4charts.XYCursor();
+
+                series.columns.template.adapter.add("fill", (fill, target) => {
+                    return chart.colors.getIndex(target.dataItem.index);
+                });
+            }
         }
     }
 </script>
@@ -1097,5 +1190,13 @@
         border-color: #e4e7ed;
         color: #404482;
         cursor: not-allowed;
+    }
+    #industryChart {
+        width: 100%;
+        min-height: 520px;
+    }
+    #cityChart {
+        width: 100%;
+        min-height: 520px;
     }
 </style>s

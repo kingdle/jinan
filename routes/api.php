@@ -25,6 +25,8 @@ Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
     Route::post('/home/total/{year_at}', 'HomesController@show');
     Route::post('/home/industryChart/{year_at}', 'HomesController@industryChart');
     Route::post('/home/cityChart/{year_at}', 'HomesController@cityChart');
+    Route::post('/home/areaIndustryChart', 'HomesController@areaIndustryChart');
+    Route::post('/home/areaCityChart', 'HomesController@areaCityChart');
 
     Route::resource('/areas', 'AreasController');
     Route::get('/area/ranking/{id}', 'AreasController@ranking');

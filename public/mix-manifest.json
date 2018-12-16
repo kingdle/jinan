@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
     "/pdfmake.js": "/pdfmake.js",
     "/xlsx.js": "/xlsx.js",
     "/canvg.js": "/canvg.js",
-    "/responsivedefaults.js": "/responsivedefaults.js"
+    "/responsivedefaults.js": "/responsivedefaults.js",
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css"
 }

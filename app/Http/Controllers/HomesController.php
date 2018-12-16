@@ -62,9 +62,12 @@ class HomesController extends Controller
         $item_industry=[];
         foreach ($industryArray as $industry_type){
             $array = [
-                'industryName' => $industry_type,'industryNum' => Project::where('industry_type','like','%'.$industry_type.'%')->where('year_at',$year_at)->count()
+                'industryName' => $industry_type,
+                'industryNum' => Project::where('industry_type','like','%'.$industry_type.'%')->where('year_at',$year_at)->count()
             ];
-            $item_industry[]=$array;
+            if($array['industryNum'] !== 0){
+                $item_industry[]=$array;
+            }
         }
         $areasAll = collect($item_industry)->sortByDesc('industryNum');
         return $areasAll->values()->all();
@@ -77,9 +80,52 @@ class HomesController extends Controller
         $item_industry=[];
         foreach ($industryArray as $industry_type){
             $array = [
-                'cityName' => $industry_type,'cityNum' => Project::where('investor_address','like','%'.$industry_type.'%')->where('year_at',$year_at)->count()
+                'cityName' => $industry_type,
+                'cityNum' => Project::where('investor_address','like','%'.$industry_type.'%')->where('year_at',$year_at)->count()
             ];
-            $item_industry[]=$array;
+            if($array['cityNum'] !== 0){
+                $item_industry[]=$array;
+            }
+        }
+        $areasAll = collect($item_industry)->sortByDesc('cityNum');
+        return $areasAll->values()->all();
+    }
+    public function areaIndustryChart(Request $request){
+        if($request->year_at){
+            $year_at=$request->year_at;
+        }else{
+            $year_at=date("Y");
+        }
+        $industryArray=['高端制造产业','高端化工产业','新一代信息技术','新材料','新能源','医药产业','现代海洋','现代高效农业','文化创意产业','精品旅游产业','医药结合产业','现代金融服务业'];
+        $item_industry=[];
+        foreach ($industryArray as $industry_type){
+            $array = [
+                'industryName' => $industry_type,
+                'industryNum' => Project::where('industry_type','like','%'.$industry_type.'%')->where('area_id',$request->area_id)->where('year_at',$year_at)->count()
+            ];
+            if($array['industryNum'] !== 0){
+                $item_industry[]=$array;
+            }
+        }
+        $areasAll = collect($item_industry)->sortByDesc('industryNum');
+        return $areasAll->values()->all();
+    }
+    public function areaCityChart(Request $request){
+        if($request->year_at){
+            $year_at=$request->year_at;
+        }else{
+            $year_at=date("Y");
+        }
+        $industryArray=['北京','安徽','福建','广东','河南','湖北','江苏','江西','山东','陕西','上海','天津','西藏','浙江'];
+        $item_industry=[];
+        foreach ($industryArray as $industry_type){
+            $array = [
+                'cityName' => $industry_type,
+                'cityNum' => Project::where('investor_address','like','%'.$industry_type.'%')->where('area_id',$request->area_id)->where('year_at',$year_at)->count()
+            ];
+            if($array['cityNum']!==0){
+                $item_industry[]=$array;
+            }
         }
         $areasAll = collect($item_industry)->sortByDesc('cityNum');
         return $areasAll->values()->all();
