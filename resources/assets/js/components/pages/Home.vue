@@ -7,7 +7,7 @@
                         <vgl-slidein text="双招双引投资项目监测平台"></vgl-slidein>
                        </h2>
                     <h5 class="header-ad text-center letter-10  m-b-45">
-                        监测济宁十四个区县项目个数、到位资金、开工项目、竣工项目情况
+                        监测济宁市各区县项目个数、到位资金、开工项目、竣工项目情况
                     </h5>
                     <div class="my-0">
                         <div class="fl flex-4 text-center">
@@ -16,7 +16,7 @@
                                     src="/images/storehouse.png">
                             </a>
                             <h6 class="text-secondary pt-2 mb-0">可通过微信、支付宝采集数据</h6>
-                            <h6 class="text-secondary pt-2 mb-0">山东数研科技-实例展示平台</h6>
+                            <h6 class="text-secondary pt-2 mb-0">山东数研科技提供技术支持</h6>
                         </div>
                     </div>
                 </div>

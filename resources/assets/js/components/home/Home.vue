@@ -1,119 +1,172 @@
 <template>
     <div class="home">
-        <div style="padding: 14px 0;">
-            <div class="title">
-                <img src="/images/city.png" class="icon">
-                <vgl-rollup text="全市双招双创项目情况"></vgl-rollup>
-            </div>
-            <el-row :gutter="10">
-                <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="always">
-                        <el-row :gutter="0">
-                            <el-col :span="16"><p class="fee-num">到位资金项目个数</p>
-                                <span class="items-num">203</span>个
-                            </el-col>
-                            <el-col :span="8">
-                            </el-col>
-                        </el-row>
-                    </el-card>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="always">
-                        <el-row :gutter="0">
-                            <el-col :span="16"><p class="fee-num">十强产业到位资金</p>
-                                <span class="item-fee">197.38</span>亿元
-                            </el-col>
-                            <el-col :span="8">
-                                <el-progress type="circle" :percentage="70" color="#f85e13" :width="70"></el-progress>
-                            </el-col>
-                        </el-row>
-                    </el-card>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="always">
-                        <el-row :gutter="0">
-                            <el-col :span="16"><p class="fee-num">开工项目数</p>
-                                <span class="item-fee">130</span>个
-                            </el-col>
-                            <el-col :span="8">
-                                <el-progress type="circle" :percentage="70" color="#16A1C0" :width="70"></el-progress>
-                            </el-col>
-                        </el-row>
-                    </el-card>
-                </el-col>
-                <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-                    <el-card shadow="always">
-                        <el-row :gutter="10">
-                            <el-col :span="16"><p class="fee-num">竣工项目数</p>
-                                <span class="item-fee">44</span>个
-                            </el-col>
-                            <el-col :span="8">
-                                <el-progress type="circle" :percentage="25" color="#28a42f" :width="70"></el-progress>
-                            </el-col>
-                        </el-row>
-                    </el-card>
-                </el-col>
-            </el-row>
-        </div>
-        <div class="title">
-            <img src="/images/district.png" class="icon">
-            <vgl-rollup text="各区双招双创项目情况"></vgl-rollup>
-            <span class="remark">(默认资金到位排名)</span>
-            <div style="float: right;">
-                <el-button type="primary" size="mini" icon="el-icon-menu" round @click="ranking">项目数排名</el-button>
-                <el-button type="warning" size="mini" round @click="rankingStart">开工数排名</el-button>
-                <el-button type="danger" size="mini" round @click="rankingEnd">竣工数排名</el-button>
-            </div>
-        </div>
-        <div class="ranking">
-            <el-row :gutter="10">
-                <el-col :xs="24" :sm="24" :md="12" :lg="4" :xl="3" v-for="(area,index) in areas" :key="index">
-                    <router-link :to="{name: 'profile.Area-projects',params: { id: area.id}}" exact>
-                        <el-card :body-style="{ padding: '0px'}" shadow="always">
-                            <el-row :gutter="0">
-                                <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
-                                    <div class="items" style="padding: 8px;">
-                                        <img :src="area.pic +'!mp.v200'" class="image-district" >
-                                        <div class="district">
-                                            <p class="district-name">{{area.district}}</p>
-                                            <p>￥<span class="items-district-num">{{area.fee}}</span>亿元</p>
-                                        </div>
-                                    </div>
-                                </el-col>
-                                <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
-                                    <div style="padding:8px 14px;font-size:12px; color:#6f7180;">
-                                        <p>项目：{{ area.items_num }}个 (开工{{area.start_num}}/竣工{{area.end_num}})</p>
-                                    </div>
-                                </el-col>
-                            </el-row>
-                        </el-card>
-                    </router-link>
-                </el-col>
-            </el-row>
-        </div>
+        <el-row>
+            <el-col :span="24">
+                <div style="padding: 14px 0;">
+                    <div class="title">
+                        <img src="/images/city.png" class="icon">
+                        {{totalTitle}}
+                        <span class="remark">总投资规模：{{homeTotal.fee}}亿元，总项目数：{{homeTotal.item_sum_all}}个</span>
+                        <div style="float: right;">
+                            <el-button type="success" size="mini" round @click="queryYearLast">2017年</el-button>
+                            <el-button type="success" size="mini" round @click="queryYearNow">2018年</el-button>
+                        </div>
+                    </div>
+                    <el-row :gutter="10">
+                        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+                            <el-card shadow="always">
+                                <el-row :gutter="0">
+                                    <el-col :span="16">
+                                        <p class="fee-num">
+                                            <vgl-slidein text="到位资金项目个数"></vgl-slidein>
+                                        </p>
+                                        <span class="items-num">{{homeTotal.item_sum}}</span>个
+                                    </el-col>
+                                    <el-col :span="8">
+                                        <el-progress type="circle" :percentage="homeTotal.item_sum_ratio" color="#f85e13"
+                                                     :width="70"></el-progress>
+                                    </el-col>
+                                </el-row>
+                            </el-card>
+                        </el-col>
+                        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+                            <el-card shadow="always">
+                                <el-row :gutter="0">
+                                    <el-col :span="16">
+                                        <p class="fee-num">
+                                            <vgl-slidein text="十强产业到位资金"></vgl-slidein>
+                                        </p>
+                                        <span class="item-fee">{{homeTotal.ten_fee}}</span>亿元
+                                    </el-col>
+                                    <el-col :span="8">
+                                        <el-progress type="circle" :percentage="homeTotal.ten_fee_radio" color="#f85e13"
+                                                     :width="70"></el-progress>
+                                    </el-col>
+                                </el-row>
+                            </el-card>
+                        </el-col>
+                        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+                            <el-card shadow="always">
+                                <el-row :gutter="0">
+                                    <el-col :span="16">
+                                        <p class="fee-num">
+                                            <vgl-slidein text="开工项目数"></vgl-slidein>
+                                        </p>
+                                        <span class="item-fee">{{homeTotal.item_start}}</span>个
+                                    </el-col>
+                                    <el-col :span="8">
+                                        <el-progress type="circle" :percentage="homeTotal.item_start_ratio" color="#16A1C0"
+                                                     :width="70"></el-progress>
+                                    </el-col>
+                                </el-row>
+                            </el-card>
+                        </el-col>
+                        <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
+                            <el-card shadow="always">
+                                <el-row :gutter="10">
+                                    <el-col :span="16">
+                                        <p class="fee-num">
+                                            <vgl-slidein text="竣工项目数"></vgl-slidein>
+                                        </p>
+                                        <span class="item-fee">{{homeTotal.item_finish}}</span>个
+                                    </el-col>
+                                    <el-col :span="8">
+                                        <el-progress type="circle" :percentage="homeTotal.item_finish_ratio" color="#28a42f"
+                                                     :width="70"></el-progress>
+                                    </el-col>
+                                </el-row>
+                            </el-card>
+                        </el-col>
+                    </el-row>
+                </div>
+            </el-col>
 
-        <div class="title">
-            <img src="/images/charts.png" class="icon">
-            <vgl-rollup text="双招双创图表对比"></vgl-rollup>
-            <div style="float: right;">
-                <el-button type="info" size="mini" icon="el-icon-menu" round @click="rankingFee">十强产业到位资金排名</el-button>
-                <el-button type="primary" size="mini" round @click="ranking">项目数排名</el-button>
-                <el-button type="warning" size="mini" round @click="rankingStart">开工数排名</el-button>
-                <el-button type="danger" size="mini" round @click="rankingEnd">竣工数排名</el-button>
-            </div>
-        </div>
-        <div class="chart">
-            <canvas id="myChart"></canvas>
-        </div>
-        <div class="footer">
-            <text>山东数研科技提供技术支持</text>
-        </div>
+            <el-col :span="24">
+                <div class="title">
+                    <img src="/images/district.png" class="icon">
+                    {{areaTitle}}
+                    <span class="remark"><vgl-wave text="默认为十强产业到位资金排名"></vgl-wave></span>
+                    <div style="float: right;">
+                        <el-button type="primary" size="mini" icon="el-icon-menu" round @click="ranking">项目数排名</el-button>
+                        <el-button type="warning" size="mini" round @click="rankingStart">开工数排名</el-button>
+                        <el-button type="danger" size="mini" round @click="rankingEnd">竣工数排名</el-button>
+                    </div>
+                </div>
+                <div class="ranking">
+                    <el-row :gutter="10">
+                        <el-col :xs="24" :sm="24" :md="12" :lg="4" :xl="3" v-for="(area,index) in areas" :key="index">
+                            <router-link :to="{name: 'profile.Area-projects',params: { id: area.id,areas:area}}" exact>
+                                <el-card :body-style="{ padding: '0px'}" shadow="always">
+                                    <el-row :gutter="0">
+                                        <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
+                                            <div class="items" style="padding: 8px;">
+                                                <img :src="area.pic +'!mp.v200'" class="image-district">
+                                                <div class="district">
+                                                    <p class="district-name">{{area.district}}</p>
+                                                    <p>￥<span class="items-district-num">{{area.ten_fee}}</span>亿元</p>
+                                                </div>
+                                            </div>
+                                        </el-col>
+                                        <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
+                                            <div style="padding:8px 14px;font-size:12px; color:#6f7180;">
+                                                <p>总项目：{{ area.item_sum_all }}个
+                                                    (开工{{area.item_start}}/竣工{{area.item_finish}})</p>
+                                            </div>
+                                        </el-col>
+                                    </el-row>
+                                </el-card>
+                            </router-link>
+                        </el-col>
+                    </el-row>
+                </div>
+            </el-col>
+            <el-col :span="24">
+                <div class="title">
+                    <img src="/images/charts.png" class="icon">
+                    {{chartTitle}}
+                    <div style="float: right;">
+                        <el-button type="primary" size="mini" round @click="ranking">项目数排名</el-button>
+                        <el-button type="warning" size="mini" round @click="rankingStart">开工数排名</el-button>
+                        <el-button type="danger" size="mini" round @click="rankingEnd">竣工数排名</el-button>
+                    </div>
+                </div>
+                <div class="chart">
+                    <canvas id="myChart" height="60"></canvas>
+                </div>
+            </el-col>
+            <el-col :span="24">
+                <el-row>
+                    <el-col :span="14">
+                        <div class="title">
+                            <img src="/images/charts.png" class="icon">
+                            {{year_at}}年十强产业占比
+                        </div>
+                        <div class="chart">
+                            <div id="industryChart"></div>
+                        </div>
+                    </el-col>
+                    <el-col :span="10">
+                        <div class="title">
+                            <img src="/images/charts.png" class="icon">
+                            {{year_at}}年内资项目来源分布
+                        </div>
+                        <div class="chart">
+                            <div id="cityChart" height="120"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
     import Chart from 'chart.js';
+    import * as am4core from "@amcharts/amcharts4/core";
+    import * as am4charts from "@amcharts/amcharts4/charts";
+    import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
     export default {
         created() {
@@ -134,131 +187,171 @@
                 itemsNum: [],
                 startNum: [],
                 endNum: [],
-                percentageNum:'0'
+                percentageNum: '0',
+                homeTotal: {
+                    ten_fee: '198.32',
+                    fee: '1800.38',
+                    ten_fee_radio: '11',
+                    item_sum: '203',
+                    item_sum_foreign: '',
+                    item_sum_all: '377',
+                    item_sum_ratio: '54',
+                    item_start: '127',
+                    item_start_ratio: '34',
+                    item_finish: '44',
+                    item_finish_ratio: '12'
+                },
+                year_at: '2018',
+                totalTitle: '2018年全市双招双引项目情况',
+                areaTitle: '2018年各区双招双引项目情况',
+                chartTitle: '2018年各区双招双引图表对比',
+                item_sum_ratio: '',
+                industryArray:[],
+                cityArray:[]
             }
 
         },
         mounted() {
-            axios.get('/api/v1/areas').then(response => {
-                this.areas = response.data
+            let date = new Date;
+            let year = date.getFullYear();
+            axios.post('/api/v1/home/total/' + year).then(response => {
+                window.localStorage.setItem('homeTotal',JSON.stringify(response.data));
+            })
+            this.homeTotal = JSON.parse(localStorage.getItem('homeTotal'));
+            axios.post('/api/v1/home/industryChart/' + year).then(response => {
+                window.localStorage.setItem('industryArray',JSON.stringify(response.data));
+            })
+            this.industryArray = JSON.parse(localStorage.getItem('industryArray'));
+            axios.post('/api/v1/home/cityChart/' + year).then(response => {
+                window.localStorage.setItem('cityArray',JSON.stringify(response.data));
+            })
+            this.cityArray = JSON.parse(localStorage.getItem('cityArray'));
+            const formData = {
+                id: this.areaId,
+                year_at: this.year_at,
+            }
+            axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                window.localStorage.setItem('areas',JSON.stringify(response.data));
+                this.indexChart()
+                this.industryChart()
+                this.cityChart()
+            })
+            this.areas = JSON.parse(localStorage.getItem('areas'));
+
+        },
+        methods: {
+            queryYearNow: function () {
+                this.year_at = '2018'
+                axios.post('/api/v1/home/total/' + this.year_at).then(response => {
+                    this.homeTotal = response.data
+                    this.totalTitle = '2018年全市双招双引项目情况'
+                    this.areaTitle = '2018年各区双招双引项目情况'
+                    this.chartTitle = '2018年各区双招双引图表对比'
+                })
+                axios.post('/api/v1/home/industryChart/' + this.year_at).then(response => {
+                    window.localStorage.setItem('industryArrayNow',JSON.stringify(response.data));
+                })
+                axios.post('/api/v1/home/cityChart/' + this.year_at).then(response => {
+                    window.localStorage.setItem('cityArrayNow',JSON.stringify(response.data));
+                })
+                const formData = {
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                    this.areas = response.data
+                    this.indexChart()
+                    this.industryChart()
+                    this.cityChart()
+                })
+                this.industryArray = JSON.parse(localStorage.getItem('industryArrayNow'));
+                this.cityArray = JSON.parse(localStorage.getItem('cityArrayNow'));
+            },
+            queryYearLast: function () {
+                this.year_at = '2017'
+                axios.post('/api/v1/home/total/' + this.year_at).then(response => {
+                    this.homeTotal = response.data
+                    this.totalTitle = '2017年全市双招双引项目情况'
+                    this.areaTitle = '2017年各区双招双引项目情况'
+                    this.chartTitle = '2017年各区双招双引图表对比'
+                })
+                axios.post('/api/v1/home/industryChart/' + this.year_at).then(response => {
+                    window.localStorage.setItem('industryArrayLast',JSON.stringify(response.data));
+                })
+                axios.post('/api/v1/home/cityChart/' + this.year_at).then(response => {
+                    window.localStorage.setItem('cityArrayLast',JSON.stringify(response.data));
+                })
+                const formData = {
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                    this.areas = response.data
+                    this.indexChart()
+                    this.industryChart()
+                    this.cityChart()
+                })
+                this.industryArray = JSON.parse(localStorage.getItem('industryArrayLast'));
+                this.cityArray = JSON.parse(localStorage.getItem('cityArrayLast'));
+            },
+            areaStatistics: function () {
+                const formData = {
+                    id: this.areaId,
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                })
+            },
+            ranking: function () {
+                const formData = {
+                    querySort: 'item_sum_all',
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                    this.areas = response.data
+                    this.indexChart()
+                    this.industryChart()
+                    this.cityChart()
+                })
+            },
+
+            rankingStart: function () {
+                const formData = {
+                    querySort: 'item_start',
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                    this.areas = response.data
+                    this.indexChart()
+                    this.industryChart()
+                    this.cityChart()
+                })
+            },
+            rankingEnd: function () {
+                const formData = {
+                    querySort: 'item_finish',
+                    year_at: this.year_at,
+                }
+                axios.post('/api/v1/area/areaStatistics', formData).then(response => {
+                    this.areas = response.data
+                    this.indexChart()
+                    this.industryChart()
+                    this.cityChart()
+                })
+            },
+            indexChart: function () {
                 let chartX = []
                 let feeY = []
                 let itemsNum = []
                 let startNum = []
                 let endNum = []
-                for (var i = 0; i < response.data.length; i++) {
-                    chartX[i] = response.data[i].district
-                    feeY[i] = response.data[i].fee
-                    itemsNum[i] = response.data[i].items_num
-                    startNum[i] = response.data[i].start_num
-                    endNum[i] = response.data[i].end_num
+                for (let i = 0; i < this.areas.length; i++) {
+                    chartX[i] = this.areas[i].district
+                    feeY[i] = this.areas[i].ten_fee
+                    itemsNum[i] = this.areas[i].item_sum_all
+                    startNum[i] = this.areas[i].item_start
+                    endNum[i] = this.areas[i].item_finish
                 }
-                this.chartX = chartX
-                this.feeY = feeY
-                this.itemsNum = itemsNum
-                this.startNum = startNum
-                this.endNum = endNum
-                this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-            })
-
-
-        },
-        methods: {
-            rankingFee: function () {
-                axios.get('/api/v1/area/ranking/' + 'fee').then(response => {
-                    this.areas = response.data
-                    let chartX = []
-                    let feeY = []
-                    let itemsNum = []
-                    let startNum = []
-                    let endNum = []
-                    for (var i = 0; i < response.data.length; i++) {
-                        chartX[i] = response.data[i].district
-                        feeY[i] = response.data[i].fee
-                        itemsNum[i] = response.data[i].items_num
-                        startNum[i] = response.data[i].start_num
-                        endNum[i] = response.data[i].end_num
-                    }
-                    this.chartX = chartX
-                    this.feeY = feeY
-                    this.itemsNum = itemsNum
-                    this.startNum = startNum
-                    this.endNum = endNum
-                    this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-                })
-            },
-            ranking: function () {
-                axios.get('/api/v1/area/ranking/' + 'items_num').then(response => {
-                    this.areas = response.data
-                    let chartX = []
-                    let feeY = []
-                    let itemsNum = []
-                    let startNum = []
-                    let endNum = []
-                    for (var i = 0; i < response.data.length; i++) {
-                        chartX[i] = response.data[i].district
-                        feeY[i] = response.data[i].fee
-                        itemsNum[i] = response.data[i].items_num
-                        startNum[i] = response.data[i].start_num
-                        endNum[i] = response.data[i].end_num
-                    }
-                    this.chartX = chartX
-                    this.feeY = feeY
-                    this.itemsNum = itemsNum
-                    this.startNum = startNum
-                    this.endNum = endNum
-                    this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-                })
-            },
-            rankingStart: function () {
-                axios.get('/api/v1/area/ranking/' + 'start_num').then(response => {
-                    this.areas = response.data
-                    let chartX = []
-                    let feeY = []
-                    let itemsNum = []
-                    let startNum = []
-                    let endNum = []
-                    for (var i = 0; i < response.data.length; i++) {
-                        chartX[i] = response.data[i].district
-                        feeY[i] = response.data[i].fee
-                        itemsNum[i] = response.data[i].items_num
-                        startNum[i] = response.data[i].start_num
-                        endNum[i] = response.data[i].end_num
-                    }
-                    this.chartX = chartX
-                    this.feeY = feeY
-                    this.itemsNum = itemsNum
-                    this.startNum = startNum
-                    this.endNum = endNum
-                    this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-                })
-            },
-            rankingEnd: function () {
-                axios.get('/api/v1/area/ranking/' + 'end_num').then(response => {
-                    this.areas = response.data
-                    let chartX = []
-                    let feeY = []
-                    let itemsNum = []
-                    let startNum = []
-                    let endNum = []
-                    for (var i = 0; i < response.data.length; i++) {
-                        chartX[i] = response.data[i].district
-                        feeY[i] = response.data[i].fee
-                        itemsNum[i] = response.data[i].items_num
-                        startNum[i] = response.data[i].start_num
-                        endNum[i] = response.data[i].end_num
-                    }
-                    this.chartX = chartX
-                    this.feeY = feeY
-                    this.itemsNum = itemsNum
-                    this.startNum = startNum
-                    this.endNum = endNum
-                    this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-                })
-            },
-            indexChart: function (chartX, feeY, itemsNum, startNum, endNum) {
-                var ctx = document.getElementById("myChart");
-                var myChart = new Chart(ctx, {
+                let ctx = document.getElementById("myChart");
+                let myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: chartX,
@@ -321,8 +414,63 @@
                         }
                     }
                 });
-            }
+            },
+            industryChart: function () {
+                am4core.useTheme(am4themes_animated);
+                let chart = am4core.create("industryChart", am4charts.PieChart3D);
+                chart.hiddenState.properties.opacity = 0;
 
+                chart.data = this.industryArray;
+                chart.radius = am4core.percent(70);
+                chart.innerRadius = am4core.percent(40);
+                chart.depth = 120;
+
+                chart.legend = new am4charts.Legend();
+                chart.legend.position = "bottom";
+
+                let series = chart.series.push(new am4charts.PieSeries3D());
+                series.dataFields.value = "industryNum";
+                series.dataFields.depthValue = "industryNum";
+                series.dataFields.category = "industryName";
+                series.slices.template.cornerRadius = 5;
+                series.colors.step = 3;
+            },
+            cityChart: function () {
+                am4core.useTheme(am4themes_animated);
+                let chart = am4core.create("cityChart", am4charts.XYChart);
+                chart.data = this.cityArray;
+                // let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                // categoryAxis.dataFields.category = "cityName";
+                //
+                // let  valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                //
+                // let series = chart.series.push(new am4charts.ColumnSeries());
+                // series.dataFields.valueY = "cityNum";
+                // series.dataFields.categoryX = "cityName";
+                // series.name = "个";
+                // series.tooltipText = "[bold]{valueY}[/] {name}";
+                // series.columns.template.fill = am4core.color("#34BEF8");
+                // chart.cursor = new am4charts.XYCursor();
+                let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                categoryAxis.renderer.grid.template.location = 0;
+                categoryAxis.dataFields.category = "cityName";
+                categoryAxis.renderer.minGridDistance = 20;
+
+                let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+                let series = chart.series.push(new am4charts.CurvedColumnSeries());
+                series.dataFields.categoryX = "cityName";
+                series.dataFields.valueY = "cityNum";
+                series.tooltipText = "{valueY.value}"
+                series.columns.template.strokeWidth = 0;
+                series.columns.template.tension = 0;
+
+                chart.cursor = new am4charts.XYCursor();
+
+                series.columns.template.adapter.add("fill", (fill, target) => {
+                    return chart.colors.getIndex(target.dataItem.index);
+                });
+            }
         }
     }
 </script>
@@ -387,11 +535,13 @@
         margin-bottom: 10px;
         min-width: 200px;
     }
+
     .home .ranking .el-card {
         border-left: 1px solid #ebeef5;
         margin-bottom: 10px;
         min-width: 200px;
     }
+
     .home .items .image-district {
         float: left;
         width: 60px;
@@ -856,5 +1006,12 @@
         font-weight: 700;
         color: #f85e13;
     }
-
-</style>s
+    #industryChart {
+        width: 100%;
+        min-height: 500px;
+    }
+    #cityChart {
+        width: 100%;
+        min-height: 500px;
+    }
+</style>

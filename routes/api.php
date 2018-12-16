@@ -21,17 +21,26 @@ Route::post('/user/profile/update', 'UsersController@update')->middleware('auth:
 
 //passport部分
 Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
+    Route::resource('/homes', 'HomesController');
+    Route::post('/home/total/{year_at}', 'HomesController@show');
+    Route::post('/home/industryChart/{year_at}', 'HomesController@industryChart');
+    Route::post('/home/cityChart/{year_at}', 'HomesController@cityChart');
 
     Route::resource('/areas', 'AreasController');
     Route::get('/area/ranking/{id}', 'AreasController@ranking');
     Route::get('/area/queryArea', 'AreasController@queryArea');
+    Route::post('/area/areaStatistics', 'AreasController@areaStatistics');
+
+
 
     Route::resource('/projects', 'ProjectsController');
     Route::post('/project/add', 'ProjectsController@addProject')->middleware('auth:api');
     Route::post('/project/upFile', 'ProjectsController@upFile')->middleware('auth:api');
-    Route::post('/project/query/{id}', 'ProjectsController@query')->middleware('auth:api');
+    Route::post('/project/query/{id}', 'ProjectsController@query');
     Route::get('/project/areaProject/{id}','ProjectsController@areaProject');
     Route::post('/project/projectClassify', 'ProjectsController@projectClassify');
+    Route::post('/project/queryArea', 'ProjectsController@queryArea');
+
 
 
 

@@ -88,13 +88,13 @@
                               placeholder="1在建2全部投产3全部停缓建">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="总投资(亿)">
+                <el-form-item label="总投资(万元)">
                     <el-input v-model="showProjectForm.fee"
                               clearable
                               placeholder="30">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="累计投资(亿)">
+                <el-form-item label="累计投资(万元)">
                     <el-input v-model="showProjectForm.fee_count"
                               clearable
                               placeholder="20">
@@ -247,13 +247,13 @@
                               placeholder="1在建2全部投产3全部停缓建">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="总投资(亿)">
+                <el-form-item label="总投资(万元)">
                     <el-input v-model="addProjectForm.fee"
                               clearable
                               placeholder="30">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="累计投资(亿)">
+                <el-form-item label="累计投资(万元)">
                     <el-input v-model="addProjectForm.fee_count"
                               clearable
                               placeholder="20">
@@ -389,13 +389,13 @@
                 </el-table-column>
                 <el-table-column
                         prop="fee"
-                        label="投资(亿)"
+                        label="投资(万元)"
                         width="120"
                 >
                 </el-table-column>
                 <el-table-column
                         prop="fee_count"
-                        label="累计投资(亿)"
+                        label="累计投资(万元)"
                         width="120"
                 >
                 </el-table-column>

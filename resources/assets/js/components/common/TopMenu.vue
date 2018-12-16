@@ -22,9 +22,9 @@
                         <el-button type="primary" round size="small">注册</el-button>
                     </router-link>
                     <router-link v-if="user.authenticated" :to="{name: 'profile.Home'}" tag="li">
-                        <el-badge :value="200" :max="99" class="message">
-                            <el-button size="small" circle icon="el-icon-message"></el-button>
-                        </el-badge>
+                        <!--<el-badge :value="200" :max="99" class="message">-->
+                            <!--<el-button size="small" circle icon="el-icon-message"></el-button>-->
+                        <!--</el-badge>-->
                         <el-button type="primary" size="small" round>{{user.nickname}}</el-button>
                         <el-button size="small" type="danger" @click="logout" icon="el-icon-close" circle></el-button>
                         <!--<div class="btn-group">-->

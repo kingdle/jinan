@@ -14,20 +14,13 @@
                     <el-input class="text-code" v-model="showProjectForm.id_license"
                               clearable
                               :disabled="true"
-                              placeholder="如：91370211MA3M6YNP9G"></el-input>
+                              placeholder=""></el-input>
                 </el-form-item>
-                <el-form-item label="组织机构代码证">
-                    <el-input v-model="showProjectForm.id_code"
+                <el-form-item label="注册日期">
+                    <el-input v-model="showProjectForm.register_at"
                               clearable
                               :disabled="true"
-                              placeholder="三证合一可不填">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="注册类型">
-                    <el-input v-model="showProjectForm.register_type"
-                              clearable
-                              :disabled="true"
-                              placeholder="填写企业性质">
+                              placeholder="">
                     </el-input>
                 </el-form-item>
                 <div>
@@ -35,127 +28,133 @@
                         <el-input class="textarea-width" v-model="showProjectForm.item_name"
                                   clearable
                                   :disabled="true"
-                                  placeholder="填写项目名称"></el-input>
+                                  placeholder=""></el-input>
                     </el-form-item>
-                    <el-form-item label="项目代码">
-                        <el-input v-model="showProjectForm.item_code"
+                    <el-form-item label="建设地址">
+                        <el-input v-model="showProjectForm.address"
                                   clearable
                                   :disabled="true"
-                                  placeholder="37020181000019180">
+                                  placeholder="">
                         </el-input>
                     </el-form-item>
                 </div>
-                <el-form-item label="项目所在区">
-                    <el-input v-model="showProjectForm.district"
+                <el-form-item label="区划代码">
+                    <el-input v-model="showProjectForm.district_code"
                               clearable
                               :disabled="true"
                               placeholder="">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="联系电话">
-                    <el-input v-model="showProjectForm.phone"
+                <el-form-item label="所属十强产业类别">
+                    <el-input v-model="showProjectForm.industry_type"
                               clearable
                               :disabled="true"
-                              placeholder="18600001111">
+                              placeholder="">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="行业编码">
-                    <el-input v-model="showProjectForm.industry_code"
+                <el-form-item label="产品及服务说明">
+                    <el-input v-model="showProjectForm.industry_description"
+                              class="textarea-width"
                               clearable
-                              :disabled="true"
-                              placeholder="如：121211"></el-input>
+                              type="textarea"
+                              placeholder=""></el-input>
                 </el-form-item>
-                <el-form-item label="控股情况">
-                    <el-input v-model="showProjectForm.holding"
+                <el-form-item label="投资方">
+                    <el-input v-model="showProjectForm.investor_name"
+                              class="textarea-width"
                               clearable
-                              :disabled="true"
-                              placeholder="1国有2集体3私人4港澳台商5外商9其他">
+                              type="textarea"
+                              placeholder="">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="隶属关系">
-                    <el-input v-model="showProjectForm.subjection"
+                <el-form-item label="是否纳统">
+                    <el-input v-model="showProjectForm.is_statistics=='F'?'否':'是'"
                               clearable
                               :disabled="true"
-                              placeholder="10中央20省40市80县及以下90其他">
-                    </el-input>
-                </el-form-item>
-
-                <el-form-item label="建设性质">
-                    <el-input v-model="showProjectForm.item_nature"
-                              clearable
-                              :disabled="true"
-                              placeholder="1新建2扩建3改建和技术改造4单纯建造生活设施5迁建6恢复7单纯购置">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="项目类别">
-                    <el-input v-model="showProjectForm.item_type"
-                              clearable
-                              :disabled="true"
-                              placeholder="1工业企业技术改造2棚户区改造3涉农">
+                              placeholder="">
                     </el-input>
                 </el-form-item>
 
-                <el-form-item label="建设状态">
-                    <el-input v-model="showProjectForm.item_state"
+                <el-form-item label="是否增资">
+                    <el-input v-model="showProjectForm.is_additional=='F'?'否':'是'"
                               clearable
                               :disabled="true"
-                              placeholder="1在建2全部投产3全部停缓建">
+                              placeholder="">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="总投资(亿)">
+
+                <el-form-item label="计划总投资(万元)">
                     <el-input v-model="showProjectForm.fee"
+                              clearable
+                              :disabled="true"
+                              placeholder="">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="计划省外国资">
+                    <el-input v-model="showProjectForm.fee_public_plan"
                               clearable
                               :disabled="true"
                               placeholder="30">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="累计投资(亿)">
-                    <el-input v-model="showProjectForm.fee_count"
+                <el-form-item label="计划省外民资">
+                    <el-input v-model="showProjectForm.fee_private_plan"
                               clearable
                               :disabled="true"
                               placeholder="20">
                     </el-input>
                 </el-form-item>
+                <el-form-item label="实际到账省外国资">
+                    <el-input v-model="showProjectForm.fee_public_actual"
+                              clearable
+                              :disabled="true"
+                              placeholder="">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="实际到账省外民资">
+                    <el-input v-model="showProjectForm.fee_private_actual"
+                              clearable
+                              :disabled="true"
+                              placeholder="">
+                    </el-input>
+                </el-form-item>
                 <div>
-                    <el-form-item label="开工时间">
-                        <el-date-picker
-                                v-model="showProjectForm.start_at"
-                                type="date"
-                                :disabled="true"
-                                placeholder="选择日期">
-                        </el-date-picker>
+                    <el-form-item label="到账日期">
+                        <el-input
+                                class="textarea-width"
+                                v-model="showProjectForm.bank_at"
+                                type="textarea"
+                                placeholder="">
+                        </el-input>
                     </el-form-item>
-                    <el-form-item label="投产时间">
-                        <el-date-picker
-                                v-model="showProjectForm.produce_at"
-                                type="date"
-                                :disabled="true"
-                                placeholder="选择日期">
-                        </el-date-picker>
+                    <el-form-item label="银行进账单号">
+                        <el-input
+                                class="textarea-width"
+                                v-model="showProjectForm.bank_bill"
+                                type="textarea"
+                                placeholder="">
+                        </el-input>
                     </el-form-item>
-                    <el-form-item label="竣工时间">
-                        <el-date-picker
-                                v-model="showProjectForm.end_at"
-                                type="date"
-                                :disabled="true"
-                                placeholder="选择日期">
-                        </el-date-picker>
+                    <el-form-item label="银行名称">
+                        <el-input
+                                class="textarea-width"
+                                v-model="showProjectForm.bank_name"
+                                type="textarea"
+                                placeholder="">
+                        </el-input>
                     </el-form-item>
                 </div>
                 <div>
-                    <el-form-item label="是否纳统">
-                        <el-switch
-                                v-model="showProjectForm.is_statistics==='F'?false:true"
-                                active-text="是"
-                                inactive-text="否">
-                        </el-switch>
-                    </el-form-item>
-                    <el-form-item label="未纳统原因">
+                    <el-form-item label="联系人">
                         <el-input
-                                class="textarea-width"
-                                v-model="showProjectForm.no_statistics"
-                                type="textarea"
-                                placeholder="未纳统原因">
+                                v-model="showProjectForm.linkman"
+                                placeholder="">
+                        </el-input>
+                    </el-form-item>
+                    <el-form-item label="联系电话">
+                        <el-input
+                                v-model="showProjectForm.phone"
+                                placeholder="">
                         </el-input>
                     </el-form-item>
                 </div>
@@ -178,16 +177,23 @@
         <div style="padding: 14px 0;">
             <div class="title">
                 <img src="/images/city.png" class="icon">
-                <span class="district-title">{{area.district}}</span>双招双创项目情况
+                {{year_at}}年<span class="district-title">{{areaTotal.district}}</span>双招双创项目情况
+                <span class="remark">总投资规模：{{areaTotal.fee}}亿元，总项目数：{{areaTotal.item_sum_all}}个</span>
+                <div style="float: right;">
+                    <el-button type="success" size="mini" round @click="queryYearLast">2017年</el-button>
+                    <el-button type="success" size="mini" round @click="queryYearNow">2018年</el-button>
+                </div>
             </div>
             <el-row :gutter="10">
                 <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                     <el-card shadow="always">
                         <el-row :gutter="0">
-                            <el-col :span="16"><p class="fee-num">项目个数</p>
-                                <span class="items-num">{{items_num}}</span>个
+                            <el-col :span="16"><p class="fee-num">到位资金项目个数</p>
+                                <span class="items-num">{{areaTotal.item_sum}}</span>个
                             </el-col>
                             <el-col :span="8">
+                                <el-progress type="circle" :percentage="areaTotal.item_sum_ratio" color="#f85e13"
+                                             :width="70"></el-progress>
                             </el-col>
                         </el-row>
                     </el-card>
@@ -196,10 +202,10 @@
                     <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">十强产业到位资金</p>
-                                <span class="item-fee">{{fee}}</span>亿元
+                                <span class="item-fee">{{areaTotal.ten_fee}}</span>亿元
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage="fee"
+                                <el-progress type="circle" :percentage="areaTotal.ten_fee_radio"
                                              color="#f85e13" :width="70"></el-progress>
                             </el-col>
                         </el-row>
@@ -209,10 +215,10 @@
                     <el-card shadow="always">
                         <el-row :gutter="0">
                             <el-col :span="16"><p class="fee-num">开工项目数</p>
-                                <span class="item-fee">{{start_num}}</span>个
+                                <span class="item-fee">{{areaTotal.item_start}}</span>个
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage="start_num"
+                                <el-progress type="circle" :percentage="areaTotal.item_start_ratio"
                                              color="#16A1C0" :width="70"></el-progress>
                             </el-col>
                         </el-row>
@@ -222,10 +228,10 @@
                     <el-card shadow="always">
                         <el-row :gutter="10">
                             <el-col :span="16"><p class="fee-num">竣工项目数</p>
-                                <span class="item-fee">{{end_num}}</span>个
+                                <span class="item-fee">{{areaTotal.item_finish}}</span>个
                             </el-col>
                             <el-col :span="8">
-                                <el-progress type="circle" :percentage="end_num"
+                                <el-progress type="circle" :percentage="areaTotal.item_finish_ratio"
                                              color="#28a42f" :width="70"></el-progress>
                             </el-col>
                         </el-row>
@@ -235,7 +241,7 @@
         </div>
 
         <el-row :gutter="0">
-            <el-col :xs="24" :sm="24" :md="11" :lg="11" :xl="11">
+            <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <div class="tables">
                     <el-header
                             style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
@@ -243,7 +249,7 @@
                             <el-col :span="24">
                             <span class="broad-title">
                                 <img src="/images/items-big.png" class="icon">
-                                "十强"产业 <span class="items-num">{{pagination.total}}</span>家
+                                {{year_at}}年"十强"产业 <span class="items-num">{{pagination.total}}</span>家
                             </span>
                             </el-col>
                         </el-row>
@@ -269,49 +275,49 @@
                                 width="220"
                         >
                         </el-table-column>
+
                         <el-table-column
-                                label="是否纳统"
-                                width="100"
+                                prop="item_name"
+                                label="项目名称"
+                                sortable
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                label="纳统"
+                                width="60"
                         >
                             <template slot-scope="scope">
                                 {{scope.row.is_statistics=='F'?'否':'是'}}
                             </template>
                         </el-table-column>
                         <el-table-column
-                                prop="item_name"
-                                label="项目名称"
-                                sortable
-                                width="160"
-                        >
-                        </el-table-column>
-                        <el-table-column
                                 prop="fee"
-                                label="投资(亿)"
+                                label="投资(万元)"
                                 sortable
                                 width="120"
                         >
                         </el-table-column>
                         <el-table-column
-                                prop="fee_count"
-                                label="累计投资(亿)"
+                                prop="industry_type"
+                                label="所属产业"
                                 width="120"
+                        >
+                        </el-table-column>
+                        <el-table-column
+                                prop="linkman"
+                                label="联系人"
+                                width="90"
                         >
                         </el-table-column>
                         <el-table-column
                                 prop="phone"
                                 label="联系电话"
-                                width="110"
+                                width="120"
                         >
                         </el-table-column>
                         <el-table-column
                                 prop="start_at"
                                 label="开工时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="produce_at"
-                                label="投产时间"
                                 width="100"
                         >
                         </el-table-column>
@@ -353,268 +359,6 @@
                     </el-pagination>
                 </div>
             </el-col>
-            <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
-                <div class="middle-line">1</div>
-            </el-col>
-            <el-col :xs="24" :sm="24" :md="11" :lg="11" :xl="11">
-                <div class="tables">
-                    <el-header
-                            style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
-                        <el-row>
-                            <el-col :span="24">
-                            <span class="broad-title">
-                                <img src="/images/road.png" class="icon">
-                                交通运输 <span class="items-num">{{tPagination.total}}</span>家
-                            </span>
-                            </el-col>
-                        </el-row>
-                    </el-header>
-                    <el-table
-                            :row-class-name="tableRowClassName"
-                            :data="tProjects"
-                            align="left"
-                            style="width: 100%"
-                            stripe
-                    >
-                        <el-table-column
-                                prop="id"
-                                label="ID"
-                                sortable
-                                width="60"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="name"
-                                label="单位名称"
-                                sortable
-                                width="220"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                label="是否纳统"
-                                width="100"
-                        >
-                            <template slot-scope="scope">
-                                {{scope.row.is_statistics=='F'?'否':'是'}}
-                            </template>
-                        </el-table-column>
-                        <el-table-column
-                                prop="item_name"
-                                label="项目名称"
-                                sortable
-                                width="160"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="fee"
-                                label="投资(亿)"
-                                sortable
-                                width="120"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="fee_count"
-                                label="累计投资(亿)"
-                                width="120"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="phone"
-                                label="联系电话"
-                                width="110"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="start_at"
-                                label="开工时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="produce_at"
-                                label="投产时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="end_at"
-                                label="竣工时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <!--<el-table-column-->
-                        <!--label="附件"-->
-                        <!--&gt;-->
-                        <!--<template slot-scope="scope">-->
-                        <!--<b v-for="(item,index) in scope.row.filesArray">-->
-                        <!--<a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">-->
-                        <!--<i class="el-icon-document"></i>-->
-                        <!--{{key}}-->
-                        <!--</a></br>-->
-                        <!--</b>-->
-                        <!--</template>-->
-                        <!--</el-table-column>-->
-                        <el-table-column
-                                fixed="right"
-                                label="操作"
-                                width="60"
-                        >
-                            <template slot-scope="scope">
-                                <el-tooltip class="item" effect="dark"
-                                            content="查看"
-                                            placement="left">
-                                    <el-button
-                                            @click="showProject = true"
-                                            @click.native.prevent="handleShowProject(scope.$index, scope.row)"
-                                            icon="el-icon-view"
-                                            size="mini" circle
-                                            type="success">
-                                    </el-button>
-                                </el-tooltip>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                    <el-pagination
-                            @size-change="handleSizeChange"
-                            @current-change="tHandleCurrentChange"
-                            :page-sizes="[9, 20, 100, 300]"
-                            :page-size="9"
-                            :pager-count="tPagerCount"
-                            layout="total, prev, pager, next"
-                            :total="tPagination.total">
-                    </el-pagination>
-                </div>
-            </el-col>
-        </el-row>
-        <el-row :gutter="0">
-            <el-col :span="24">
-                <div class="tables">
-                    <el-header
-                            style="text-align: right; font-size: 12px; background-color: #ffffff;border-bottom: 1px solid #f5f5f5;">
-                        <el-row>
-                            <el-col :span="24">
-                            <span class="broad-title">
-                                <img src="/images/gather.png" class="icon">
-                                产业聚集 <span class="items-num">{{aPagination.total}}</span>家
-                            </span>
-                            </el-col>
-                        </el-row>
-                    </el-header>
-                    <el-table
-                            :row-class-name="tableRowClassName"
-                            :data="aProjects"
-                            align="left"
-                            style="width: 100%"
-                            stripe
-                    >
-                        <el-table-column
-                                prop="id"
-                                label="ID"
-                                sortable
-                                width="60"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="name"
-                                label="单位名称"
-                                sortable
-                                width="220"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                label="是否纳统"
-                                width="100"
-                        >
-                            <template slot-scope="scope">
-                                {{scope.row.is_statistics=='F'?'否':'是'}}
-                            </template>
-                        </el-table-column>
-                        <el-table-column
-                                prop="item_name"
-                                label="项目名称"
-                                sortable
-                                width="160"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="fee"
-                                label="投资(亿)"
-                                sortable
-                                width="120"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="fee_count"
-                                label="累计投资(亿)"
-                                width="120"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="phone"
-                                label="联系电话"
-                                width="110"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="start_at"
-                                label="开工时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="produce_at"
-                                label="投产时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                                prop="end_at"
-                                label="竣工时间"
-                                width="100"
-                        >
-                        </el-table-column>
-                        <el-table-column
-                        label="附件"
-                        >
-                        <template slot-scope="scope">
-                        <b v-for="(item,index) in scope.row.filesArray">
-                        <a class="file-url" v-for="(url,key) in item" :href="url" target="_blank">
-                        <i class="el-icon-document"></i>
-                        {{key}}
-                        </a></br>
-                        </b>
-                        </template>
-                        </el-table-column>
-                        <el-table-column
-                                fixed="right"
-                                label="操作"
-                                width="60"
-                        >
-                            <template slot-scope="scope">
-                                <el-tooltip class="item" effect="dark"
-                                            content="查看"
-                                            placement="left">
-                                    <el-button
-                                            @click="showProject = true"
-                                            @click.native.prevent="handleShowProject(scope.$index, scope.row)"
-                                            icon="el-icon-view"
-                                            type="success"
-                                            size="mini" circle>
-                                    </el-button>
-                                </el-tooltip>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                    <el-pagination
-                            @size-change="handleSizeChange"
-                            @current-change="aHandleCurrentChange"
-                            :page-sizes="[9, 20, 100, 300]"
-                            :page-size="9"
-                            layout="total, prev, pager, next"
-                            :total="aPagination.total">
-                    </el-pagination>
-                </div>
-            </el-col>
         </el-row>
     </div>
 </template>
@@ -634,6 +378,22 @@
 
         data() {
             return {
+                areaTotal: {
+                    ten_fee: 44.94,
+                    fee: 178.76,
+                    ten_fee_radio: 25,
+                    item_sum: 26,
+                    item_sum_all: 45,
+                    item_sum_ratio: 58,
+                    item_start: 11,
+                    item_start_ratio: 24,
+                    item_finish: 8,
+                    item_finish_ratio: 18,
+                    district: "",
+                    pic: "https://images.qdbfg.com/jining/weishan.png",
+                    id: "9"
+                },
+                year_at:'2018',
                 areaId: '',
                 area: {
                     fee: "0",
@@ -664,24 +424,12 @@
                 tOffset: 9,
                 tPagerCount: 5,
 
-                aProjects: [],
-                aPagination: {
-                    total: 0,
-                    per_page: 0,
-                    from: 0,
-                    to: 0,
-                    current_page: 1
-                },
-                aCurrentPage: '1',
-                aOffset: 9,
-                aPagerCount: 5,
-
                 filesArray: [],
                 items_num: "0",
                 fee: "0",
                 start_num: "0",
                 end_num: "0",
-                total:'',
+                total: '',
                 showProject: false,
                 showProjectForm: {},
                 showProjectFilesUrl: []
@@ -689,168 +437,93 @@
 
         },
         mounted() {
-            let that = this
-            let areaId = that.$route.params.id
-            that.areaId = areaId
-            axios.get('/api/v1/areas/' + areaId).then(response => {
-                that.area = response.data
-                that.items_num = Number(response.data.items_num)
-                that.fee = Number(response.data.fee)
-                that.start_num = Number(response.data.start_num)
-                that.end_num = Number(response.data.end_num)
+            this.areaId = this.$route.params.id
+            const formData = {
+                area_id: this.areaId,
+                year_at: this.year_at,
+            }
+            axios.post('/api/v1/project/queryArea', formData).then(response => {
+                this.areaTotal = response.data
             })
-            // axios.get('/api/v1/project/areaProject/' + areaId).then(response => {
-            //     if (response.data.status_code != 401) {
-            //         that.aProjects = response.data.data
-            //         that.aPagination = response.data.meta
-            //     }
-            // })
-            that.tenProjects()
-            that.transportProjects()
-            that.allProjects()
+            this.tenProjects()
         },
         methods: {
+            queryYearNow: function () {
+                this.year_at = '2018'
+                let formDataNow = {
+                    area_id: this.areaId,
+                    year_at: '2018',
+                }
+                axios.post('/api/v1/project/queryArea', formDataNow).then(response => {
+                    this.areaTotal = response.data
+                })
+                this.tenProjects()
+            },
+            queryYearLast: function () {
+                this.year_at = '2017'
+                let formDataLast = {
+                    area_id: this.areaId,
+                    year_at: '2017',
+                }
+                axios.post('/api/v1/project/queryArea', formDataLast).then(response => {
+                    this.areaTotal = response.data
+                })
+                this.tenProjects()
+            },
             tenProjects: function () {
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    status: '0',
+                    year_at: that.year_at
                 }
                 axios.post('/api/v1/project/projectClassify', formData).then(response => {
                     that.projects = response.data.data
                     that.pagination = response.data.meta
                 })
             },
-            transportProjects: function () {
-                let that = this
-                const formData = {
-                    id: that.areaId,
-                    status: '1',
-                }
-                axios.post('/api/v1/project/projectClassify', formData).then(response => {
-                    that.tProjects = response.data.data
-                    that.tPagination = response.data.meta
-                })
-            },
-            allProjects: function () {
-                let that = this
-                const formData = {
-                    id: that.areaId,
-                }
-                axios.post('/api/v1/project/projectClassify', formData).then(response => {
-                    that.aProjects = response.data.data
-                    that.aPagination = response.data.meta
-                })
-            },
-            rankingStart: function () {
-                axios.get('/api/v1/area/ranking/' + 'start_num').then(response => {
-                    this.areas = response.data
-                    let chartX = []
-                    let feeY = []
-                    let itemsNum = []
-                    let startNum = []
-                    let endNum = []
-                    for (var i = 0; i < response.data.length; i++) {
-                        chartX[i] = response.data[i].district
-                        feeY[i] = response.data[i].fee
-                        itemsNum[i] = response.data[i].items_num
-                        startNum[i] = response.data[i].start_num
-                        endNum[i] = response.data[i].end_num
-                    }
-                    this.chartX = chartX
-                    this.feeY = feeY
-                    this.itemsNum = itemsNum
-                    this.startNum = startNum
-                    this.endNum = endNum
-                    this.indexChart(this.chartX, this.feeY, this.itemsNum, this.startNum, this.endNum)
-                })
-            },
+
             changePage: function (page) {
-                this.pagination.current_page = page;
-                axios.get('/api/v1/projects?page=' + page).then(response => {
-                    this.projects = response.data.data
+                let that = this
+                const formData = {
+                    id: that.areaId,
+                    year_at: that.year_at
+                }
+                that.pagination.current_page = page;
+                axios.post(that.pagination.path+'?page=' + page, formData).then(response => {
+                    that.projects = response.data.data
+                    that.pagination = response.data.meta
                 })
             },
             handleSizeChange(pageSize) {
-                this.pagination.per_page = pageSize
-                const formData = {
-                    pagination: pageSize,
-                }
-                axios.post('/api/v1/payment/listSize', formData).then(response => {
-                    this.projects = response.data.data
-                })
-            },
-            handleCurrentChange(page) {
-                // this.pagination.current_page = page;
-                // axios.get('/api/v1/projects?page=' + page).then(response => {
-                //     this.projects = response.data.data
-                // })
                 let that = this
+                that.pagination.per_page = pageSize
                 const formData = {
                     id: that.areaId,
-                    status: '3',
+                    year_at: that.year_at
                 }
                 that.pagination.current_page = page;
-                axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
+                axios.post(that.pagination.path+'?page=' + pageSize, formData).then(response => {
                     that.projects = response.data.data
                     that.pagination = response.data.meta
                 })
             },
-            tHandleCurrentChange(page) {
-                // this.pagination.current_page = page;
-                // axios.get('/api/v1/projects?page=' + page).then(response => {
-                //     this.projects = response.data.data
-                // })
+            handleCurrentChange(page) {
                 let that = this
                 const formData = {
                     id: that.areaId,
-                    status: '0',
+                    year_at: that.year_at
                 }
-                that.tPagination.current_page = page;
-                axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
-                    that.tProjects = response.data.data
-                    that.tPagination = response.data.meta
+                that.pagination.current_page = page;
+                axios.post(that.pagination.path+'?page=' + page, formData).then(response => {
+                    that.projects = response.data.data
+                    that.pagination = response.data.meta
                 })
             },
-            aHandleCurrentChange(page) {
-                // this.pagination.current_page = page;
-                // axios.get('/api/v1/projects?page=' + page).then(response => {
-                //     this.projects = response.data.data
-                // })
-                let that = this
-                const formData = {
-                    id: that.areaId,
-                }
-                that.tPagination.current_page = page;
-                axios.post('/api/v1/project/projectClassify?page=' + page, formData).then(response => {
-                    that.aProjects = response.data.data
-                    that.aPagination = response.data.meta
-                })
-            },
+
             handleShowProject(index, row) {
-                let self=this
-                    self.showProjectForm.name = row.name
-                    self.showProjectForm.id_code = row.id_code
-                    self.showProjectForm.id_license = row.id_license
-                    self.showProjectForm.item_code = row.item_code
-                    self.showProjectForm.item_name = row.item_name
-                    self.showProjectForm.register_type = row.register_type
-                    self.showProjectForm.district = row.district
-                    self.showProjectForm.phone = row.phone
-                    self.showProjectForm.industry_code = row.industry_code
-                    self.showProjectForm.holding = row.holding
-                    self.showProjectForm.subjection = row.subjection
-                    self.showProjectForm.item_nature = row.item_nature
-                    self.showProjectForm.item_type = row.item_type
-                    self.showProjectForm.start_at = row.start_at
-                    self.showProjectForm.end_at = row.end_at
-                    self.showProjectForm.produce_at = row.produce_at
-                    self.showProjectForm.item_state = row.item_state
-                    self.showProjectForm.fee = row.fee
-                    self.showProjectForm.fee_count = row.fee_count
-                self.showProjectForm.is_statistics = row.is_statistics
-                self.showProjectForm.no_statistics = row.no_statistics
-                    self.showProjectForm.filesArray = row.filesArray
+                let self = this
+                self.showProjectForm = row
+
             },
             tableRowClassName({row, rowIndex}) {
                 if (row.batch_number === '' || row.batch_number === null) {
@@ -1301,6 +974,7 @@
     .textarea-width {
         width: 550px !important;
     }
+
     .text-code {
         width: 220px !important;
     }
@@ -1417,6 +1091,7 @@
     .middle-line {
         color: #fff;
     }
+
     .el-input.is-disabled .el-input__inner {
         background-color: #f5f7fa;
         border-color: #e4e7ed;
