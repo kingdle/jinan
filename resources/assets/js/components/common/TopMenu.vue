@@ -3,7 +3,7 @@
         <div class="container-fluid px-0">
             <div class="navbar-header">
                 <router-link to="/" class="navbar-brand" exact>
-                    <vgl-wave text="济宁市宏观数据信息平台"></vgl-wave>
+                    <vgl-wave text="济宁市双招双引投资项目监测平台"></vgl-wave>
                 </router-link>
                 <div v-if="user.authenticated" class="d-block d-sm-none d-none d-sm-block d-md-none float-right pt-2">
                     <button class="navbar-toggler btn btn-outline-secondary btn-sm pt-2 px-0" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
