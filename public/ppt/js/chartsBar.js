@@ -1,30 +1,10 @@
-/**
- * ---------------------------------------
- * This demo was created using amCharts 4.
- *
- * For more information visit:
- * https://www.amcharts.com/
- *
- * Documentation is available at:
- * https://www.amcharts.com/docs/v4/
- * ---------------------------------------
- */
+var dom = document.getElementById("chartsBars");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+// Generate data
 
-// Themes begin
-am4core.useTheme(am4themes_animated);
-am4core.useTheme(am4themes_dark);
-// Themes end
-
-// Create chart instance
-var chart = am4core.create("chartsBars", am4charts.XYChart);
-chart.paddingBottom = 30;
-chart.angle = 35;
-
-// Add data
-
-
-
-chart.data = [{
+var fourdata=[{
     "ten_fee": 44.94,
     "fee": 1800.38,
     "item_sum": 26,
@@ -177,25 +157,116 @@ chart.data = [{
         "district": "太白湖新区",
         "pic": "https://images.qdbfg.com/jining/taibaihu.png",
         "id": 14
-    }];
+    }]
+var category = [];
+var ten_feeData = [];
+var itemAllData = [];
+var itemStartData=[]
+var itemFinishData=[]
+for (var j=0; j<fourdata.length;j++){
+    category.push([fourdata[j].district])
+    ten_feeData.push(fourdata[j].ten_fee);
+    itemAllData.push(fourdata[j].item_sum_all);
+    itemStartData.push(fourdata[j].item_start)
+    itemFinishData.push(fourdata[j].item_finish)
+}
 
 
-let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.dataFields.category = "district";
-categoryAxis.renderer.minGridDistance = 80;
-
-let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-let series = chart.series.push(new am4charts.ColumnSeries());
-series.dataFields.categoryX = "district";
-series.dataFields.valueY = "ten_fee";
-series.tooltipText = "十强产业到位资金：{valueY.value}"
-series.columns.template.strokeOpacity = 0;
-
-chart.cursor = new am4charts.XYCursor();
-
-// Add distinctive colors for each column using adapter
-series.columns.template.adapter.add("fill", (fill, target) => {
-    return chart.colors.getIndex(target.dataItem.index);
-});
+// option
+option = {
+    backgroundColor: '',
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['line', 'bar'],
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+    xAxis: {
+        data: category,
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        },
+        axisLabel: {
+            interval:0,
+            rotate:40
+        }
+    },
+    yAxis: {
+        splitLine: {show: false},
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        }
+    },
+    series: [{
+        name: '到位资金',
+        type: 'line',
+        smooth: true,
+        showAllSymbol: true,
+        symbol: 'emptyCircle',
+        symbolSize: 15,
+        data: ten_feeData
+    }, {
+        name: '开工项目数',
+        type: 'bar',
+        barWidth: 10,
+        itemStyle: {
+            normal: {
+                barBorderRadius: 5,
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: '#14c8d4'},
+                        {offset: 1, color: '#43eec6'}
+                    ]
+                )
+            }
+        },
+        data: itemStartData
+    }, {
+        name: '竣工项目数',
+        type: 'bar',
+        barGap: '-100%',
+        barWidth: 10,
+        itemStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: 'rgba(20,200,212,0.5)'},
+                        {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
+                        {offset: 1, color: 'rgba(20,200,212,0)'}
+                    ]
+                )
+            }
+        },
+        z: -12,
+        data: itemFinishData
+    }, {
+        name: '总项目数',
+        type: 'pictorialBar',
+        symbol: 'rect',
+        itemStyle: {
+            normal: {
+                color: '#1b6539'
+            }
+        },
+        symbolRepeat: true,
+        symbolSize: [12, 4],
+        symbolMargin: 1,
+        z: -10,
+        data: itemAllData
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
