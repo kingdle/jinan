@@ -100,7 +100,7 @@
                                     <el-row :gutter="0">
                                         <el-col :xs="24" :sm="12" :md="12" :lg="24" :xl="24">
                                             <div class="items" style="padding: 8px;">
-                                                <img :src="area.pic +'!mp.v200'" class="image-district">
+                                                <img :src="area.pic" class="image-district">
                                                 <div class="district">
                                                     <p class="district-name">{{area.district}}</p>
                                                     <p>￥<span class="items-district-num">{{area.ten_fee}}</span>亿元</p>
