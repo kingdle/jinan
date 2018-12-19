@@ -1825,3 +1825,23 @@
 	width: 100%;
 	height: 1080px;
 }
+.modal-dialog{
+	margin:0 !important;
+}
+.son-sys{
+	padding: 30px;
+	text-align: center;
+}
+.son-sys button{
+	margin: 5px;
+}
+.sys-title{
+    color: #222;
+}
+.modal-content{
+	border-radius: 0px;
+	border: 0px;
+}
+.modal-dialog {
+	width: 100%;
+}

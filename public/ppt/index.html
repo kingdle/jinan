@@ -27,9 +27,11 @@
     <link rel="stylesheet" href="css/qazCG.css">
     <link rel="stylesheet" href="css/amcharts.css">
     <link rel="stylesheet" href="css/bubbles.css">
+    <link rel="stylesheet" href="css/element.css">
     <link href="font-awesome-4.6.1/css/font-awesome.css" rel="stylesheet">
 
-
+    <script src="js/vue.js"></script>
+    <script src="js/element.js"></script>
     <!-- <link href='https://fonts.googleapis.com/css?family=Rubik:400,500,900,700' rel='stylesheet' type='text/css'> -->
     <!-- font-family: 'Rubik', sans-serif; -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600italic,600' rel='stylesheet' type='text/css'> -->
@@ -38,13 +40,139 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
 
     <![endif]-->
 </head>
 <body>
+<div class="modal fade" id="DataListSystem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <!--<div class="modal-dialog modal-dialog-centered" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-body son-sys">-->
+                <!--<button type="button" class="btn btn-info">常规数据采集</button>-->
+                <!--<button type="button" class="btn btn-success">数据查询发布</button>-->
+                <!--<button type="button" class="btn btn-warning">企业数据档案库</button>-->
+                <!--<button type="button" class="btn btn-danger">动态监测预警</button>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="screen" data-marker="6">
+        <div class="background"> <div id="gaodemap" style="height: 1200px;"></div></div>
 
+        <div class="content-outside">
+            <div class="content-inside align-center">
+                <div class="text">
+                    <h1 class="h2">Our amazing team</h1>
+                    <br>
+                </div>
+
+                <div class="team">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-3 col">
+                                <div class="photo">
+                                    <img src="img/team-1.jpg" alt="Akarash Padma" title="Akarash Padma"/>
+
+                                    <div class="overlay"></div>
+                                    <div class="about">
+                                        <div class="content-outside">
+                                            <div class="content-inside">
+                                                <h2 class="h5"> Akarash Padma </h2>
+                                                <p> &middot; CEO &middot; </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-3 col">
+                                <div class="photo">
+                                    <img src="img/team-2.jpg" alt="Carol Metews" title="Carol Metews"/>
+
+                                    <div class="overlay"></div>
+                                    <div class="about">
+                                        <div class="content-outside">
+                                            <div class="content-inside">
+                                                <h2 class="h5"> Carol Metews </h2>
+                                                <p> &middot; Manager &middot; </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-3 col">
+                                <div class="photo">
+                                    <img src="img/team-3.jpg" alt="Emily Sanders" title="Emily Sanders"/>
+
+                                    <div class="overlay"></div>
+                                    <div class="about">
+                                        <div class="content-outside">
+                                            <div class="content-inside">
+                                                <h2 class="h5"> Emily Sanders </h2>
+                                                <p> &middot; Designer &middot; </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-3 col">
+                                <div class="photo">
+                                    <img src="img/team-4.jpg" alt="Andrew Hart" title="Andrew Hart"/>
+
+                                    <div class="overlay"></div>
+                                    <div class="about">
+                                        <div class="content-outside">
+                                            <div class="content-inside">
+                                                <h2 class="h5"> Andrew Hart </h2>
+                                                <p> &middot; Developer &middot; </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="SpecialListSystem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body son-sys special">
+                <button type="button" class="btn btn-info">新旧动能转换</button>
+                <a href="http://10.37.119.178" target="_blank">
+                    <button type="button" class="btn btn-success">双招双引监测</button>
+                </a>
+                <button type="button" class="btn btn-warning">文化产业监测</button>
+                <button type="button" class="btn btn-danger">园区经济发展</button>
+                <button type="button" class="btn btn-info">乡村振兴战略</button>
+                <button type="button" class="btn btn-success">化工企业监测</button>
+                <button type="button" class="btn btn-warning">"520"企业监测</button>
+                <button type="button" class="btn btn-danger">工业数据分析</button>
+                <button type="button" class="btn btn-info">批发零售数据分析</button>
+                <button type="button" class="btn btn-success">住宿餐饮数据分析</button>
+                <button type="button" class="btn btn-warning">房地产业数据分析</button>
+                <button type="button" class="btn btn-danger">重点项目数据分析</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="brand"><h1 class="logo h5">
     <!--<img src="./img/logo-white.png"> 济宁宏观经济信息资源库-->
 </h1></div>
@@ -54,17 +182,13 @@
         <li data-marker="1" class="active"></li>
         <li data-marker="2"></li>
         <li data-marker="3"></li>
-        <!-- <li data-marker="4"></li>
-        <li data-marker="5"></li>
-        <li data-marker="6"></li> -->
+        <!--<li data-marker="4"></li>-->
+        <!--<li data-marker="5"></li>-->
+        <!--<li data-marker="6"></li>-->
         <li data-marker="4"></li>
     </ul>
 </nav>
 
-<div class="app-store-btns">
-    <a href="#app-store" class="app-store"><i></i></a>
-    <a href="#google-play" class="google-play"><i></i></a>
-</div>
 
 <div class="screens">
     <div class="screen active" data-marker="1">
@@ -116,47 +240,49 @@
                                             <li></li>
                                             <li></li>
                                         </ul>
-                                        <button>
+                                        <button @click="visible = true">
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="container-card">
-                                    <div class="card card2">
-                                        <h2>数据管理系统</h2>
-                                        <p>四经普</p>
-                                        <div class="pic"></div>
-                                        <ul>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                        <button>
-                                        </button>
+                                <a data-toggle="modal"
+                                   data-target="#DataListSystem">
+                                    <div class="container-card">
+                                        <div class="card card2">
+                                            <h2>数据管理系统</h2>
+                                            <p>四经普</p>
+                                            <div class="pic"></div>
+                                            <ul>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                            <button>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-
+                                </a>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-3 col">
                                 <div class="container-card">
@@ -195,40 +321,43 @@
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="container-card">
-                                    <div class="card card4">
-                                        <h2>专题监测</h2>
-                                        <p>四经普</p>
-                                        <div class="pic"></div>
-                                        <ul>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                        <button>
-                                        </button>
+                                <a data-toggle="modal"
+                                   data-target="#SpecialListSystem">
+                                    <div class="container-card">
+                                        <div class="card card4">
+                                            <h2>专题监测</h2>
+                                            <p>四经普</p>
+                                            <div class="pic"></div>
+                                            <ul>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                            <button>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -410,12 +539,12 @@
                                 </div>
                                 <div class="col-md-2 align-center align-center-mobile">
                                     <a href="http://10.37.119.178" target="_blank">
-                                    <div class="card-three">
-                                        <div class="card_Banner">
-                                            <div class="card_Avatar"></div>
+                                        <div class="card-three">
+                                            <div class="card_Banner">
+                                                <div class="card_Avatar"></div>
+                                            </div>
+                                            <h5>双招双引</h5>
                                         </div>
-                                        <h5>双招双引</h5>
-                                    </div>
                                     </a>
                                 </div>
                                 <div class="col-md-2 align-center align-center-mobile">
@@ -456,121 +585,43 @@
             </div>
         </div>
     </div>
-    <!-- <div class="screen" data-marker="4">
-        <div class="background"></div>
+    <!--<div class="screen" data-marker="4">-->
+        <!--<div class="background"></div>-->
 
-        <div class="content-outside">
-            <div class="content-inside align-center">
-                <div class="text">
-                    <h1 class="h2">More features <br class="visible-xs"> in video</h1>
-                    <p>Easy subscription, easy rental, <br class="visible-xs"> easy driving, easy parking… <br class="visible-xs"> Everything’s easy with our car sharing.</p>
-                </div>
-                <br>
+        <!--<div class="content-outside">-->
+            <!--<div class="content-inside align-center">-->
+                <!--<div class="text">-->
+                    <!--<h1 class="h2">More features <br class="visible-xs"> in video</h1>-->
+                    <!--<p>Easy subscription, easy rental, <br class="visible-xs"> easy driving, easy parking… <br class="visible-xs"> Everything’s easy with our car sharing.</p>-->
+                <!--</div>-->
+                <!--<br>-->
 
-                <div class="video">
-                    <iframe src="" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+                <!--<div class="video">-->
+                    <!--<iframe src="" frameborder="0" allowfullscreen></iframe>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="screen" data-marker="5">
-        <div class="background"></div>
+    <!--<div class="screen" data-marker="5">-->
+        <!--<div class="background"></div>-->
 
-        <div class="content-outside">
-            <div class="content-inside align-center">
-                <div class="qr-code hidden-xs hidden-sm">
-                    <img src="img/qr-code.jpg" alt="business-start"/>
-                </div>
+        <!--<div class="content-outside">-->
+            <!--<div class="content-inside align-center">-->
+                <!--<div class="qr-code hidden-xs hidden-sm">-->
+                    <!--<img src="img/qr-code.jpg" alt="business-start"/>-->
+                <!--</div>-->
 
-                <div class="text">
-                    <h1>Get it for free!</h1>
-                    <p class="hidden-xs hidden-sm">Scan the QR code to download</p>
-                    <p class="hidden-md hidden-lg">App Store and Google Play <br> available now</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <!--<div class="text">-->
+                    <!--<h1>Get it for free!</h1>-->
+                    <!--<p class="hidden-xs hidden-sm">Scan the QR code to download</p>-->
+                    <!--<p class="hidden-md hidden-lg">App Store and Google Play <br> available now</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="screen" data-marker="6">
-        <div class="background"></div>
 
-        <div class="content-outside">
-            <div class="content-inside align-center">
-                <div class="text">
-                    <h1 class="h2">Our amazing team</h1>
-                    <br>
-                </div>
-
-                <div class="team">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="photo">
-                                    <img src="img/team-1.jpg" alt="Akarash Padma" title="Akarash Padma"/>
-
-                                    <div class="overlay"></div>
-                                    <div class="about">
-                                        <div class="content-outside">
-                                            <div class="content-inside">
-                                                <h2 class="h5"> Akarash Padma </h2>
-                                                <p> &middot; CEO &middot; </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="photo">
-                                    <img src="img/team-2.jpg" alt="Carol Metews" title="Carol Metews"/>
-
-                                    <div class="overlay"></div>
-                                    <div class="about">
-                                        <div class="content-outside">
-                                            <div class="content-inside">
-                                                <h2 class="h5"> Carol Metews </h2>
-                                                <p> &middot; Manager &middot; </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="photo">
-                                    <img src="img/team-3.jpg" alt="Emily Sanders" title="Emily Sanders"/>
-
-                                    <div class="overlay"></div>
-                                    <div class="about">
-                                        <div class="content-outside">
-                                            <div class="content-inside">
-                                                <h2 class="h5"> Emily Sanders </h2>
-                                                <p> &middot; Designer &middot; </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-3 col">
-                                <div class="photo">
-                                    <img src="img/team-4.jpg" alt="Andrew Hart" title="Andrew Hart"/>
-
-                                    <div class="overlay"></div>
-                                    <div class="about">
-                                        <div class="content-outside">
-                                            <div class="content-inside">
-                                                <h2 class="h5"> Andrew Hart </h2>
-                                                <p> &middot; Developer &middot; </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="screen" data-marker="4">
         <div class="background">
@@ -590,8 +641,10 @@
                             </div>
                             <div class="col-md-6 align-center align-center-mobile">
                                 <!--<div id="chartpie"></div>-->
-                                <div id="main" style="height:650px;width:100%;margin-top:-150px;border:0px solid #ccc;background: none;position: relative;">
-                                    <div id="china_map" style="width:650px;height:650px;margin:0 auto;position: absolute;top:10px;display: block;"></div>
+                                <div id="main"
+                                     style="height:650px;width:100%;margin-top:-150px;border:0px solid #ccc;background: none;position: relative;">
+                                    <div id="china_map"
+                                         style="width:650px;height:650px;margin:0 auto;position: absolute;top:10px;display: block;"></div>
                                     <!-- <div class="retPro" style="z-index:999;position: absolute;top:50px;left:10px;display: block;">
                                                 <a href="javascript:void(0);" onclick="goBackChinaMap()" style="height:30px;background:#fff;line-height: 30px;border:1px solid #ccc;padding:5px 10px;margin-left:20px;border-radius:5px;cursor: pointer;color:#393939;text-decoration:none;">
                                                     返回全国
@@ -646,26 +699,27 @@
 <script type="text/javascript" src="js/chartsBar.js"></script>
 <script src="https://webapi.amap.com/maps?v=1.4.11&key=6d135a62ae698f76e255de47a335884a"></script>
 <script>
-    var map = new AMap.Map('gaodemap',{
+    var map = new AMap.Map('gaodemap', {
         zoom: 10, //设置地图的缩放级别
-        center: [116.58614,35.3999],
+        center: [116.58614, 35.3999],
     });
     map.setMapStyle('amap://styles/2df25402d2126d87ab422f1a76acd450');
 </script>
 <script>
-    function goBackChinaMap(){
-        $('#china_map').css('display','block');
-        $('#city_map').css('display','none');
-        $('#proe_map').css('display','none');
+    function goBackChinaMap() {
+        $('#china_map').css('display', 'block');
+        $('#city_map').css('display', 'none');
+        $('#proe_map').css('display', 'none');
     }
-    function goBackProeMap(){
-        $('#china_map').css('display','none');
-        $('#city_map').css('display','none');
-        $('#proe_map').css('display','block');
+
+    function goBackProeMap() {
+        $('#china_map').css('display', 'none');
+        $('#city_map').css('display', 'none');
+        $('#proe_map').css('display', 'block');
     }
 </script>
 <script>
-    $().ready(function(){
+    $().ready(function () {
         /*echarts*/
         $.get('json/jining.json', function (mapJson) {
             echarts.registerMap('jining', mapJson);
@@ -673,40 +727,40 @@
             chart.setOption({
                 tooltip: {
                     trigger: 'item',
-                    formatter: function (result){//回调函数，参数params具体格式参加官方API
-                        return result.name+'<br />项目数:'+result.value;
+                    formatter: function (result) {//回调函数，参数params具体格式参加官方API
+                        return result.name + '<br />项目数:' + result.value;
                     }
                 },
-                dataRange:{
-                    min:0,
-                    max:50,
-                    splitNumber:0,
-                    text:['高','低'],
-                    realtime:false,
-                    calculable:false,
-                    selectedMode:false,
-                    realtime:false,
-                    show:false,
-                    itemWidth:10,
-                    itemHeight:60,
-                    color:['lightskyblue','#fa5e13']
+                dataRange: {
+                    min: 0,
+                    max: 50,
+                    splitNumber: 0,
+                    text: ['高', '低'],
+                    realtime: false,
+                    calculable: false,
+                    selectedMode: false,
+                    realtime: false,
+                    show: false,
+                    itemWidth: 10,
+                    itemHeight: 60,
+                    color: ['lightskyblue', '#fa5e13']
                 },
-                title:{
+                title: {
                     // text:'济宁市全域经济',
                     //subtext:'',
-                    x:'center',
-                    y:'top',
-                    textAlign:'left'
+                    x: 'center',
+                    y: 'top',
+                    textAlign: 'left'
                 },
                 series: [{
                     type: 'map',
                     map: 'jining',//要和echarts.registerMap（）中第一个参数一致
-                    scaleLimit: { min: 0.8, max: 1.9 },//缩放
-                    mapLocation:{
-                        y:60
+                    scaleLimit: {min: 0.8, max: 1.9},//缩放
+                    mapLocation: {
+                        y: 60
                     },
-                    itemSytle:{
-                        emphasis:{label:{show:false}}
+                    itemSytle: {
+                        emphasis: {label: {show: false}}
                     },
                     label: {
                         normal: {
@@ -716,18 +770,18 @@
                             show: true
                         }
                     },
-                    data : [
-                        {name:'任城区',value:'9'},
-                        {name:'兖州区',value:'35'},
-                        {name:'曲阜市',value:'49'},
-                        {name:'邹城市',value:'16'},
-                        {name:'汶上县',value:'43'},
-                        {name:'嘉祥县',value:'35'},
-                        {name:'梁山县',value:'50'},
-                        {name:'金乡县',value:'23'},
-                        {name:'鱼台县',value:'18'},
-                        {name:'微山县',value:'45'},
-                        {name:'泗水县',value:'20'},
+                    data: [
+                        {name: '任城区', value: '9'},
+                        {name: '兖州区', value: '35'},
+                        {name: '曲阜市', value: '49'},
+                        {name: '邹城市', value: '16'},
+                        {name: '汶上县', value: '43'},
+                        {name: '嘉祥县', value: '35'},
+                        {name: '梁山县', value: '50'},
+                        {name: '金乡县', value: '23'},
+                        {name: '鱼台县', value: '18'},
+                        {name: '微山县', value: '45'},
+                        {name: '泗水县', value: '20'},
 
                     ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
                 }]
@@ -736,51 +790,51 @@
                 chart.on('', function (result) {//回调函数，点击时触发，参数params格式参加官方API
 
                     setTimeout(function () {
-                        $('#china_map').css('display','none');
-                        $('#city_map').css('display','none');
-                        $('#proe_map').css('display','block');
+                        $('#china_map').css('display', 'none');
+                        $('#city_map').css('display', 'none');
+                        $('#proe_map').css('display', 'block');
                     }, 500);
                     //选择省的单击事件
                     var selectProe = result.name;
                     //    调取后台数据
-                    $.get('json/'+selectProe+'/'+selectProe+'.json', function (Citymap) {
+                    $.get('json/' + selectProe + '/' + selectProe + '.json', function (Citymap) {
                         echarts.registerMap(selectProe, Citymap);
                         var myChartProe = echarts.init(document.getElementById('proe_map'));
                         myChartProe.setOption({
                             tooltip: {
                                 trigger: 'item',
-                                formatter: function loadData(result){//回调函数，参数params具体格式参加官方API
-                                    return result.name+'<br />数据:'+result.value;
+                                formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API
+                                    return result.name + '<br />数据:' + result.value;
                                 }
                             },
-                            dataRange:{
-                                min:0,
-                                max:50,
-                                text:['高','低'],
-                                realtime:false,
-                                calculable:false,
-                                splitNumber:0,
-                                itemWidth:10,
-                                show:false,
-                                itemHeight:60,
-                                color:['lightskyblue','#f2f2f2']
+                            dataRange: {
+                                min: 0,
+                                max: 50,
+                                text: ['高', '低'],
+                                realtime: false,
+                                calculable: false,
+                                splitNumber: 0,
+                                itemWidth: 10,
+                                show: false,
+                                itemHeight: 60,
+                                color: ['lightskyblue', '#f2f2f2']
                             },
-                            title:{
-                                text:selectProe+'数据总览',
+                            title: {
+                                text: selectProe + '数据总览',
                                 //subtext:'',
-                                x:'center',
-                                y:'top',
-                                textAlign:'left'
+                                x: 'center',
+                                y: 'top',
+                                textAlign: 'left'
                             },
                             series: [{
                                 type: 'map',
-                                map: selectProe ,//要和echarts.registerMap（）中第一个参数一致
-                                scaleLimit: { min: 0.8, max: 1.9 },//缩放
-                                mapLocation:{
-                                    y:60
+                                map: selectProe,//要和echarts.registerMap（）中第一个参数一致
+                                scaleLimit: {min: 0.8, max: 1.9},//缩放
+                                mapLocation: {
+                                    y: 60
                                 },
-                                itemSytle:{
-                                    emphasis:{label:{show:false}}
+                                itemSytle: {
+                                    emphasis: {label: {show: false}}
                                 },
                                 label: {
                                     normal: {
@@ -790,17 +844,17 @@
                                         show: true
                                     }
                                 },
-                                data : [
-                                    {name:'任城区',value:'5'},
-                                    {name:'兖州区',value:'0'},
-                                    {name:'曲阜市',value:'10'},
-                                    {name:'邹城市',value:'30'},
-                                    {name:'汶上县',value:'50'},
-                                    {name:'嘉祥县',value:'15'}
+                                data: [
+                                    {name: '任城区', value: '5'},
+                                    {name: '兖州区', value: '0'},
+                                    {name: '曲阜市', value: '10'},
+                                    {name: '邹城市', value: '30'},
+                                    {name: '汶上县', value: '50'},
+                                    {name: '嘉祥县', value: '15'}
                                 ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
                             }]
                         })
-                        myChartProe.on('click',function(rel){
+                        myChartProe.on('click', function (rel) {
                             setTimeout(function () {
                                 function contains(arr, obj) {
                                     var i = arr.length;
@@ -811,16 +865,17 @@
                                     }
                                     return false;
                                 }
-                                var arr = new Array('北京','上海','天津','台湾','重庆');
-                                if(contains(arr,selectProe)==false){
-                                    $('#china_map').css('display','none');
-                                    $('#proe_map').css('display','none');
-                                    $('#city_map').css('display','block');
+
+                                var arr = new Array('北京', '上海', '天津', '台湾', '重庆');
+                                if (contains(arr, selectProe) == false) {
+                                    $('#china_map').css('display', 'none');
+                                    $('#proe_map').css('display', 'none');
+                                    $('#city_map').css('display', 'block');
                                 }
-                                else{
-                                    $('#china_map').css('display','none');
-                                    $('#proe_map').css('display','block');
-                                    $('#city_map').css('display','none');
+                                else {
+                                    $('#china_map').css('display', 'none');
+                                    $('#proe_map').css('display', 'block');
+                                    $('#city_map').css('display', 'none');
                                 }
 
                             }, 500);
@@ -828,44 +883,44 @@
                             var selectCity = rel.name;
 
                             //    调取后台数据
-                            $.get('json/'+selectProe+'/'+selectCity+'.json', function (Citymap) {
+                            $.get('json/' + selectProe + '/' + selectCity + '.json', function (Citymap) {
                                 echarts.registerMap(selectCity, Citymap);
                                 var myChartCity = echarts.init(document.getElementById('city_map'));
                                 myChartCity.setOption({
                                     tooltip: {
                                         trigger: 'item',
-                                        formatter: function loadData(result){//回调函数，参数params具体格式参加官方API
-                                            return result.name+'<br />数据:'+result.value;
+                                        formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API
+                                            return result.name + '<br />数据:' + result.value;
                                         }
                                     },
-                                    dataRange:{
-                                        min:0,
-                                        max:50,
-                                        text:['高','低'],
-                                        realtime:false,
-                                        show:false,
-                                        calculable:false,
-                                        splitNumber:0,
-                                        itemWidth:10,
-                                        itemHeight:60,
-                                        color:['lightskyblue','#f2f2f2']
+                                    dataRange: {
+                                        min: 0,
+                                        max: 50,
+                                        text: ['高', '低'],
+                                        realtime: false,
+                                        show: false,
+                                        calculable: false,
+                                        splitNumber: 0,
+                                        itemWidth: 10,
+                                        itemHeight: 60,
+                                        color: ['lightskyblue', '#f2f2f2']
                                     },
-                                    title:{
-                                        text:selectCity+'数据总览',
+                                    title: {
+                                        text: selectCity + '数据总览',
                                         //subtext:'',
-                                        x:'center',
-                                        y:'top',
-                                        textAlign:'left'
+                                        x: 'center',
+                                        y: 'top',
+                                        textAlign: 'left'
                                     },
                                     series: [{
                                         type: 'map',
-                                        map: selectCity ,//要和echarts.registerMap（）中第一个参数一致
-                                        scaleLimit: { min: 0.8, max: 1.9 },//缩放
-                                        mapLocation:{
-                                            y:60
+                                        map: selectCity,//要和echarts.registerMap（）中第一个参数一致
+                                        scaleLimit: {min: 0.8, max: 1.9},//缩放
+                                        mapLocation: {
+                                            y: 60
                                         },
-                                        itemSytle:{
-                                            emphasis:{label:{show:false}}
+                                        itemSytle: {
+                                            emphasis: {label: {show: false}}
                                         },
                                         label: {
                                             normal: {
@@ -875,13 +930,13 @@
                                                 show: true
                                             }
                                         },
-                                        data : [
-                                            {name:'任城区',value:'5'},
-                                            {name:'兖州区',value:'0'},
-                                            {name:'曲阜市',value:'10'},
-                                            {name:'邹城市',value:'30'},
-                                            {name:'汶上县',value:'50'},
-                                            {name:'嘉祥县',value:'15'}
+                                        data: [
+                                            {name: '任城区', value: '5'},
+                                            {name: '兖州区', value: '0'},
+                                            {name: '曲阜市', value: '10'},
+                                            {name: '邹城市', value: '30'},
+                                            {name: '汶上县', value: '50'},
+                                            {name: '嘉祥县', value: '15'}
                                         ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
                                     }]
                                 })

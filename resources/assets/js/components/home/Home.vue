@@ -170,12 +170,12 @@
 
     export default {
         created() {
-            this.$store.dispatch('setAuthUser')
+            // this.$store.dispatch('setAuthUser')
         },
         computed: {
-            ...mapState({
-                user: state => state.AuthUser,
-            })
+            // ...mapState({
+            //     user: state => state.AuthUser,
+            // })
         },
 
         data() {
