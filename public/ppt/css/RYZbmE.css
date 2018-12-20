@@ -121,7 +121,7 @@
 }
 
 .boys span::before {
-    background-color: #a82938;
+    background-color: #ff3d58;
     animation: var(--duration) ease-in-out infinite alternate;
 }
 

@@ -1,0 +1,150 @@
+.pop-title{
+    font-size: 46px;
+    margin: 100px auto;
+    text-align: center;
+}
+.pop-two-title{
+    font-size: 46px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+.pop-background{
+    background-color:rgb(4, 33, 45, 0.9);
+    /*background: url("../img/bgr-2.jpg") no-repeat center center scroll;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.wrapper {
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.box {
+    width: 260px;
+    height: 320px;
+    padding: 0 2rem 3rem;
+    -webkit-transition: opacity 0.5s linear 0.3s,
+    -webkit-transform 0.3s linear 0s,
+    -webkit-filter 0.5s linear 0.3s;
+    transition: opacity 0.5s linear 0.3s,
+    -webkit-transform 0.3s linear 0s,
+    -webkit-filter 0.5s linear 0.3s;
+    transition: transform 0.3s linear 0s,
+    filter 0.5s linear 0.3s,
+    opacity 0.5s linear 0.3s;
+    transition:
+            transform 0.3s linear 0s,
+            filter 0.5s linear 0.3s,
+            opacity 0.5s linear 0.3s,
+            -webkit-transform 0.3s linear 0s,
+            -webkit-filter 0.5s linear 0.3s;
+    /*transform-origin: top center;*/
+}
+.product {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.6rem;
+    /*background-image: url("../img/pop-1.jpg");*/
+    background-color: #fffce5;
+    background-position: top 6rem center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+    -webkit-transition: box-shadow 0.5s linear,
+    height 0.1s linear 0s;
+    box-shadow: 0px 0px 30px rgba(255,255,255,0.9);
+    transition:
+            box-shadow 0.5s linear,
+            height 0.1s linear 0s;
+}
+.wrapper > .box[pop-marker="1"] .product{ background-image: url("../img/pop-1.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="2"] .product{ background-image: url("../img/pop-2.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="3"] .product{ background-image: url("../img/pop-3.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="4"] .product{ background-image: url("../img/pop-4.jpg"); filter: grayscale(50%);}
+.name {
+    display: block;
+    padding: 1.8rem;
+    font-size: 20px;
+}
+.description {
+    position: absolute;
+    color: #222;
+    height: 60px;
+    background: #fffce5;
+    border-bottom-left-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+    bottom: 0rem;
+    left: 0;
+    right: 0;
+    display: block;
+    padding: 5px 1.5rem;
+    opacity: 0;
+    -webkit-transition: opacity 0.1s linear 0s;
+    transition: opacity 0.1s linear 0s;
+}
+.quit{
+    margin-left: 20px;
+    color: #fff;
+    width: 200px;
+}
+.wrapper:hover .box:not(:hover)  {
+    /*-webkit-filter: blur(3px);*/
+    /*filter: blur(3px);*/
+    /*opacity: 0.5;*/
+    filter: grayscale(100%);
+}
+.box:hover  {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: opacity 0.1s linear 0s,
+    -webkit-transform 0.3s linear 0.3s,
+    -webkit-filter 0.1s linear 0s;
+    transition: opacity 0.1s linear 0s,
+    -webkit-transform 0.3s linear 0.3s,
+    -webkit-filter 0.1s linear 0s;
+    transition: transform 0.3s linear 0.3s,
+    filter 0.1s linear 0s,
+    opacity 0.1s linear 0s;
+    transition:
+            transform 0.3s linear 0.3s,
+            filter 0.1s linear 0s,
+            opacity 0.1s linear 0s,
+            -webkit-transform 0.3s linear 0.3s,
+            -webkit-filter 0.1s linear 0s;
+}
+.box:hover .product {
+    height: 340px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    -webkit-transition: box-shadow 1s linear,
+    height 0.3s linear 0.5s;
+    transition:
+            box-shadow 1s linear,
+            height 0.3s linear 0.5s;
+    box-shadow: 0px 0px 30px rgba(255,255,255,0.9);
+}
+.box:hover .description {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s linear 0.75s;
+    transition: opacity 0.3s linear 0.75s;
+}

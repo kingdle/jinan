@@ -220,7 +220,6 @@
             this.homeTotal = JSON.parse(localStorage.getItem('homeTotal'));
             axios.post('/api/v1/home/industryChart/' + year).then(response => {
                 window.localStorage.setItem('industryArray',JSON.stringify(response.data));
-                console.log(response.data)
             })
             this.industryArray = JSON.parse(localStorage.getItem('industryArray'));
             axios.post('/api/v1/home/cityChart/' + year).then(response => {
