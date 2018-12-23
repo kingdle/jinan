@@ -43,7 +43,10 @@ Route::group(['prefix' => '/v1', 'middleware' => 'cors'], function () {
     Route::post('/project/projectClassify', 'ProjectsController@projectClassify');
     Route::post('/project/queryArea', 'ProjectsController@queryArea');
 
-
+    //园区
+    Route::resource('/parks', 'ParksController');
+    Route::get('/park/top', 'ParksController@top');
+    Route::resource('/dynamics', 'DynamicsController');
 
 
     Route::resource('/payments', 'PaymentsController')->middleware('auth:api');
