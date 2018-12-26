@@ -3,7 +3,7 @@
 .card-one{
   height: auto;
 	max-height:299px;
-	width: 210px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -11,11 +11,12 @@
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	float: left;
 }
 .card-two{
   height: auto;
 	max-height:299px;
-	width: 210px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -23,11 +24,12 @@
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	float: left;
 }
 .card-three{
   height: auto;
 	max-height:299px;
-	width: 210px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -35,11 +37,12 @@
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	float: left;
 }
 .card-four{
   height: auto;
 	max-height:299px;
-	width: 210px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -47,11 +50,12 @@
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	float: left;
 }
 .card-five{
 	height: auto;
 	max-height:299px;
-	width: 210px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -59,8 +63,9 @@
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	float: left;
 }
-	.card-one:first-of-type{
+	.card-one{
 		margin-right: 25px;
 	}
 
@@ -68,7 +73,7 @@
 		margin-top: -25px;
 		box-shadow: 0 15px 20px rgba(0,0,0,0.7);
 	}
-	.card-two:first-of-type{
+	.card-two{
 		margin-right: 25px;
 	}
 
@@ -76,7 +81,7 @@
 		margin-top: -25px;
 		box-shadow: 0 15px 20px rgba(0,0,0,0.7);
 	}
-	.card-three:first-of-type{
+	.card-three{
 		margin-right: 25px;
 	}
 
@@ -84,7 +89,7 @@
 		margin-top: -25px;
 		box-shadow: 0 15px 20px rgba(0,0,0,0.7);
 	}
-	.card-four:first-of-type{
+	.card-four{
 		margin-right: 25px;
 	}
 
@@ -113,19 +118,19 @@
 	}
 	.card-two .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/two.jpg");
+		background-image: url("../img/three2.jpg");
 	}
 	.card-three .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/five.jpg");
+		background-image: url("../img/zhaoshang.jpg");
 	}
 	.card-four .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/four.jpg");
+		background-image: url("../img/a4.jpg");
 	}
 .card-five .card_Banner{
 	/* ⬇ Photo by Alexandru Acea on Unsplash */
-	background-image: url("../img/six.jpg");
+	background-image: url("../img/three5.jpg");
 }
 .card_Avatar{
 	height: 100px;
@@ -140,17 +145,17 @@
 }
 
 	.card-one .card_Avatar{
-		background-image: url("../img/zero.jpg");
+		background-image: url("../img/a6.png");
 	}
 
 	.card-two .card_Avatar{
-		background-image: url("../img/two.jpg");
+		background-image: url("../img/a1.png");
 	}
 	.card-three .card_Avatar{
-		background-image: url("../img/five.jpg");
+		background-image: url("../img/three3-r.jpg");
 	}
 	.card-four .card_Avatar{
-		background-image: url("../img/four.jpg");
+		background-image: url("../img/a4.png");
 	}
 .card-five .card_Avatar{
 	background-image: url("../img/six.jpg");

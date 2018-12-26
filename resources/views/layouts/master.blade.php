@@ -61,16 +61,16 @@
 
 </head>
 <body>
-<div id="appLoading">
+{{--<div id="appLoading">--}}
 
-    <div class="col-12 w-100per m-b-100 overflow-auto">
-        <div class="w-1200 py-5 m-auto">
-            <span><img src="/images/Spinner-1s-200px.gif" alt="loading" width="42" height="42"></span>
-            <span style="color:#8a8e91">服务加载中...</span>
-        </div>
-    </div>
+    {{--<div class="col-12 w-100per m-b-100 overflow-auto">--}}
+        {{--<div class="w-1200 py-5 m-auto">--}}
+            {{--<span><img src="/images/Spinner-1s-200px.gif" alt="loading" width="42" height="42"></span>--}}
+            {{--<span style="color:#8a8e91">服务加载中...</span>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-</div>
+{{--</div>--}}
 <div id="app"  style="display: none">
     <app></app>
 </div>

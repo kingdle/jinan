@@ -476,7 +476,7 @@ nav > ul > li.active:after {
 
 .screens > .screen > .content-outside {
     position: relative;
-    top: 10%;
+    top: 5%;
     left: 5%;
     display: table;
     width: 90%;
@@ -718,7 +718,7 @@ h4, .h4 {
 
 h5, .h5 {
     font-family: 'Rubik', sans-serif;
-    font-size: 23px;
+    font-size: 20px;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
@@ -2586,7 +2586,7 @@ a:hover, a:focus {
 
 /* Helper classes */
 .one-title {
-    margin: 20px 0 300px 0;
+    margin: 80px 0 260px 0;
 }
 
 .one-title .h2 {
@@ -2626,9 +2626,7 @@ a:hover, a:focus {
     animation: rotate 2s infinite linear;
 }
 
-.loading:hover {
-    color: #ff2149;
-}
+
 
 @keyframes rotate {
     0% {
@@ -2703,7 +2701,8 @@ a:hover, a:focus {
     position: relative;
     display: block;
     max-width: 1440px;
-    margin: 100px auto;
+    margin: 140px auto;
+    margin-left:30px;
 }
 
 .pop-team > .container {
@@ -2712,7 +2711,7 @@ a:hover, a:focus {
 
 .pop-team .row > div {
     box-sizing: border-box;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .pop-team .row > div > .photo {
@@ -2774,7 +2773,7 @@ a:hover, a:focus {
 }
 
 /* Pop Team */
-p {
+.pop p {
     position: absolute;
     bottom: 1em;
     width: 100%;
@@ -2787,7 +2786,7 @@ p {
 .pop-quit {
     color: #838383;
     font-size: 22px;
-    margin-top: 200px;
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -2795,4 +2794,27 @@ p {
     color: #838383;
     font-size: 22px;
     text-align: center;
+}
+.loading .num{
+    text-align: center;
+    padding: 40px 0 0 0;
+}
+.loading .big-number{
+    color: #f85e13;
+}
+.loading .title{
+    font-size: 16px;
+    font-weight: 200;
+}
+.loading:hover {
+    color: #f85e13;
+    font-weight: 700;
+}
+.pop-quit img{
+    width: 42px;
+    height: 42px;
+}
+.pop-two-quit img {
+    width: 42px;
+    height: 42px;
 }
