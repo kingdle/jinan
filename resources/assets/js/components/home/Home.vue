@@ -458,7 +458,7 @@
 
                 let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
-                let series = chart.series.push(new am4charts.CurvedColumnSeries());
+                let series = chart.series.push(new am4charts.ColumnSeries());
                 series.dataFields.categoryX = "cityName";
                 series.dataFields.valueY = "cityNum";
                 series.tooltipText = "{valueY.value}"

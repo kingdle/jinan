@@ -78,10 +78,10 @@
             box-shadow 0.5s linear,
             height 0.1s linear 0s;
 }
-.wrapper > .box[pop-marker="1"] .product{ background-image: url("../img/pop-1.jpg"); filter: grayscale(50%);}
-.wrapper > .box[pop-marker="2"] .product{ background-image: url("../img/pop-2.jpg"); filter: grayscale(50%);}
-.wrapper > .box[pop-marker="3"] .product{ background-image: url("../img/pop-3.jpg"); filter: grayscale(50%);}
-.wrapper > .box[pop-marker="4"] .product{ background-image: url("../img/pop-4.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="1"] .product{ background-image: url("../img/one/pop-1.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="2"] .product{ background-image: url("../img/one/pop-2.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="3"] .product{ background-image: url("../img/one/pop-3.jpg"); filter: grayscale(50%);}
+.wrapper > .box[pop-marker="4"] .product{ background-image: url("../img/one/pop-4.jpg"); filter: grayscale(50%);}
 .name {
     display: block;
     padding: 1.8rem;

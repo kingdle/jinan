@@ -2,8 +2,7 @@
 
 .card-one{
   height: auto;
-	max-height:299px;
-	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 212px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -15,8 +14,7 @@
 }
 .card-two{
   height: auto;
-	max-height:299px;
-	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 212px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -28,8 +26,7 @@
 }
 .card-three{
   height: auto;
-	max-height:299px;
-	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 212px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -41,8 +38,7 @@
 }
 .card-four{
   height: auto;
-	max-height:299px;
-	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 212px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -54,8 +50,7 @@
 }
 .card-five{
 	height: auto;
-	max-height:299px;
-	width: 220px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 212px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
 	overflow: hidden;
 	/*background-color: #FFFFFF;*/
 	border-radius: 10px;
@@ -102,9 +97,9 @@
 	box-shadow: 0 15px 20px rgba(0,0,0,0.7);
 }
 .card_Banner{
-	height: 220px;
+	height: 252px;
     width: inherit;
-    padding-top: 135px;
+    padding-top: 170px;
     /* left: 0; */
     background-color: #FAFAFA;
     background-size: cover;
@@ -114,23 +109,23 @@
 
 	.card-one .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/zero.jpg");
+		background-image: url("../img/three/three1.jpg");
 	}
 	.card-two .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/three2.jpg");
+		background-image: url("../img/three/three2.jpg");
 	}
 	.card-three .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/zhaoshang.jpg");
+		background-image: url("../img/three/three3.jpg");
 	}
 	.card-four .card_Banner{
 		/* ⬇ Photo by Alexandru Acea on Unsplash */
-		background-image: url("../img/a4.jpg");
+		background-image: url("../img/three/three4.jpg");
 	}
 .card-five .card_Banner{
 	/* ⬇ Photo by Alexandru Acea on Unsplash */
-	background-image: url("../img/three5.jpg");
+	background-image: url("../img/three/three5.jpg");
 }
 .card_Avatar{
 	height: 100px;
@@ -145,20 +140,20 @@
 }
 
 	.card-one .card_Avatar{
-		background-image: url("../img/a6.png");
+		background-image: url("../img/three/three1.jpg");
 	}
 
 	.card-two .card_Avatar{
-		background-image: url("../img/a1.png");
+		background-image: url("../img/three/three2.jpg");
 	}
 	.card-three .card_Avatar{
-		background-image: url("../img/three3-r.jpg");
+		background-image: url("../img/three/three3.jpg");
 	}
 	.card-four .card_Avatar{
-		background-image: url("../img/a4.png");
+		background-image: url("../img/three/three4.jpg");
 	}
 .card-five .card_Avatar{
-	background-image: url("../img/six.jpg");
+	background-image: url("../img/three/three5.jpg");
 }
 .card_Avatar:hover {
 	transform: rotate(1turn);
