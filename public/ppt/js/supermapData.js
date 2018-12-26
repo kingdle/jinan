@@ -5,11 +5,10 @@ var attribution = "<a href='https://www.mapbox.com/about/maps/' target='_blank'>
     " with <span>? <a href='http://iclient.supermap.io' target='_blank'>SuperMap iClient</a> | </span>" +
     " Map Data <span>? <a href='http://support.supermap.com.cn/product/iServer.aspx' target='_blank'>SuperMap iServer</a></span> ";
 
-var center = [116.6532944210001, 35.48573509400006], themeField = "POP_DENSITY99",
+var center = [115.6048818125, 34.482170703266075], themeField = "POP_DENSITY99",
     themeLayer, popup;
-
 var map = new mapboxgl.Map({
-    container: 'map',
+    container: 'china_map',
     style: {
         "version": 8,
         "sources": {
@@ -31,7 +30,7 @@ var map = new mapboxgl.Map({
     center: center,
     zoom: 8
 });
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+// map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
 buildThemeLayer();
 

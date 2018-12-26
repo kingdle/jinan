@@ -35,6 +35,7 @@
 
     <script src="js/vue.js"></script>
     <script src="js/element.js"></script>
+    <script type="text/javascript" src="js/include-web.js"></script>
 
     <!-- <link href='https://fonts.googleapis.com/css?family=Rubik:400,500,900,700' rel='stylesheet' type='text/css'> -->
     <!-- font-family: 'Rubik', sans-serif; -->
@@ -53,19 +54,6 @@
 
 <div class="modal fade" id="DataListSystem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
-    <!--<div class="modal-dialog modal-dialog-centered" role="document">-->
-    <!--<div class="modal-content">-->
-    <!--<div class="modal-body son-sys">-->
-    <!--<button type="button" class="btn btn-info">常规数据采集</button>-->
-    <!--<button type="button" class="btn btn-success">数据查询发布</button>-->
-    <!--<button type="button" class="btn btn-warning">企业数据档案库</button>-->
-    <!--<button type="button" class="btn btn-danger">动态监测预警</button>-->
-    <!--</div>-->
-    <!--<div class="modal-footer">-->
-    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
     <div class="pop">
         <div class="pop-background">
         </div>
@@ -74,28 +62,42 @@
             <h1 class="pop-title">数据管理系统</h1>
             <div class="wrapper">
                 <div class="box" pop-marker="1">
+                    <a href="http://221.2.36.114:8088/qiye/modules/index/" target="_blank">
+
                     <div class="product">
                         <span class="name">常规数据采集</span>
-                        <span class="description">采集、建模、存储、分析、智能应用的全流程数据驱动</span>
+                        <span class="description">采集、建模、存储、分析、智能应用</span>
                     </div>
+                    </a>
+
                 </div>
                 <div class="box" pop-marker="2">
+                    <a href="http://221.2.36.114:8088/qiye/modules/index/" target="_blank">
                     <div class="product">
                         <span class="name">数据查询发布</span>
                         <span class="description">最新发布数据查询最新数据</span>
                     </div>
+                    </a>
+
                 </div>
                 <div class="box" pop-marker="3">
+                    <a href="http://221.2.36.114:8088/qiye/modules/index/" target="_blank">
+
                     <div class="product">
                         <span class="name">企业数据档案库</span>
                         <span class="description">完整记录企业投资经营业务数据信息</span>
                     </div>
+                    </a>
+
                 </div>
                 <div class="box" pop-marker="4">
+                    <a href="http://221.2.36.114:8088/qiye/modules/index/" target="_blank">
                     <div class="product">
                         <span class="name">动态监测预警</span>
                         <span class="description">全生态监测企业数据档案</span>
                     </div>
+                    </a>
+
                 </div>
             </div>
             <div class="pop-quit" data-dismiss="modal">
@@ -650,24 +652,22 @@
 
     <div class="screen" data-marker="4">
         <div class="background">
-            <!--<div id="gaodemap" style="height: 1200px;"></div>-->
+            <div id="china_map" style="margin:0 auto;width: 100%;height: 100%"></div>
         </div>
-        <div class="content-outside">
-            <div class="text">
+        <div class="four">
+            <div class="text" style="margin: 60px 0 0 60px">
                 <h1 class="h2">信息采集进度监控</h1>
             </div>
-            <div class="chart">
-                <div class="amchart-title">各区采集进度数</div>
-                <div class="content-inside align-center">
-                    <div class="">
+            <div class="amchart-title"><h6 class="h6">各区采集进度数</h6></div>
+            <div class="chart" style="padding: 0 0 0 60px">
+                <div class="charts-bars">
+                    <div class="charts-bars">
                         <div id="chartsBars"></div>
-                        <div class="map">
-                            <div id="china_map"></div>
-                        </div>
+                        <div class="map"></div>
                     </div>
                 </div>
             </div>
-            <div class="amchart-title">当日采集进度数</div>
+            <div class="amchart-title"><h6 class="h6">当日采集进度数</h6></div>
             <div id="chartdiv"></div>
         </div>
     </div>
@@ -727,243 +727,245 @@
 <!--$('#proe_map').css('display', 'block');-->
 <!--}-->
 <!--</script>-->
-<script>
-    $().ready(function () {
-        /*echarts*/
-        $.get('json/jining.json', function (mapJson) {
-            echarts.registerMap('jining', mapJson);
-            var chart = echarts.init(document.getElementById('china_map'));//在id为mainMap的dom元素中显示地图
-            chart.setOption({
-                tooltip: {
-                    trigger: 'item',
-                    formatter: function (result) {//回调函数，参数params具体格式参加官方API
-                        return result.name + '<br />上报个数:' + result.value;
-                    }
-                },
-                dataRange: {
-                    min: 0,
-                    max: 50,
-                    splitNumber: 0,
-                    text: ['高', '低'],
-                    realtime: false,
-                    calculable: false,
-                    selectedMode: false,
-                    realtime: false,
-                    show: false,
-                    itemWidth: 10,
-                    itemHeight: 60,
-                    color: ['lightskyblue', '#fa5e13']
-                },
-                title: {
-                    // text:'济宁市全域经济',
-                    //subtext:'',
-                    x: 'center',
-                    y: 'top',
-                    textAlign: 'left'
-                },
-                series: [{
-                    type: 'map',
-                    map: 'jining',//要和echarts.registerMap（）中第一个参数一致
-                    scaleLimit: {min: 0.8, max: 1.9},//缩放
-                    mapLocation: {
-                        y: 60
-                    },
-                    itemSytle: {
-                        emphasis: {label: {show: false}}
-                    },
-                    label: {
-                        normal: {
-                            show: true
-                        },
-                        emphasis: {
-                            show: true
-                        }
-                    },
-                    data: [
-                        {name: '任城区', value: '9'},
-                        {name: '兖州区', value: '35'},
-                        {name: '曲阜市', value: '49'},
-                        {name: '邹城市', value: '16'},
-                        {name: '汶上县', value: '43'},
-                        {name: '嘉祥县', value: '35'},
-                        {name: '梁山县', value: '50'},
-                        {name: '金乡县', value: '23'},
-                        {name: '鱼台县', value: '18'},
-                        {name: '微山县', value: '45'},
-                        {name: '泗水县', value: '20'},
+<script type="text/javascript" src="js/include-mapboxgl.js"></script>
+<script type="text/javascript" src="js/supermapData.js"></script>
+<!--<script>-->
+    <!--$().ready(function () {-->
+        <!--/*echarts*/-->
+        <!--$.get('json/jining.json', function (mapJson) {-->
+            <!--echarts.registerMap('jining', mapJson);-->
+            <!--var chart = echarts.init(document.getElementById('china_map'));//在id为mainMap的dom元素中显示地图-->
+            <!--chart.setOption({-->
+                <!--tooltip: {-->
+                    <!--trigger: 'item',-->
+                    <!--formatter: function (result) {//回调函数，参数params具体格式参加官方API-->
+                        <!--return result.name + '<br />上报个数:' + result.value;-->
+                    <!--}-->
+                <!--},-->
+                <!--dataRange: {-->
+                    <!--min: 0,-->
+                    <!--max: 50,-->
+                    <!--splitNumber: 0,-->
+                    <!--text: ['高', '低'],-->
+                    <!--realtime: false,-->
+                    <!--calculable: false,-->
+                    <!--selectedMode: false,-->
+                    <!--realtime: false,-->
+                    <!--show: false,-->
+                    <!--itemWidth: 10,-->
+                    <!--itemHeight: 60,-->
+                    <!--color: ['lightskyblue', '#fa5e13']-->
+                <!--},-->
+                <!--title: {-->
+                    <!--// text:'济宁市全域经济',-->
+                    <!--//subtext:'',-->
+                    <!--x: 'center',-->
+                    <!--y: 'top',-->
+                    <!--textAlign: 'left'-->
+                <!--},-->
+                <!--series: [{-->
+                    <!--type: 'map',-->
+                    <!--map: 'jining',//要和echarts.registerMap（）中第一个参数一致-->
+                    <!--scaleLimit: {min: 0.8, max: 1.9},//缩放-->
+                    <!--mapLocation: {-->
+                        <!--y: 60-->
+                    <!--},-->
+                    <!--itemSytle: {-->
+                        <!--emphasis: {label: {show: false}}-->
+                    <!--},-->
+                    <!--label: {-->
+                        <!--normal: {-->
+                            <!--show: true-->
+                        <!--},-->
+                        <!--emphasis: {-->
+                            <!--show: true-->
+                        <!--}-->
+                    <!--},-->
+                    <!--data: [-->
+                        <!--{name: '任城区', value: '9'},-->
+                        <!--{name: '兖州区', value: '35'},-->
+                        <!--{name: '曲阜市', value: '49'},-->
+                        <!--{name: '邹城市', value: '16'},-->
+                        <!--{name: '汶上县', value: '43'},-->
+                        <!--{name: '嘉祥县', value: '35'},-->
+                        <!--{name: '梁山县', value: '50'},-->
+                        <!--{name: '金乡县', value: '23'},-->
+                        <!--{name: '鱼台县', value: '18'},-->
+                        <!--{name: '微山县', value: '45'},-->
+                        <!--{name: '泗水县', value: '20'},-->
 
-                    ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
-                }]
-            }),
+                    <!--]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]-->
+                <!--}]-->
+            <!--}),-->
 
-                chart.on('', function (result) {//回调函数，点击时触发，参数params格式参加官方API
+                <!--chart.on('', function (result) {//回调函数，点击时触发，参数params格式参加官方API-->
 
-                    setTimeout(function () {
-                        $('#china_map').css('display', 'none');
-                        $('#city_map').css('display', 'none');
-                        $('#proe_map').css('display', 'block');
-                    }, 500);
-                    //选择省的单击事件
-                    var selectProe = result.name;
-                    //    调取后台数据
-                    $.get('json/' + selectProe + '/' + selectProe + '.json', function (Citymap) {
-                        echarts.registerMap(selectProe, Citymap);
-                        var myChartProe = echarts.init(document.getElementById('proe_map'));
-                        myChartProe.setOption({
-                            tooltip: {
-                                trigger: 'item',
-                                formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API
-                                    return result.name + '<br />数据:' + result.value;
-                                }
-                            },
-                            dataRange: {
-                                min: 0,
-                                max: 50,
-                                text: ['高', '低'],
-                                realtime: false,
-                                calculable: false,
-                                splitNumber: 0,
-                                itemWidth: 10,
-                                show: false,
-                                itemHeight: 60,
-                                color: ['lightskyblue', '#f2f2f2']
-                            },
-                            title: {
-                                text: selectProe + '数据总览',
-                                //subtext:'',
-                                x: 'center',
-                                y: 'top',
-                                textAlign: 'left'
-                            },
-                            series: [{
-                                type: 'map',
-                                map: selectProe,//要和echarts.registerMap（）中第一个参数一致
-                                scaleLimit: {min: 0.8, max: 1.9},//缩放
-                                mapLocation: {
-                                    y: 60
-                                },
-                                itemSytle: {
-                                    emphasis: {label: {show: false}}
-                                },
-                                label: {
-                                    normal: {
-                                        show: true
-                                    },
-                                    emphasis: {
-                                        show: true
-                                    }
-                                },
-                                data: [
-                                    {name: '任城区', value: '5'},
-                                    {name: '兖州区', value: '0'},
-                                    {name: '曲阜市', value: '10'},
-                                    {name: '邹城市', value: '30'},
-                                    {name: '汶上县', value: '50'},
-                                    {name: '嘉祥县', value: '15'}
-                                ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
-                            }]
-                        })
-                        myChartProe.on('click', function (rel) {
-                            setTimeout(function () {
-                                function contains(arr, obj) {
-                                    var i = arr.length;
-                                    while (i--) {
-                                        if (arr[i] === obj) {
-                                            return true;
-                                        }
-                                    }
-                                    return false;
-                                }
+                    <!--setTimeout(function () {-->
+                        <!--$('#china_map').css('display', 'none');-->
+                        <!--$('#city_map').css('display', 'none');-->
+                        <!--$('#proe_map').css('display', 'block');-->
+                    <!--}, 500);-->
+                    <!--//选择省的单击事件-->
+                    <!--var selectProe = result.name;-->
+                    <!--//    调取后台数据-->
+                    <!--$.get('json/' + selectProe + '/' + selectProe + '.json', function (Citymap) {-->
+                        <!--echarts.registerMap(selectProe, Citymap);-->
+                        <!--var myChartProe = echarts.init(document.getElementById('proe_map'));-->
+                        <!--myChartProe.setOption({-->
+                            <!--tooltip: {-->
+                                <!--trigger: 'item',-->
+                                <!--formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API-->
+                                    <!--return result.name + '<br />数据:' + result.value;-->
+                                <!--}-->
+                            <!--},-->
+                            <!--dataRange: {-->
+                                <!--min: 0,-->
+                                <!--max: 50,-->
+                                <!--text: ['高', '低'],-->
+                                <!--realtime: false,-->
+                                <!--calculable: false,-->
+                                <!--splitNumber: 0,-->
+                                <!--itemWidth: 10,-->
+                                <!--show: false,-->
+                                <!--itemHeight: 60,-->
+                                <!--color: ['lightskyblue', '#f2f2f2']-->
+                            <!--},-->
+                            <!--title: {-->
+                                <!--text: selectProe + '数据总览',-->
+                                <!--//subtext:'',-->
+                                <!--x: 'center',-->
+                                <!--y: 'top',-->
+                                <!--textAlign: 'left'-->
+                            <!--},-->
+                            <!--series: [{-->
+                                <!--type: 'map',-->
+                                <!--map: selectProe,//要和echarts.registerMap（）中第一个参数一致-->
+                                <!--scaleLimit: {min: 0.8, max: 1.9},//缩放-->
+                                <!--mapLocation: {-->
+                                    <!--y: 60-->
+                                <!--},-->
+                                <!--itemSytle: {-->
+                                    <!--emphasis: {label: {show: false}}-->
+                                <!--},-->
+                                <!--label: {-->
+                                    <!--normal: {-->
+                                        <!--show: true-->
+                                    <!--},-->
+                                    <!--emphasis: {-->
+                                        <!--show: true-->
+                                    <!--}-->
+                                <!--},-->
+                                <!--data: [-->
+                                    <!--{name: '任城区', value: '5'},-->
+                                    <!--{name: '兖州区', value: '0'},-->
+                                    <!--{name: '曲阜市', value: '10'},-->
+                                    <!--{name: '邹城市', value: '30'},-->
+                                    <!--{name: '汶上县', value: '50'},-->
+                                    <!--{name: '嘉祥县', value: '15'}-->
+                                <!--]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]-->
+                            <!--}]-->
+                        <!--})-->
+                        <!--myChartProe.on('click', function (rel) {-->
+                            <!--setTimeout(function () {-->
+                                <!--function contains(arr, obj) {-->
+                                    <!--var i = arr.length;-->
+                                    <!--while (i&#45;&#45;) {-->
+                                        <!--if (arr[i] === obj) {-->
+                                            <!--return true;-->
+                                        <!--}-->
+                                    <!--}-->
+                                    <!--return false;-->
+                                <!--}-->
 
-                                var arr = new Array('北京', '上海', '天津', '台湾', '重庆');
-                                if (contains(arr, selectProe) == false) {
-                                    $('#china_map').css('display', 'none');
-                                    $('#proe_map').css('display', 'none');
-                                    $('#city_map').css('display', 'block');
-                                }
-                                else {
-                                    $('#china_map').css('display', 'none');
-                                    $('#proe_map').css('display', 'block');
-                                    $('#city_map').css('display', 'none');
-                                }
+                                <!--var arr = new Array('北京', '上海', '天津', '台湾', '重庆');-->
+                                <!--if (contains(arr, selectProe) == false) {-->
+                                    <!--$('#china_map').css('display', 'none');-->
+                                    <!--$('#proe_map').css('display', 'none');-->
+                                    <!--$('#city_map').css('display', 'block');-->
+                                <!--}-->
+                                <!--else {-->
+                                    <!--$('#china_map').css('display', 'none');-->
+                                    <!--$('#proe_map').css('display', 'block');-->
+                                    <!--$('#city_map').css('display', 'none');-->
+                                <!--}-->
 
-                            }, 500);
-                            //选择市的单击事件
-                            var selectCity = rel.name;
+                            <!--}, 500);-->
+                            <!--//选择市的单击事件-->
+                            <!--var selectCity = rel.name;-->
 
-                            //    调取后台数据
-                            $.get('json/' + selectProe + '/' + selectCity + '.json', function (Citymap) {
-                                echarts.registerMap(selectCity, Citymap);
-                                var myChartCity = echarts.init(document.getElementById('city_map'));
-                                myChartCity.setOption({
-                                    tooltip: {
-                                        trigger: 'item',
-                                        formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API
-                                            return result.name + '<br />数据:' + result.value;
-                                        }
-                                    },
-                                    dataRange: {
-                                        min: 0,
-                                        max: 50,
-                                        text: ['高', '低'],
-                                        realtime: false,
-                                        show: false,
-                                        calculable: false,
-                                        splitNumber: 0,
-                                        itemWidth: 10,
-                                        itemHeight: 60,
-                                        color: ['lightskyblue', '#f2f2f2']
-                                    },
-                                    title: {
-                                        text: selectCity + '数据总览',
-                                        //subtext:'',
-                                        x: 'center',
-                                        y: 'top',
-                                        textAlign: 'left'
-                                    },
-                                    series: [{
-                                        type: 'map',
-                                        map: selectCity,//要和echarts.registerMap（）中第一个参数一致
-                                        scaleLimit: {min: 0.8, max: 1.9},//缩放
-                                        mapLocation: {
-                                            y: 60
-                                        },
-                                        itemSytle: {
-                                            emphasis: {label: {show: false}}
-                                        },
-                                        label: {
-                                            normal: {
-                                                show: true
-                                            },
-                                            emphasis: {
-                                                show: true
-                                            }
-                                        },
-                                        data: [
-                                            {name: '任城区', value: '5'},
-                                            {name: '兖州区', value: '0'},
-                                            {name: '曲阜市', value: '10'},
-                                            {name: '邹城市', value: '30'},
-                                            {name: '汶上县', value: '50'},
-                                            {name: '嘉祥县', value: '15'}
-                                        ]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]
-                                    }]
-                                })
-                                // myChartCity.on('click',function(rel){
-                                // 	setTimeout(function () {
-                                // 						//$('#cont_pro_map').css('display','block');
-                                //  					//$('#cont_city_map').css('display','none');
-                                // 		}, 500);
+                            <!--//    调取后台数据-->
+                            <!--$.get('json/' + selectProe + '/' + selectCity + '.json', function (Citymap) {-->
+                                <!--echarts.registerMap(selectCity, Citymap);-->
+                                <!--var myChartCity = echarts.init(document.getElementById('city_map'));-->
+                                <!--myChartCity.setOption({-->
+                                    <!--tooltip: {-->
+                                        <!--trigger: 'item',-->
+                                        <!--formatter: function loadData(result) {//回调函数，参数params具体格式参加官方API-->
+                                            <!--return result.name + '<br />数据:' + result.value;-->
+                                        <!--}-->
+                                    <!--},-->
+                                    <!--dataRange: {-->
+                                        <!--min: 0,-->
+                                        <!--max: 50,-->
+                                        <!--text: ['高', '低'],-->
+                                        <!--realtime: false,-->
+                                        <!--show: false,-->
+                                        <!--calculable: false,-->
+                                        <!--splitNumber: 0,-->
+                                        <!--itemWidth: 10,-->
+                                        <!--itemHeight: 60,-->
+                                        <!--color: ['lightskyblue', '#f2f2f2']-->
+                                    <!--},-->
+                                    <!--title: {-->
+                                        <!--text: selectCity + '数据总览',-->
+                                        <!--//subtext:'',-->
+                                        <!--x: 'center',-->
+                                        <!--y: 'top',-->
+                                        <!--textAlign: 'left'-->
+                                    <!--},-->
+                                    <!--series: [{-->
+                                        <!--type: 'map',-->
+                                        <!--map: selectCity,//要和echarts.registerMap（）中第一个参数一致-->
+                                        <!--scaleLimit: {min: 0.8, max: 1.9},//缩放-->
+                                        <!--mapLocation: {-->
+                                            <!--y: 60-->
+                                        <!--},-->
+                                        <!--itemSytle: {-->
+                                            <!--emphasis: {label: {show: false}}-->
+                                        <!--},-->
+                                        <!--label: {-->
+                                            <!--normal: {-->
+                                                <!--show: true-->
+                                            <!--},-->
+                                            <!--emphasis: {-->
+                                                <!--show: true-->
+                                            <!--}-->
+                                        <!--},-->
+                                        <!--data: [-->
+                                            <!--{name: '任城区', value: '5'},-->
+                                            <!--{name: '兖州区', value: '0'},-->
+                                            <!--{name: '曲阜市', value: '10'},-->
+                                            <!--{name: '邹城市', value: '30'},-->
+                                            <!--{name: '汶上县', value: '50'},-->
+                                            <!--{name: '嘉祥县', value: '15'}-->
+                                        <!--]//dataParam//人口数据：例如[{name:'济南',value:'100万'},{name:'菏泽'，value:'100万'}......]-->
+                                    <!--}]-->
+                                <!--})-->
+                                <!--// myChartCity.on('click',function(rel){-->
+                                <!--// 	setTimeout(function () {-->
+                                <!--// 						//$('#cont_pro_map').css('display','block');-->
+                                <!--//  					//$('#cont_city_map').css('display','none');-->
+                                <!--// 		}, 500);-->
 
-                                // })
-                            });
+                                <!--// })-->
+                            <!--});-->
 
-                        })
-                    });
-                });
-        });
-    });
-</script>
+                        <!--})-->
+                    <!--});-->
+                <!--});-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
 <!-- <script type="text/javascript" src="js/constellation/stopExecutionOnTimeout.js"></script>
 <script type="text/javascript" src="js/constellation/zepto.min.js"></script>
 <script type="text/javascript" src="js/constellation/constellation.js"></script> -->

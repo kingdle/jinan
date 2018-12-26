@@ -13,12 +13,14 @@ html, body {
 /* Main */
 a {
     text-decoration: none !important;
+    color: #222 !important;
 }
 a:hover{
     text-decoration: none !important;
+    color: #222 !important;
 }
-a:active {text-decoration:none; !important}
-a:visited {text-decoration:none; !important}
+a:active {text-decoration:none; !important;color: #222 !important;}
+a:visited {text-decoration:none; !important;color: #222 !important;}
 /* Brand */
 .brand {
     position: absolute;
@@ -455,7 +457,7 @@ nav > ul > li.active:after {
 }
 
 .screens > .screen:nth-child(3) {
-    background-color: rgba(189, 0, 47, 1);
+    background-color: rgba(0, 145, 230, 1);
 }
 
 .screens > .screen:nth-child(4) {
@@ -521,6 +523,10 @@ nav > ul > li.active:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    -webkit-animation: bgrzoom 1.4s linear forwards;
+    -moz-animation: bgrzoom 1.4s linear forwards;
+    -o-animation: bgrzoom 1.4s linear forwards;
+    animation: bgrzoom 1.4s linear forwards;
 }
 
 .screens > .screen[data-marker="3"] .background {
@@ -529,6 +535,10 @@ nav > ul > li.active:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    -webkit-animation: bgrzoom 1.4s linear forwards;
+    -moz-animation: bgrzoom 1.4s linear forwards;
+    -o-animation: bgrzoom 1.4s linear forwards;
+    animation: bgrzoom 1.4s linear forwards;
 }
 
 .screens > .screen[data-marker="4"] .background {
@@ -556,10 +566,10 @@ nav > ul > li.active:after {
 }
 
 .screens > .screen.active .background {
-    -webkit-animation: bgrzoom 1.4s linear forwards;
-    -moz-animation: bgrzoom 1.4s linear forwards;
-    -o-animation: bgrzoom 1.4s linear forwards;
-    animation: bgrzoom 1.4s linear forwards;
+    /*-webkit-animation: bgrzoom 1.4s linear forwards;*/
+    /*-moz-animation: bgrzoom 1.4s linear forwards;*/
+    /*-o-animation: bgrzoom 1.4s linear forwards;*/
+    /*animation: bgrzoom 1.4s linear forwards;*/
 }
 
 .index-one {
@@ -2819,8 +2829,8 @@ a:hover, a:focus {
 }
 #chartsBars {
     margin-top: 20px;
-    width: 70%;
-    height: 430px;
+    width: 700px;
+    height:420px;
 }
 .map{
     width:40%;
@@ -2832,11 +2842,6 @@ a:hover, a:focus {
     height:520px;
     margin:0 auto;
     position: absolute;
-    top:10px;
+    /*top:10px;*/
     display: block;
-}
-.amchart-title{
-    color: #fff;
-    font-size: 18px;
-    padding-top:10px;
 }
